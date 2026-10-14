@@ -5,13 +5,14 @@ A4・中綴じ12ページの製品カタログの元データです。LP の資�
 ## 作り方
 
 ```sh
-python3 -m pip install segno pillow   # 初回のみ
+python3 -m pip install segno pillow pypdf   # 初回のみ
 python3 brochure/build.py             # brochure/dist/ に出力
 brochure/preview.sh                   # 見開きの確認画像（poppler-utils が必要、12ページの中綴じの並び）
 ```
 
 - `brochure-bleed0.pdf`：Web用（A4、画像は軽め）
 - `brochure-bleed3.pdf`：印刷用（A4＋塗り足し3mm＝216×303mm、画像はフル解像度）
+- `brochure-spreads.pdf`：見開き版（表紙・裏表紙は単ページ、中面は2ページずつ。`spreads.py` が Web用PDFを並べ替えて作る。pypdf が必要）
 
 フォント（Noto Sans JP・Barlow Condensed の静的ウェイト）は初回に npm から `brochure/fonts/` へ取得します。可変フォントのままだとPDFに Type 3 で埋め込まれ、印刷に向かないためです。Chromium は Playwright のもの（`PLAYWRIGHT_PATH` で playwright の場所を指定可）を使います。
 

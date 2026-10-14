@@ -12,6 +12,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "src"))
+sys.path.insert(0, str(HERE))
 import drawings  # noqa: E402
 import parts  # noqa: E402
 
@@ -122,3 +123,5 @@ if __name__ == "__main__":
     for b in (0, 3):
         print(build(b))
     subprocess.run(["node", str(HERE / "render.mjs"), str(DIST)], check=True)
+    from spreads import make_spreads   # needs pypdf
+    print(make_spreads())
