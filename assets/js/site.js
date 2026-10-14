@@ -81,6 +81,19 @@
     addEventListener('resize', () => { clearTimeout(idle); idle = setTimeout(refresh, 150); });
   }
 
+  /* ---------- FAQ: mark the category being read in the side index ---------- */
+  const faq = $('[data-faq]');
+  if (faq) {
+    const cats = $$('.faq__cat', faq);
+    const byId = new Map(cats.map(a => [a.hash.slice(1), a]));
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting) cats.forEach(a => a.classList.toggle('is-cur', a === byId.get(e.target.id)));
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });   // a thin band a third of the way down the screen
+    $$('.faq__grp', faq).forEach(g => io.observe(g));
+  }
+
   /* ---------- YouTube: load the player only when asked ---------- */
   $$('[data-video]').forEach(frame => {
     const btn = $('.video__play', frame);
