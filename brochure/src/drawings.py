@@ -83,9 +83,6 @@ def street_svg(after):
     for r in range(4):
         for c in range(3):
             o.append(f'<rect x="{316 + c * 44}" y="{76 + r * 46}" width="30" height="26" fill="{TINT}" stroke="{NAVY}" stroke-width="1"/>')
-    o.append(f'<path d="M300 132H450" stroke="{NAVY}" stroke-width="1.2"/>')
-    o.append(f'<path d="M318 120h36" stroke="{GRAY}" stroke-width="1"/>'
-             f'<path d="M324 120v8h8v-8M338 120v10h9v-10" fill="#fff" stroke="{GRAY}" stroke-width="1"/>')
     # restaurant
     o.append(f'<rect x="30" y="118" width="172" height="154" fill="#fff" stroke="{NAVY}" stroke-width="1.4"/>')
     o.append(f'<path d="M24 196H208l-8 14H32z" fill="{NAVY}"/>')
