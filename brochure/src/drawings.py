@@ -92,27 +92,41 @@ def street_svg(after):
     o.append(f'<rect x="46" y="216" width="56" height="56" fill="{TINT}" stroke="{NAVY}" stroke-width="1"/>'
              f'<rect x="126" y="216" width="40" height="56" fill="{TINT}" stroke="{NAVY}" stroke-width="1"/>')
     o.append(f'<rect x="46" y="138" width="44" height="34" fill="{TINT}" stroke="{NAVY}" stroke-width="1"/>')
-    # exhaust duct through the wall
-    o.append(f'<path d="M150 158H214" stroke="{NAVY}" stroke-width="9" stroke-linecap="butt"/>'
-             f'<path d="M150 158H214" stroke="#fff" stroke-width="5.4"/>'
-             f'<rect x="212" y="148" width="8" height="20" fill="{NAVY}"/>')
+    # exhaust duct through the side wall of the ground-floor kitchen
+    oy = 230
+    o.append(f'<path d="M180 {oy}H214" stroke="{NAVY}" stroke-width="9" stroke-linecap="butt"/>'
+             f'<path d="M180 {oy}H214" stroke="#fff" stroke-width="5.4"/>')
     if not after:
-        # grease stain below the outlet
-        o.append(f'<path d="M203 168c-3 14 3 26-2 40h-4c3-14-2-26 1-40z" fill="#5a4a3a" opacity=".35"/>')
-        # smoke drifting to the apartment
-        for i in range(140):
-            t = rnd.random()
-            x = 224 + t * 150 + rnd.gauss(0, 6)
-            y = 156 - t * 70 + rnd.gauss(0, 6 + t * 26)
-            r = 2.2 + t * 4 * rnd.random()
-            o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="{AMBER}" opacity="{(.75 - t * .4):.2f}"/>')
+        o.append(f'<rect x="212" y="{oy - 10}" width="8" height="20" fill="{NAVY}"/>')
+        # grease stain on the wall below the outlet
+        o.append(f'<path d="M203 {oy + 10}c-3 10 3 18-2 28h-4c3-10-2-18 1-28z" fill="#5a4a3a" opacity=".35"/>')
+        # oil smoke: soft puffs that rise, widen and thin out toward the apartment windows
+        o.append('<defs><radialGradient id="smk"><stop offset="0" stop-color="#8c8174" stop-opacity=".5"/>'
+                 '<stop offset=".55" stop-color="#9a9084" stop-opacity=".22"/>'
+                 '<stop offset="1" stop-color="#a69d92" stop-opacity="0"/></radialGradient>'
+                 '<radialGradient id="smk2"><stop offset="0" stop-color="#6f604f" stop-opacity=".7"/>'
+                 '<stop offset="1" stop-color="#8a7a68" stop-opacity="0"/></radialGradient></defs>')
+        puffs = []
+        for i in range(70):
+            t = (i / 69) ** .9
+            x = 224 + t * 166 + rnd.gauss(0, 4 + t * 12)
+            y = oy - 150 * t ** .75 + rnd.gauss(0, 3 + t * 10)
+            r = 9 + t * 36 * (.7 + rnd.random() * .5)
+            puffs.append((r, x, y, .95 - t * .6))
+        for r, x, y, a in sorted(puffs, reverse=True):
+            o.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{r * 1.15:.1f}" ry="{r:.1f}" fill="url(#smk)" opacity="{a:.2f}"/>')
+        for i in range(6):   # denser core right at the outlet
+            o.append(f'<circle cx="{226 + i * 7:.1f}" cy="{oy - 2 - i * 5:.1f}" r="{7 + i * 2.2:.1f}" fill="url(#smk2)"/>')
         o.append(txt(18, 30, "BEFORE", 18, GRAY, 600, font=N, extra='letter-spacing="3"'))
     else:
-        # JL-8A inside, cleaned exhaust
-        o.append(f'<rect x="104" y="140" width="46" height="34" fill="#fff" stroke="{BLUE}" stroke-width="2"/>'
-                 + txt(127, 162, "JL-8A", 11, BLUE, 700, "middle", N))
-        for i, dy in enumerate((-8, 0, 8)):
-            o.append(f'<path d="M226 {158 + dy}h{46 - i * 8}" stroke="{BLUE}" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>')
+        # JL-8A outdoors on a low stand beside the ground floor; cleaned air leaves its outlet
+        ux, uy, uw, uh = 214, 214, 50, 32
+        o.append(f'<path d="M{ux + 6} {uy + uh}V272M{ux + uw - 6} {uy + uh}V272M{ux + 6} 262H{ux + uw - 6}" stroke="{NAVY}" stroke-width="2"/>')
+        o.append(f'<rect x="{ux}" y="{uy}" width="{uw}" height="{uh}" fill="#fff" stroke="{BLUE}" stroke-width="2"/>'
+                 + txt(ux + uw / 2, uy + 20, "JL-8A", 11, BLUE, 700, "middle", N))
+        o.append(f'<rect x="{ux + uw}" y="{oy - 9}" width="6" height="18" fill="{NAVY}"/>')
+        for i, dy in enumerate((-7, 0, 7)):
+            o.append(f'<path d="M{ux + uw + 12} {oy + dy}h{30 - i * 6}" stroke="{BLUE}" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>')
         o.append(txt(18, 30, "AFTER", 18, BLUE, 600, font=N, extra='letter-spacing="3"'))
     return svg(480, 300, o, "導入前" if not after else "導入後")
 
