@@ -335,13 +335,16 @@ def ortho_svg():
     sx, sy = fx + W + 44, fy    # right side view
     o = []
     st = f'fill="#fff" stroke="{NAVY}" stroke-width="1.6"'
-    # front
+    # front: top lid strip, one cell-unit door (latch left, hinges right), as on the real unit
     o.append(f'<rect x="{fx}" y="{fy}" width="{W}" height="{H}" {st}/>')
-    o.append(f'<rect x="{fx + 8}" y="{fy + 8}" width="{W * .38}" height="{H - 22}" fill="none" stroke="{NAVY}" stroke-width="1"/>')
-    o.append(f'<rect x="{fx + 14 + W * .38}" y="{fy + 8}" width="{W * .62 - 22}" height="{H - 22}" fill="none" stroke="{NAVY}" stroke-width="1"/>')
-    o.append(f'<rect x="{fx + W * .38 - 4}" y="{fy + H / 2 - 10}" width="4" height="20" fill="{NAVY}"/>'
-             f'<rect x="{fx + W - 16}" y="{fy + H / 2 - 10}" width="4" height="20" fill="{NAVY}"/>')
-    o.append(f'<circle cx="{fx + 20}" cy="{fy + 20}" r="4" fill="#2ecc71"/>')
+    band = H * .09
+    o.append(f'<path d="M{fx} {fy + band}H{fx + W}" stroke="{NAVY}" stroke-width="1"/>')
+    dx, dy, dw, dh = fx + 9, fy + band + 7, W - 18, H - band - 15
+    o.append(f'<rect x="{dx}" y="{dy}" width="{dw}" height="{dh}" fill="none" stroke="{NAVY}" stroke-width="1.2"/>')
+    o.append(f'<rect x="{dx + 8}" y="{dy + dh * .38}" width="7" height="22" rx="1.5" fill="{NAVY}"/>')
+    for hy in (.12, .8):
+        o.append(f'<rect x="{dx + dw - 3}" y="{dy + dh * hy}" width="7" height="12" fill="{NAVY}"/>')
+    o.append(txt(dx + dw / 2, dy + dh / 2 + 4, "セルユニット扉", 11, GRAY, 700, "middle"))
     # side
     o.append(f'<rect x="{sx}" y="{sy}" width="{D}" height="{H}" {st}/>')
     o.append(mesh(sx + 18, sy + 18, D - 36, H - 40, 7))
