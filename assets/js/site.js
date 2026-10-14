@@ -46,6 +46,41 @@
     }, { threshold: .3 }).observe(map);
   }
 
+  /* ---------- flow: the rail fills as the page scrolls, lighting each number ---------- */
+  const steps = $('[data-steps]');
+  if (steps) {
+    const items = $$('.step', steps);
+    const nos = items.map(li => $('.step__no', li));
+    let centers = [], top = 0, len = 1, frame = 0, idle = 0;
+    const measure = () => {
+      const box = steps.getBoundingClientRect();
+      centers = nos.map(n => { const b = n.getBoundingClientRect(); return b.top + b.height / 2 - box.top; });
+      top = centers[0];
+      len = Math.max(1, centers[centers.length - 1] - top);
+      steps.style.setProperty('--rail-top', `${top}px`);
+      steps.style.setProperty('--rail-len', `${len}px`);
+    };
+    const update = () => {
+      frame = 0;
+      const mark = innerHeight * .6 - steps.getBoundingClientRect().top;   // the reading line, in list coordinates
+      const p = Math.min(1, Math.max(0, (mark - top) / len));
+      steps.style.setProperty('--p', p.toFixed(4));
+      items.forEach((li, i) => li.classList.toggle('is-on', mark >= centers[i] - 2));
+      steps.classList.toggle('is-moving', p > 0 && p < 1);
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const refresh = () => { measure(); if (!reduced) update(); };
+    refresh();
+    if (!reduced) {   // with less motion: everything stays lit and the rail stays full
+      steps.classList.add('is-ready');
+      new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) { refresh(); addEventListener('scroll', onScroll, { passive: true }); }
+        else removeEventListener('scroll', onScroll);
+      }, { rootMargin: '20% 0px' }).observe(steps);
+    }
+    addEventListener('resize', () => { clearTimeout(idle); idle = setTimeout(refresh, 150); });
+  }
+
   /* ---------- YouTube: load the player only when asked ---------- */
   $$('[data-video]').forEach(frame => {
     const btn = $('.video__play', frame);
