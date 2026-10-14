@@ -134,7 +134,9 @@ npx serve .
 2. お客様に自動返信メールを送信（資料請求はダウンロードのご案内、お問い合わせは受付確認）
 3. 担当者に通知メールを送信（件名に都道府県が入るので、地域ごとの振り分けに使えます）
 
-ファイル先頭の `DOWNLOAD_URL`（資料PDFのURL）と `NOTIFY_TO`（通知先）を書き換えてください。Formspree などのフォームサービスを使う場合も、そのURLを `data-endpoint` に入れるだけで送れます。
+通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件を設定済みです。お客様が自動返信メールに返信すると、先頭の info@noda-duct.com に届きます。ファイル先頭の `DOWNLOAD_URL`（資料PDFのURL）だけ書き換えてください。
+
+送れるメールは宛先の数で数えて、Gmail（無料アカウント）は1日100件、Google Workspace は1日1,500件までです。1回の送信で、自動返信1件と通知4件の計5件を使います。Formspree などのフォームサービスを使う場合も、そのURLを `data-endpoint` に入れるだけで送れます。
 
 ## 公開前に確認していただきたいこと
 

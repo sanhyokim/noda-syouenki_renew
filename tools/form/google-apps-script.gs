@@ -15,12 +15,13 @@
  *      index.html と contact/index.html の <form data-endpoint=""> の "" の中に貼る
  *   5. LPから試しに送信し、スプレッドシートとメールを確認する
  *
- * 注意：Gmail（無料アカウント）は1日100通、Google Workspace は1日1,500通まで送れます。
+ * 注意：送れるのは宛先の数で数えて、Gmail（無料アカウント）は1日100件、Google Workspace は1日1,500件までです。
+ *       1回の送信で、お客様への自動返信1件＋通知4件（NOTIFY_TO の数）＝5件を使います。
  */
 
 // ===== 設定 =====
 const DOWNLOAD_URL = 'https://example.com/noda-shoenki-jl8a.pdf';   // 資料PDFのURL（Googleドライブの共有リンクでも可）
-const NOTIFY_TO    = 'info@noda-duct.com';                          // 通知を受け取るアドレス（カンマ区切りで複数可）
+const NOTIFY_TO    = 'info@noda-duct.com,koroyasu@duct-noda.com,azuma@duct-noda.com,nagamizu@duct-noda.com';  // 通知を受け取るアドレス（カンマ区切り。お客様からの返信は先頭のアドレスに届きます）
 const FROM_NAME    = '野田の消煙機（株式会社野田）';
 // ================
 
