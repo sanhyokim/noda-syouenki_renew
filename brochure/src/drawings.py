@@ -116,14 +116,18 @@ def street_svg(after):
             o.append(f'<circle cx="{226 + i * 7:.1f}" cy="{oy - 2 - i * 5:.1f}" r="{7 + i * 2.2:.1f}" fill="url(#smk2)"/>')
         o.append(txt(18, 30, "BEFORE", 18, GRAY, 600, font=N, extra='letter-spacing="3"'))
     else:
-        # JL-8A outdoors on a low stand beside the ground floor; cleaned air leaves its outlet
-        ux, uy, uw, uh = 214, 214, 50, 32
+        # JL-8A outdoors on a low stand right against the shop wall; an exhaust duct rises
+        # from its outlet and releases the cleaned air higher up
+        ux, uy, uw, uh = 206, 214, 48, 32
         o.append(f'<path d="M{ux + 6} {uy + uh}V272M{ux + uw - 6} {uy + uh}V272M{ux + 6} 262H{ux + uw - 6}" stroke="{NAVY}" stroke-width="2"/>')
+        rise = f"M{ux + uw} {oy}H{ux + uw + 10}V150H{ux + uw + 20}"
+        o.append(f'<path d="{rise}" fill="none" stroke="{NAVY}" stroke-width="9" stroke-linejoin="miter"/>'
+                 f'<path d="{rise}" fill="none" stroke="#fff" stroke-width="5.4" stroke-linejoin="miter"/>')
+        o.append(f'<rect x="{ux + uw + 20}" y="140" width="6" height="20" fill="{NAVY}"/>')
         o.append(f'<rect x="{ux}" y="{uy}" width="{uw}" height="{uh}" fill="#fff" stroke="{BLUE}" stroke-width="2"/>'
                  + txt(ux + uw / 2, uy + 20, "JL-8A", 11, BLUE, 700, "middle", N))
-        o.append(f'<rect x="{ux + uw}" y="{oy - 9}" width="6" height="18" fill="{NAVY}"/>')
         for i, dy in enumerate((-7, 0, 7)):
-            o.append(f'<path d="M{ux + uw + 12} {oy + dy}h{30 - i * 6}" stroke="{BLUE}" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>')
+            o.append(f'<path d="M{ux + uw + 31} {150 + dy}h{14 - i * 3}" stroke="{BLUE}" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>')
         o.append(txt(18, 30, "AFTER", 18, BLUE, 600, font=N, extra='letter-spacing="3"'))
     return svg(480, 300, o, "導入前" if not after else "導入後")
 
