@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>野田の消煙機 JL-8A パンフレット</title>
+{{FONTS}}
+<style>
+@page { size: {{PW}}mm {{PH}}mm; margin: 0; }
+:root {
+  --b: {{B}}mm;
+  --navy: #15324a; --navy-2: #1c405d; --navy-3: #0f2638;
+  --ink: #1e2b35; --ink-2: #44535f; --ink-3: #66737d;
+  --line: #d9dfe4; --bg-light: #edf1f4; --bg-hero: #ecf0f1;
+  --orange: #f39c12; --orange-2: #f08c1c; --orange-ink: #c46a00; --cream: #fff7ed;
+  --blue: #3498db; --blue-ink: #1f6fb8; --blue-pale: #d6eafb;
+  --font: "Noto Sans JP", sans-serif;
+  --num: "Barlow Condensed", "Noto Sans JP", sans-serif;
+  /* margins: inner = binding side */
+  --mt: 16mm; --mb: 15mm; --mo: 15mm; --mi: 17mm;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font); color: var(--ink);
+  font-size: 9.4pt; line-height: 1.75; letter-spacing: .03em;
+  font-feature-settings: "palt" 0;
+  word-break: auto-phrase;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  background: #8a949c;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+img { display: block; max-width: 100%; }
+.num { font-family: var(--num); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.nb { display: inline-block; }
+
+/* ---------- page frame ---------- */
+.page {
+  position: relative; width: {{PW}}mm; height: {{PH}}mm; overflow: hidden;
+  background: #fff; break-after: page; page-break-after: always;
+}
+.page:last-child { break-after: auto; page-break-after: auto; }
+.trim { position: absolute; left: var(--b); top: var(--b); width: 210mm; height: 297mm; }
+.body { position: absolute; top: var(--mt); bottom: var(--mb); }
+.page--l .body { left: var(--mo); right: var(--mi); }
+.page--r .body { left: var(--mi); right: var(--mo); }
+/* full-bleed helpers (relative to the trim box) */
+.fb { position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); }
+
+/* running foot */
+.foot {
+  position: absolute; bottom: 7.5mm; font-size: 6.8pt; letter-spacing: .08em; color: var(--ink-3);
+  display: flex; align-items: center; gap: 2.4mm;
+}
+.foot b { font-family: var(--num); font-size: 10pt; font-weight: 600; color: var(--navy); letter-spacing: 0; }
+.page--l .foot { left: var(--mo); }
+.page--r .foot { right: var(--mo); flex-direction: row-reverse; }
+.foot--inv, .foot--inv b { color: rgba(255,255,255,.75); }
+
+/* ---------- section heading ---------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 2.2mm;
+  font-size: 8.4pt; font-weight: 700; letter-spacing: .14em; color: var(--navy);
+}
+.eyebrow .num { font-size: 13pt; font-weight: 700; color: var(--orange-2); letter-spacing: 0; }
+.eyebrow::after { content: ""; width: 14mm; height: .5mm; background: var(--orange-2); }
+.h2 { margin-top: 3.5mm; font-size: 19pt; line-height: 1.42; font-weight: 900; letter-spacing: .04em; color: var(--navy); }
+.lead { margin-top: 3.5mm; font-size: 9.6pt; line-height: 1.85; color: var(--ink-2); }
+.inv .eyebrow, .inv .h2 { color: #fff; }
+.inv .lead { color: rgba(255,255,255,.86); }
+
+.h3 { font-size: 11.6pt; line-height: 1.5; font-weight: 700; color: var(--navy); letter-spacing: .03em; }
+.dots li { position: relative; padding-left: 3.4mm; }
+.dots li::before { content: ""; position: absolute; left: .3mm; top: .78em; width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--orange-2); }
+.note { font-size: 7.4pt; line-height: 1.6; color: var(--ink-3); letter-spacing: .02em; }
+
+/* =========================================================
+   P1 COVER
+   ========================================================= */
+.cover { background: #fff; }
+.cover__photo {
+  top: calc(-1 * var(--b)); height: calc(150mm + var(--b));
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 84%);
+  background: var(--navy);
+}
+.cover__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+.cover__tag {
+  position: absolute; top: 15mm; left: 15mm;
+  background: rgba(15, 38, 56, .88); color: #fff;
+  font-size: 9pt; font-weight: 700; letter-spacing: .12em; padding: 2mm 4mm; border-radius: 1mm;
+}
+.cover__tag b { color: var(--orange); font-weight: 700; margin-right: 2mm; }
+.cover__main { position: absolute; left: 15mm; right: 15mm; top: 143mm; }
+.cover__catch { font-size: 21pt; font-weight: 900; line-height: 1.3; letter-spacing: .05em; color: var(--navy); }
+.cover__catch .big { display: block; font-size: 33pt; margin-top: 1mm; letter-spacing: .02em; }
+.cover__catch .pct { font-family: var(--num); font-weight: 700; font-size: 64pt; line-height: .9; color: var(--blue-ink); letter-spacing: 0; vertical-align: -2mm; margin: 0 .6mm; }
+.cover__catch .pct small { font-size: 36pt; }
+.cover__sub { margin-top: 4mm; font-size: 10.6pt; font-weight: 700; color: var(--ink-2); letter-spacing: .06em; }
+.cover__logo { margin-top: 7mm; width: 96mm; }
+.cover__model { margin-top: 2.5mm; font-size: 8.6pt; font-weight: 500; color: var(--ink-3); letter-spacing: .1em; }
+.cover__model .num { font-size: 12pt; font-weight: 600; color: var(--navy); margin-right: 1.5mm; }
+.cover__product { position: absolute; right: 8mm; top: 196mm; width: 92mm; filter: drop-shadow(0 4mm 5mm rgba(21,50,74,.22)); }
+.points { position: absolute; left: 15mm; top: 238mm; display: flex; gap: 4mm; }
+.point {
+  width: 29mm; height: 29mm; border-radius: 50%; border: .7mm solid var(--blue);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  background: #fff; color: var(--navy); font-weight: 700; font-size: 8pt; line-height: 1.35; letter-spacing: .02em;
+}
+.point i { font-style: normal; font-family: var(--num); font-size: 7.4pt; font-weight: 600; color: var(--blue-ink); letter-spacing: .14em; margin-bottom: .6mm; }
+.point .num { font-size: 25pt; line-height: 1; color: var(--blue-ink); }
+.point .num small { font-size: 13pt; }
+.cover__bar {
+  bottom: calc(-1 * var(--b)); height: calc(20mm + var(--b)); background: var(--navy); color: #fff;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 6.2mm calc(15mm + var(--b)) 0;
+}
+.cover__bar p { font-size: 8.6pt; font-weight: 500; letter-spacing: .08em; }
+.cover__bar p b { display: inline-block; background: var(--orange); color: var(--navy-3); padding: .4mm 2.2mm; border-radius: .8mm; margin-right: 2.4mm; font-weight: 700; }
+.cover__co { font-size: 11pt !important; font-weight: 700 !important; letter-spacing: .14em !important; }
+.cover__co::before { content: ""; display: inline-block; width: 3.2mm; height: 3.2mm; background: var(--orange); margin-right: 2mm; vertical-align: .2mm; }
+
+/* =========================================================
+   P2 PROBLEM
+   ========================================================= */
+.problem .map { display: block; width: 100%; height: auto; margin-top: 6mm; border-radius: 2mm; font-family: var(--font); }
+.worries { margin-top: 8mm; display: grid; grid-template-columns: 1fr 1fr; gap: 7mm 6mm; }
+.worry { border-top: .6mm solid var(--navy); padding-top: 3mm; }
+.worry h3 { display: flex; gap: 2.6mm; align-items: flex-start; font-size: 11.4pt; line-height: 1.45; color: var(--navy); font-weight: 700; }
+.worry h3 .no {
+  flex: none; width: 7mm; height: 7mm; border-radius: 50%; background: var(--orange-2); color: #fff;
+  display: grid; place-items: center; font-family: var(--num); font-size: 12pt; font-weight: 700; margin-top: .3mm;
+}
+.worry p { margin-top: 2mm; padding-left: 9.6mm; font-size: 9.2pt; line-height: 1.75; color: var(--ink-2); }
+.bridge {
+  position: absolute; left: 0; right: 0; bottom: 6mm;
+  display: flex; align-items: center; justify-content: space-between; gap: 4mm;
+  background: var(--cream); border-left: 1.2mm solid var(--orange-2); padding: 4mm 5mm;
+}
+.bridge p { font-size: 10.6pt; font-weight: 700; color: var(--navy); line-height: 1.5; }
+.bridge p small { display: block; font-size: 8.4pt; font-weight: 500; color: var(--ink-2); }
+.bridge svg { flex: none; width: 11mm; height: 11mm; }
+
+/* =========================================================
+   P3 SOLUTION
+   ========================================================= */
+.sol__band { top: calc(-1 * var(--b)); height: calc(136mm + var(--b)); background: var(--navy); }
+.sol__band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120mm 80mm at 85% 10%, rgba(52,152,219,.25), transparent 70%); }
+.sol__head { position: relative; }
+.feats { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm; position: relative; }
+.feat { background: #fff; border-radius: 2mm; padding: 4.2mm 4.6mm 4.4mm; display: grid; grid-template-columns: 11mm 1fr; gap: 0 3.4mm; align-items: start; }
+.feat svg { width: 11mm; height: 11mm; grid-row: span 2; }
+.feat h3 { font-size: 11pt; font-weight: 700; color: var(--navy); line-height: 1.4; }
+.feat h3 em { font-style: normal; font-family: var(--num); font-size: 1.45em; color: var(--orange-ink); letter-spacing: 0; line-height: 1; }
+.feat p { margin-top: 1.2mm; font-size: 8.5pt; line-height: 1.7; color: var(--ink-2); }
+.merits-ttl { position: absolute; left: 0; right: 0; top: 129mm; }
+.merits-ttl .h2 { font-size: 15pt; margin-top: 2.6mm; }
+.merits { position: absolute; left: 0; right: 0; top: 152mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.6mm; }
+.merit { border: .3mm solid var(--line); border-radius: 2mm; overflow: hidden; background: #fff; }
+.merit img { width: 100%; height: 26mm; object-fit: contain; background: #dceaf6; padding: 1.5mm 0 0; }
+.merit div { padding: 3.4mm 3.6mm 4mm; }
+.merit h3 { font-size: 10pt; line-height: 1.45; color: var(--navy); font-weight: 700; }
+.merit ul { margin-top: 2mm; font-size: 8.3pt; line-height: 1.65; color: var(--ink-2); }
+.merit li + li { margin-top: .8mm; }
+.results { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); border-top: .5mm solid var(--navy); border-bottom: .3mm solid var(--line); }
+.result { padding: 3.4mm 2mm 3mm; text-align: center; }
+.result + .result { border-left: .3mm solid var(--line); }
+.result .num { display: block; font-size: 27pt; font-weight: 700; line-height: 1; color: var(--navy); }
+.result .num small { font-size: 12pt; font-family: var(--font); font-weight: 700; margin-left: .6mm; }
+.result p { margin-top: 1.4mm; font-size: 7.8pt; line-height: 1.5; color: var(--ink-2); }
+.results-cap { position: absolute; right: 0; bottom: 3mm; font-size: 6.6pt; color: var(--ink-3); }
+
+/* =========================================================
+   P4 MECHANISM
+   ========================================================= */
+.mech__fig { margin-top: 6mm; }
+.mech__fig svg { display: block; width: 100%; height: auto; }
+.steps3 { margin-top: 5mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.step3 { border-top: .6mm solid var(--navy); padding-top: 3mm; }
+.step3 .part { font-size: 7.8pt; font-weight: 700; color: var(--orange-ink); letter-spacing: .08em; }
+.step3 h3 { display: flex; align-items: center; gap: 2.2mm; font-size: 14pt; font-weight: 900; color: var(--navy); line-height: 1.3; margin-top: .6mm; }
+.step3 h3 .no { width: 6.4mm; height: 6.4mm; border-radius: 50%; background: var(--orange-2); color: #fff; display: grid; place-items: center; font-family: var(--num); font-size: 11.5pt; font-weight: 700; }
+.step3 p { margin-top: 1.6mm; font-size: 9pt; line-height: 1.75; color: var(--ink-2); }
+.why { margin-top: 8mm; background: var(--bg-light); border-radius: 2mm; padding: 5mm 5mm 5.4mm; }
+.why h3 { font-size: 11pt; font-weight: 900; color: var(--navy); }
+.why ul { margin-top: 3mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.why li { font-size: 8.6pt; line-height: 1.72; color: var(--ink-2); border-left: .6mm solid var(--orange-2); padding-left: 3mm; }
+.why li b { display: block; font-size: 9.8pt; color: var(--navy); margin-bottom: 1mm; line-height: 1.45; }
+.mech__bottom { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: 70mm 1fr; gap: 5mm; }
+.rate { background: var(--navy); color: #fff; border-radius: 2mm; padding: 4.4mm 5mm; }
+.rate__lbl { font-size: 9pt; font-weight: 700; letter-spacing: .1em; }
+.rate__num .num { font-size: 40pt; font-weight: 700; line-height: 1; }
+.rate__num small { font-size: 17pt; font-weight: 700; margin-left: .6mm; }
+.rate__cap { margin-top: 1.4mm; font-size: 7.2pt; line-height: 1.5; color: rgba(255,255,255,.78); }
+.video { border: .4mm solid var(--line); border-radius: 2mm; padding: 4mm 5mm; display: flex; align-items: center; gap: 5mm; }
+.video h3 { font-size: 10.4pt; font-weight: 700; color: var(--navy); line-height: 1.45; }
+.video .qr { flex: none; width: 24mm; height: 24mm; }
+.video p { margin-top: 1.6mm; font-size: 8pt; line-height: 1.6; color: var(--ink-2); }
+.qr svg { display: block; width: 100%; height: 100%; }
+
+/* =========================================================
+   P5 MAINTENANCE
+   ========================================================= */
+.mt__grid { margin-top: 6mm; display: grid; grid-template-columns: 1fr 58mm; gap: 6mm; }
+.mt__list { counter-reset: s; }
+.mt__list li { position: relative; padding: 0 0 4.2mm 11mm; }
+.mt__list li::before {
+  counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0;
+  width: 7.4mm; height: 7.4mm; border-radius: 50%; background: var(--navy); color: #fff;
+  display: grid; place-items: center; font-family: var(--num); font-size: 12.5pt; font-weight: 700;
+}
+.mt__list li::after { content: ""; position: absolute; left: 3.55mm; top: 8.4mm; bottom: 1mm; width: .3mm; background: var(--line); }
+.mt__list li:last-child::after { display: none; }
+.mt__list h3 { font-size: 10.6pt; font-weight: 700; color: var(--navy); line-height: 1.45; padding-top: .7mm; }
+.mt__list p { margin-top: 1mm; font-size: 8.6pt; line-height: 1.72; color: var(--ink-2); }
+.volt { background: var(--navy); color: #fff; border-radius: 2mm; padding: 5mm 4.6mm 4.6mm; }
+.volt h3 { font-size: 10.4pt; font-weight: 700; line-height: 1.45; }
+.volt > p { margin-top: 2mm; font-size: 8.1pt; line-height: 1.7; color: rgba(255,255,255,.84); }
+.gauge { margin-top: 4mm; background: rgba(255,255,255,.07); border: .3mm solid rgba(255,255,255,.16); border-radius: 1.6mm; padding: 3mm 3.4mm; }
+.gauge + .gauge { margin-top: 2.6mm; }
+.gauge dt { font-size: 7.6pt; color: rgba(255,255,255,.75); letter-spacing: .06em; }
+.gauge dd { display: flex; align-items: baseline; gap: 1.6mm; }
+.gauge dd .num { font-size: 25pt; font-weight: 700; line-height: 1.05; color: #fff; }
+.gauge dd small { font-size: 8pt; color: var(--orange); font-weight: 700; }
+.gauge svg { display: block; width: 100%; height: 5mm; margin-top: 1.4mm; }
+.safe-ttl { position: absolute; left: 0; right: 0; top: 168mm; }
+.safe-ttl .h3 { font-size: 13pt; font-weight: 900; }
+.safes { position: absolute; left: 0; right: 0; top: 178mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm 4mm; }
+.safe { display: grid; grid-template-columns: 10mm 1fr; gap: 3mm; align-items: start; padding: 3.4mm 3.6mm; border: .3mm solid var(--line); border-radius: 2mm; }
+.safe svg { width: 10mm; height: 10mm; }
+.safe h4 { font-size: 9.6pt; font-weight: 700; color: var(--navy); line-height: 1.4; }
+.safe p { margin-top: .8mm; font-size: 8.1pt; line-height: 1.65; color: var(--ink-2); }
+.warranty { position: absolute; left: 0; right: 0; bottom: 8mm; display: flex; align-items: center; gap: 5mm; background: var(--cream); border-radius: 2mm; padding: 4mm 5mm; }
+.warranty .seal { flex: none; width: 21mm; height: 21mm; border-radius: 50%; background: var(--orange-2); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1; }
+.warranty .seal span { font-size: 7pt; font-weight: 700; }
+.warranty .seal b { font-family: var(--num); font-size: 22pt; }
+.warranty .seal b small { font-family: var(--font); font-size: 9pt; }
+.warranty h3 { font-size: 10.4pt; font-weight: 700; color: var(--navy); }
+.warranty p { margin-top: 1mm; font-size: 8.2pt; line-height: 1.65; color: var(--ink-2); }
+
+/* =========================================================
+   P6 PRICE
+   ========================================================= */
+.plans { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.plan { border: .5mm solid var(--navy); border-radius: 2.4mm; overflow: hidden; display: flex; flex-direction: column; }
+.plan__hd { background: var(--navy); color: #fff; padding: 3.6mm 4.4mm 3.4mm; }
+.plan--rent { border-color: var(--orange-2); }
+.plan--rent .plan__hd { background: var(--orange-2); }
+.plan__hd span { display: inline-block; font-size: 7.6pt; font-weight: 700; letter-spacing: .1em; padding: .2mm 2mm; border: .3mm solid rgba(255,255,255,.7); border-radius: .8mm; }
+.plan__hd h3 { margin-top: 1.6mm; font-size: 14pt; font-weight: 900; letter-spacing: .06em; line-height: 1.3; }
+.plan__hd p { font-size: 8.1pt; line-height: 1.6; color: rgba(255,255,255,.9); margin-top: .8mm; }
+.plan__bd { padding: 4mm 4.4mm 4.4mm; flex: 1; display: flex; flex-direction: column; }
+.rows { font-size: 9.4pt; }
+.rows div { display: flex; align-items: baseline; gap: 2mm; padding: 1.6mm 0; border-bottom: .25mm dotted #b9c3cb; }
+.rows dt { color: var(--ink-2); }
+.rows dt sup { font-size: 6.4pt; color: var(--ink-3); }
+.rows dd { margin-left: auto; font-family: var(--num); font-size: 14pt; font-weight: 600; color: var(--ink); letter-spacing: .01em; }
+.rows dd small { font-family: var(--font); font-size: 8pt; font-weight: 500; margin-left: .4mm; }
+.total { margin-top: 3.4mm; text-align: right; }
+.total .lbl { font-size: 8.6pt; font-weight: 700; color: var(--navy); }
+.total .num { font-size: 34pt; font-weight: 700; line-height: 1; color: var(--navy); }
+.plan--rent .total .num { color: var(--orange-ink); }
+.total .num small { font-family: var(--font); font-size: 11pt; margin-left: .6mm; }
+.total .tax { display: block; font-size: 8pt; color: var(--ink-2); margin-top: .8mm; }
+.plan__note { margin-top: auto; padding-top: 3.4mm; font-size: 8pt; line-height: 1.6; color: var(--ink); }
+.plan__note b { color: var(--navy); }
+.plus { text-align: center; font-family: var(--num); font-size: 18pt; font-weight: 700; color: var(--orange-ink); line-height: 1; margin: 1.6mm 0 0; }
+.price-note { margin-top: 3mm; }
+.cmp { margin-top: 6mm; width: 100%; border-collapse: collapse; font-size: 8.8pt; line-height: 1.55; }
+.cmp caption { text-align: left; font-size: 11pt; font-weight: 700; color: var(--navy); padding-bottom: 2.4mm; }
+.cmp th, .cmp td { border-bottom: .3mm solid var(--line); padding: 2.3mm 2.6mm; text-align: left; vertical-align: top; }
+.cmp thead th { background: var(--bg-light); font-size: 8.2pt; color: var(--navy); border-bottom: .5mm solid var(--navy); }
+.cmp tbody th { width: 36mm; color: var(--navy); font-weight: 700; }
+.cmp td { width: 37%; }
+.elec { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: auto 1fr; gap: 5mm; align-items: center; background: var(--bg-light); border-radius: 2mm; padding: 4.4mm 5mm; }
+.elec__big { display: flex; flex-direction: column; }
+.elec__big span { font-size: 8pt; font-weight: 700; color: var(--navy); }
+.elec__big b { font-family: var(--num); font-size: 26pt; font-weight: 700; color: var(--navy); line-height: 1.05; }
+.elec__big b small { font-family: var(--font); font-size: 9.5pt; margin-left: .4mm; }
+.elec p { font-size: 8.4pt; line-height: 1.7; color: var(--ink-2); }
+
+/* =========================================================
+   P7 SPEC & INSTALL
+   ========================================================= */
+.spec { margin-top: 6mm; display: grid; grid-template-columns: 80mm 1fr; gap: 6mm; align-items: start; }
+.spec__fig svg { width: 100%; height: auto; display: block; }
+.spec table { width: 100%; border-collapse: collapse; font-size: 9.2pt; }
+.spec caption { text-align: left; font-size: 8pt; font-weight: 700; color: var(--ink-3); letter-spacing: .1em; padding-bottom: 1.6mm; }
+.spec th, .spec td { padding: 1.55mm 0; border-bottom: .3mm solid var(--line); text-align: left; vertical-align: baseline; }
+.spec tr:first-child th, .spec tr:first-child td { border-top: .5mm solid var(--navy); }
+.spec th { width: 23mm; color: var(--navy); font-weight: 700; font-size: 8.6pt; }
+.spec td .num { font-size: 12.5pt; font-weight: 600; }
+.cases { margin-top: 6.4mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+.cases figure img { width: 100%; height: 38mm; object-fit: cover; border-radius: 1.6mm; }
+.cases figcaption { margin-top: 1.6mm; font-size: 7.8pt; line-height: 1.5; color: var(--ink-2); }
+.cases figcaption b { color: var(--navy); margin-right: 1.4mm; }
+.inst { margin-top: 6mm; }
+.inst h3 { font-size: 11.6pt; font-weight: 900; color: var(--navy); }
+.inst ul { margin-top: 2.6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 6mm; font-size: 8.5pt; line-height: 1.66; }
+.inst li b { color: var(--navy); }
+.inst .caution { margin-top: 3.2mm; background: var(--cream); border-left: 1mm solid var(--orange-2); padding: 2.6mm 3.6mm; font-size: 8.3pt; line-height: 1.65; }
+
+/* =========================================================
+   P8 BACK COVER
+   ========================================================= */
+.flow { margin-top: 6mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.4mm; position: relative; }
+.flow::before { content: ""; position: absolute; top: 4.4mm; left: 6%; right: 6%; height: .5mm; background: var(--line); }
+.flow li { position: relative; text-align: center; }
+.flow .no { margin: 0 auto; width: 9mm; height: 9mm; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--num); font-size: 14pt; font-weight: 700; position: relative; }
+.flow li:last-child .no { background: var(--orange-2); }
+.flow h3 { margin-top: 2.4mm; font-size: 9.2pt; font-weight: 700; color: var(--navy); line-height: 1.4; min-height: 2.8em; display: flex; align-items: center; justify-content: center; }
+.flow p { margin-top: 1.4mm; font-size: 8.4pt; line-height: 1.6; color: var(--ink-2); text-align: left; }
+.area { margin-top: 10mm; display: grid; grid-template-columns: 34mm 1fr; gap: 5mm; align-items: center; border: .4mm solid var(--line); border-radius: 2mm; padding: 4mm 5mm; }
+.area__badge { text-align: center; }
+.area__badge b { display: block; font-size: 17pt; font-weight: 900; color: var(--navy); letter-spacing: .08em; line-height: 1.2; }
+.area__badge span { font-size: 7.4pt; color: var(--ink-3); }
+.area dl { font-size: 8.6pt; line-height: 1.6; }
+.area dl div { display: grid; grid-template-columns: 30mm 1fr; gap: 3mm; padding: 1.2mm 0; }
+.area dl div + div { border-top: .3mm dotted #b9c3cb; }
+.area dt { font-weight: 700; color: var(--navy); }
+.contact { bottom: calc(-1 * var(--b)); height: calc(140mm + var(--b)); background: var(--navy); color: #fff; padding: 14mm calc(var(--mo) + var(--b)) 0 calc(var(--mo) + var(--b)); }
+.contact__ttl { font-size: 17pt; font-weight: 900; letter-spacing: .06em; line-height: 1.4; }
+.contact__lead { max-width: 108mm; margin-top: 2mm; font-size: 9.2pt; color: rgba(255,255,255,.86); }
+.contact__lead b { color: var(--orange); }
+.tel { margin-top: 8mm; display: flex; align-items: center; gap: 4mm; }
+.tel__fd { flex: none; width: 15mm; height: 9.5mm; border-radius: 1.2mm; background: var(--orange); color: var(--navy-3); display: grid; place-items: center; font-size: 7.4pt; font-weight: 900; line-height: 1.05; text-align: center; letter-spacing: 0; }
+.tel b { font-family: var(--num); font-size: 40pt; font-weight: 700; letter-spacing: .02em; line-height: 1; }
+.tel__hours { margin-top: 1.6mm; font-size: 8.6pt; color: rgba(255,255,255,.84); }
+.qrs { position: absolute; right: calc(var(--mo) + var(--b)); top: 34mm; display: flex; gap: 4mm; }
+.qrs figure { background: #fff; border-radius: 1.6mm; padding: 3.2mm 3.2mm 2.2mm; text-align: center; }
+.qrs .qr { width: 25mm; height: 25mm; }
+.qrs figcaption { margin-top: 1.4mm; font-size: 7pt; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.mail { margin-top: 5mm; font-size: 9.4pt; }
+.mail span { display: inline-block; font-size: 7.6pt; font-weight: 700; border: .3mm solid rgba(255,255,255,.6); border-radius: .8mm; padding: 0 1.6mm; margin-right: 2mm; }
+.company { position: absolute; left: calc(var(--mo) + var(--b)); right: calc(var(--mo) + var(--b)); bottom: calc(14mm + var(--b)); border-top: .3mm solid rgba(255,255,255,.25); padding-top: 5mm; display: grid; grid-template-columns: 50mm 1fr 1fr; gap: 5mm; align-items: start; }
+.company__co { font-size: 13pt; font-weight: 900; letter-spacing: .14em; }
+.company__co::before { content: ""; display: inline-block; width: 3.6mm; height: 3.6mm; background: var(--orange); margin-right: 2.2mm; }
+.company__co + p { margin-top: 2mm; }
+.company h4 { font-size: 8.4pt; font-weight: 700; color: var(--orange); letter-spacing: .1em; }
+.company p { margin-top: 1mm; font-size: 8.2pt; line-height: 1.7; color: rgba(255,255,255,.9); }
+</style>
+</head>
+<body>
+
+<!-- ======================= P1 COVER ======================= -->
+<section class="page page--r cover">
+  <div class="trim">
+    <div class="fb cover__photo"><img src="{{IMG}}/assets/img/hero-photo.webp" alt=""></div>
+    <p class="cover__tag"><b>全国対応</b>飲食店舗向け 業務用油煙除去装置</p>
+
+    <div class="cover__main">
+      <h1 class="cover__catch">飲食店の油煙を、<span class="big">最大<span class="pct">91<small>%</small></span>カット。</span></h1>
+      <p class="cover__sub">店舗の煙問題を、設置から毎月のメンテナンスまで丸ごと対応。</p>
+      <img class="cover__logo" src="{{IMG}}/assets/img/logo.webp" alt="野田の消煙機">
+      <p class="cover__model"><span class="num">JL-8A</span>電気集塵方式／処理風量 3,000㎥/h</p>
+    </div>
+    <img class="cover__product" src="{{IMG}}/v2/assets/img/jl8a-product.webp" alt="">
+
+    <ul class="points">
+      <li class="point"><i>POINT 01</i>油煙除去率<span class="num">91<small>%</small></span></li>
+      <li class="point"><i>POINT 02</i>毎月の<br>定期メンテナンス<br>で安心</li>
+      <li class="point"><i>POINT 03</i>購入・レンタル<br>選べる<br>料金プラン</li>
+    </ul>
+
+    <div class="fb cover__bar">
+      <p><b>重飲食対応</b>焼肉・焼き鳥・居酒屋など、煙が出やすい店舗に</p>
+      <p class="cover__co">株式会社野田</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= P2 PROBLEM ======================= -->
+<section class="page page--l problem">
+  <div class="trim">
+    <div class="body">
+      <p class="eyebrow"><span class="num">01</span>お困りごと</p>
+      <h2 class="h2">近隣クレーム・油煙汚れ・物件審査…<br>飲食店の“煙問題”を放置していませんか？</h2>
+      <p class="lead">煙や臭いの問題は、近隣トラブルだけでなく、物件契約・清掃コスト・営業継続にも影響します。</p>
+      {{MAP}}
+      <ol class="worries">
+        <li class="worry"><h3><span class="no">1</span>近隣から煙・臭いの<br>苦情が入っている</h3><p>「洗濯物に臭いがつく」「窓を開けられない」など、住民トラブルにつながりやすい問題です。</p></li>
+        <li class="worry"><h3><span class="no">2</span>排気口まわりの外壁・<br>ダクトが油で汚れている</h3><p>油煙がそのまま排出されると、外壁の黒ずみや清掃コストの増加につながります。</p></li>
+        <li class="worry"><h3><span class="no">3</span>焼肉・焼き鳥など<br>重飲食の出店を断られそう</h3><p>煙・臭い対策が不十分だと、物件オーナーや管理会社の許可が取りにくくなります。</p></li>
+        <li class="worry"><h3><span class="no">4</span>管理会社・ビルオーナーから<br>改善を求められている</h3><p>営業を続けるために、具体的な排煙対策を示す必要が出てきます。</p></li>
+      </ol>
+      <div class="bridge">
+        <p>その悩み、野田の消煙機でまとめて対策できます。<small>排気ダクトに取り付けて、外に出る前の油煙を電気の力で集めます。</small></p>
+        <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#f08c1c"/><path d="M15 22h14M23 15l7 7-7 7" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <p class="foot"><b>02</b>野田の消煙機 JL-8A</p>
+  </div>
+</section>
+
+<!-- ======================= P3 SOLUTION ======================= -->
+<section class="page page--r">
+  <div class="trim">
+    <div class="fb sol__band"></div>
+    <div class="body">
+      <div class="sol__head inv">
+        <p class="eyebrow"><span class="num">02</span>野田の消煙機でできること</p>
+        <h2 class="h2">煙・臭い・油汚れの悩みは、<br>野田の消煙機でまとめて対策できます。</h2>
+        <p class="lead">油煙を最大91%カットする除去性能に加え、設置後の毎月のメンテナンスまで対応。焼肉店・焼き鳥店・炉端焼きなど、煙が出やすい重飲食店舗の排煙対策をサポートします。</p>
+      </div>
+      <ul class="feats">
+        <li class="feat">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M13 30c0-6 5-7 5-12M20 30c0-6 5-7 5-12M27 30c0-6 5-7 5-12" fill="none" stroke="#c46a00" stroke-width="2.6" stroke-linecap="round"/><path d="M10 12l24 20" stroke="#15324a" stroke-width="3" stroke-linecap="round"/></svg>
+          <h3>油煙 最大<em>91%</em>カット</h3><p>厨房から出る油煙をしっかり集め、煙・臭い・外壁汚れの発生を抑えます。</p></li>
+        <li class="feat">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><rect x="11" y="13" width="22" height="20" rx="2" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M11 19h22M16 10v6M28 10v6" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16.5 26l3.5 3.5 7-7" fill="none" stroke="#c46a00" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>毎月メンテナンス対応</h3><p>設置して終わりではなく、毎月訪問して点検・清掃・メンテナンスを行います。</p></li>
+        <li class="feat">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M11 27h22l-2 5H13z" fill="#15324a"/><path d="M13 24h18" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16 20c0-4 3-4 3-8M22 20c0-4 3-4 3-8M28 20c0-4 3-4 3-8" fill="none" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <h3>重飲食店舗に対応</h3><p>焼肉・焼き鳥・居酒屋など、煙が出やすい業態の排煙対策に対応します。</p></li>
+        <li class="feat">
+          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><circle cx="22" cy="22" r="10" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M22 15v14M18.5 18.5h5a2.5 2.5 0 010 5h-3a2.5 2.5 0 000 5h5" fill="none" stroke="#c46a00" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <h3>購入・レンタル対応</h3><p>初期費用を抑えたい店舗にも導入しやすい、2つの料金プランをご用意しています。</p></li>
+      </ul>
+      <div class="merits-ttl">
+        <p class="eyebrow"><span class="num">+</span>導入メリット</p>
+        <h2 class="h2">煙対策だけで終わらない、店舗運営を守る3つのメリット</h2>
+      </div>
+      <ul class="merits">
+        <li class="merit"><img src="{{IMG}}/assets/img/merit-1.webp" alt=""><div><h3>近隣クレームを<br>未然に防ぐ</h3><ul class="dots"><li>煙や臭いによる苦情を軽減</li><li>洗濯物・窓開けへの影響を抑制</li><li>近隣と良好な関係を保てる</li></ul></div></li>
+        <li class="merit"><img src="{{IMG}}/assets/img/merit-2.webp" alt=""><div><h3>外壁・ダクトの<br>油汚れを抑える</h3><ul class="dots"><li>外壁の油汚れや黒ずみを軽減</li><li>清掃・補修コストを抑える</li><li>建物の美観と資産価値を守る</li></ul></div></li>
+        <li class="merit"><img src="{{IMG}}/assets/img/merit-3.webp" alt=""><div><h3>店舗・物件の<br>活用価値を高める</h3><ul class="dots"><li>重飲食の出店を検討しやすく</li><li>管理会社への説明材料になる</li><li>店舗のイメージアップにも</li></ul></div></li>
+      </ul>
+      <ul class="results">
+        <li class="result"><span class="num">99<small>%</small></span><p>導入店舗の99%が<br>クレーム減少を実感</p></li>
+        <li class="result"><span class="num">100<small>軒以上</small></span><p>全国100軒以上の<br>飲食店で導入実績</p></li>
+        <li class="result"><span class="num">3<small>ヶ月に1回</small></span><p>壁やダクトの清掃頻度が<br>月1回から3ヶ月に1回に</p></li>
+      </ul>
+      <p class="results-cap">導入店舗の実績（当社調べ）</p>
+    </div>
+    <p class="foot"><b>03</b>野田の消煙機 JL-8A</p>
+  </div>
+</section>
+
+<!-- ======================= P4 MECHANISM ======================= -->
+<section class="page page--l">
+  <div class="trim">
+    <div class="body">
+      <p class="eyebrow"><span class="num">03</span>仕組み</p>
+      <h2 class="h2">電気の力で、油煙を集めて取り除きます。</h2>
+      <p class="lead">野田の消煙機は「電気集塵方式」です。ダクトを流れる煙に電気を帯びさせ、極板に吸い寄せて集めます。目に見えないほど細かい油煙まで集められ、風の通りを妨げにくいのが特長です。</p>
+      <figure class="mech__fig">{{MECH}}</figure>
+      <ol class="steps3">
+        <li class="step3"><p class="part">プレフィルターネット</p><h3><span class="no">1</span>整える</h3><p>ダクトから入ってきた空気の流れを一定の速さに整えて、集塵部（セル）へ送ります。</p></li>
+        <li class="step3"><p class="part">高電圧部 12kV</p><h3><span class="no">2</span>帯電させる</h3><p>煙に含まれる油の粒や浮遊物が、高電圧部を通るときにプラスの電気を帯びます。</p></li>
+        <li class="step3"><p class="part">低電圧部 6kV</p><h3><span class="no">3</span>集める</h3><p>電気を帯びた粒はプラス極板に反発し、マイナス極板に吸い寄せられて集められます。</p></li>
+      </ol>
+      <div class="why">
+        <h3>電気集塵方式だから</h3>
+        <ul>
+          <li><b>細かな油煙まで集める</b>布や網で濾し取るのではなく電気で吸い寄せるため、目に見えないほど細かい粒子まで捕集できます。</li>
+          <li><b>風の通りを妨げにくい</b>目の細かいフィルターでふさがないので、排気の流れを保ったまま処理できます。</li>
+          <li><b>フィルターの買い足し不要</b>集塵部（セル）は引き出して洗い、繰り返し使えます。</li>
+        </ul>
+      </div>
+      <div class="mech__bottom">
+        <div class="rate"><p class="rate__lbl">油煙除去率</p><p class="rate__num"><span class="num">最大91</span><small>%</small></p><p class="rate__cap">自社調べ。煙の量や排気の条件によって変わります。</p></div>
+        <div class="video">
+          <div class="qr">{{QR_YT}}</div>
+          <div><h3>稼働の様子を動画でご覧ください</h3><p>スマートフォンのカメラで読み取ると、YouTubeの稼働動画が開きます。</p></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot"><b>04</b>野田の消煙機 JL-8A</p>
+  </div>
+</section>
+
+<!-- ======================= P5 MAINTENANCE ======================= -->
+<section class="page page--r">
+  <div class="trim">
+    <div class="body">
+      <p class="eyebrow"><span class="num">04</span>メンテナンスと安心</p>
+      <h2 class="h2">設置して終わりにしない。<br>毎月の点検・清掃で性能を保ちます。</h2>
+      <p class="lead">電気集塵方式は、集めた油がたまりすぎると性能が落ちます。そこで、専門スタッフが1ヶ月ごとに訪問し、内部を洗浄して性能を確かめます。お店の方が内部を触る必要はありません。</p>
+      <div class="mt__grid">
+        <ol class="mt__list">
+          <li><h3>安全を確保してから作業</h3><p>電源と漏電ブレーカを切り、内部にたまった電気が抜けるまで約15分待ってから扉を開けます。</p></li>
+          <li><h3>セル・フィルターを取り外して漬け置き洗浄</h3><p>セル（集塵部）・プレフィルターネット・フィルターネットを取り外し、洗剤液に漬けて汚れを落とします。</p></li>
+          <li><h3>乾燥させて、部品を点検</h3><p>完全に乾かしてから元の位置へ。ガイシ（絶縁子）や絶縁ゴムを拭き上げ、傷・変形・スプリングの緩みを確認します。</p></li>
+          <li><h3>油受けの油を排出</h3><p>本体下部の油受けにたまった油を、排油口（ドレン）から抜き取ります。</p></li>
+          <li><h3>出力電圧を測って、性能を確認</h3><p>運転を再開し、内蔵の電圧メーターで出力電圧を確認。数値で性能を確かめてからご報告します。</p></li>
+        </ol>
+        <div class="volt">
+          <h3>「掃除して終わり」ではなく、数値で確認</h3>
+          <p>集塵性能の要となる出力電圧を、毎月のメンテナンスで実測します。</p>
+          <dl>
+            <div class="gauge"><dt>高電圧部（帯電させる）</dt><dd><span class="num">12kV</span><small>±2kV が正常値</small></dd>
+              <svg viewBox="0 0 200 14" aria-hidden="true"><rect x="0" y="5" width="200" height="4" rx="2" fill="rgba(255,255,255,.18)"/><rect x="66.7" y="3" width="66.6" height="8" rx="2" fill="#f39c12"/><path d="M100 0v14" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="gauge"><dt>低電圧部（集める）</dt><dd><span class="num">6kV</span><small>±2kV が正常値</small></dd>
+              <svg viewBox="0 0 200 14" aria-hidden="true"><rect x="0" y="5" width="200" height="4" rx="2" fill="rgba(255,255,255,.18)"/><rect x="33.3" y="3" width="66.7" height="8" rx="2" fill="#f39c12"/><path d="M50 0v14" stroke="#fff" stroke-width="2"/></svg></div>
+          </dl>
+        </div>
+      </div>
+      <div class="safe-ttl"><h3 class="h3">毎日安心して使える設計</h3></div>
+      <ul class="safes">
+        <li class="safe">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="5" width="22" height="30" rx="2" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M29 9l6 3v20l-6 3" fill="none" stroke="#15324a" stroke-width="2.4" stroke-linejoin="round"/><path d="M18 14v6" stroke="#c46a00" stroke-width="2.6" stroke-linecap="round"/><path d="M13.5 16.5a6.5 6.5 0 109 0" fill="none" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <div><h4>扉を開けると自動で電源オフ</h4><p>運転中に扉を開けると安全装置が働き、自動的に電源が切れます。</p></div></li>
+        <li class="safe">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="6" width="24" height="28" rx="3" fill="none" stroke="#15324a" stroke-width="2.4"/><rect x="15" y="12" width="10" height="16" rx="2" fill="none" stroke="#15324a" stroke-width="2.2"/><rect x="15" y="12" width="10" height="7" rx="1.5" fill="#c46a00"/></svg>
+          <div><h4>漏電ブレーカとヒューズで保護</h4><p>漏電や過負荷などの異常な電流が流れたときは、電源を遮断します。</p></div></li>
+        <li class="safe">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="18" r="9" fill="none" stroke="#15324a" stroke-width="2.4"/><circle cx="20" cy="18" r="4.5" fill="#2ecc71"/><path d="M15 31h10M17 35h6" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M6 10l3 2M34 10l-3 2M20 3v3" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <div><h4>運転ランプで状態がわかる</h4><p>稼働中は緑色に点灯。異常があると緑と赤の点滅でお知らせします。</p></div></li>
+        <li class="safe">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="17" width="22" height="17" rx="2.5" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M14 17v-4a6 6 0 0112 0v4" fill="none" stroke="#15324a" stroke-width="2.4"/><circle cx="20" cy="25" r="2.4" fill="#c46a00"/><path d="M20 27v3" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <div><h4>鍵付きの扉</h4><p>高電圧部は施錠できる扉の中。不用意に内部へ触れられない構造です。</p></div></li>
+      </ul>
+      <div class="warranty">
+        <div class="seal"><span>保証期間</span><b>1<small>年</small></b></div>
+        <div><h3>お買い上げ日から1年間の保証つき</h3><p>保証期間内に正常な使い方で故障した場合は、無償で修理します（天災・誤った使い方・消耗品の劣化などによる故障は有償となります）。</p></div>
+      </div>
+    </div>
+    <p class="foot"><b>05</b>野田の消煙機 JL-8A</p>
+  </div>
+</section>
+
+<!-- ======================= P6 PRICE ======================= -->
+<section class="page page--l">
+  <div class="trim">
+    <div class="body">
+      <p class="eyebrow"><span class="num">05</span>料金プラン</p>
+      <h2 class="h2">お店に合わせて選べる、2つのプラン</h2>
+      <p class="lead">まとめて支払ってランニングコストを抑える「購入」と、初期費用を抑えて毎月定額で使う「レンタル」。どちらも毎月の定期メンテナンスで性能を保ちます。</p>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan__hd"><span>購入</span><h3>イニシャルコスト重視プラン</h3><p>初期費用を一括でお支払いいただき、ランニングコストを抑えるプラン</p></div>
+          <div class="plan__bd">
+            <dl class="rows">
+              <div><dt>標準工事費<sup>※1</sup></dt><dd>300,000<small>円</small></dd></div>
+              <div><dt>本体価格</dt><dd>880,000<small>円</small></dd></div>
+            </dl>
+            <p class="total"><span class="lbl">初期費用 計</span><br><span class="num">1,180,000<small>円</small></span><span class="tax">（税込 1,298,000円）</span></p>
+            <p class="plan__note"><b>別途、定期メンテナンス費用</b>が月額25,000円（税込27,500円）かかります。</p>
+          </div>
+        </div>
+        <div class="plan plan--rent">
+          <div class="plan__hd"><span>レンタル</span><h3>月額定額プラン</h3><p>機械をレンタル契約でご利用いただける、月額コミコミのプラン</p></div>
+          <div class="plan__bd">
+            <dl class="rows">
+              <div><dt>契約金</dt><dd>200,000<small>円</small></dd></div>
+            </dl>
+            <p class="plus">＋</p>
+            <p class="total"><span class="lbl">月額</span><br><span class="num">44,500<small>円</small></span><span class="tax">（税込 48,950円）</span></p>
+            <p class="plan__note">月額に<b>標準工事費<sup>※1</sup>・機械レンタル・毎月の定期メンテナンス費用</b>が含まれます。</p>
+          </div>
+        </div>
+      </div>
+      <p class="note price-note">※1 標準工事費の内訳：FAN工事・ダクト工事・チャンバーBOX工事等（1階床置きの場合）。設置場所や店舗の状況により、現地調査のうえお見積りします。</p>
+      <table class="cmp">
+        <caption>2つのプランの違い</caption>
+        <thead><tr><th></th><th>購入（イニシャルコスト重視）</th><th>レンタル（月額定額）</th></tr></thead>
+        <tbody>
+          <tr><th>はじめに</th><td>1,180,000円（税込1,298,000円）</td><td>契約金 200,000円</td></tr>
+          <tr><th>毎月</th><td>定期メンテナンス 25,000円<br>（税込27,500円）</td><td>44,500円（税込48,950円）</td></tr>
+          <tr><th>毎月のメンテナンス</th><td>別途お支払い</td><td>月額に含まれる</td></tr>
+          <tr><th>こんな方に</th><td>長く使う予定で、月々の負担を抑えたい</td><td>開業時など、初期費用を抑えて導入したい</td></tr>
+        </tbody>
+      </table>
+      <div class="elec">
+        <p class="elec__big"><span>電気代の目安</span><b>月1,500<small>円程度</small></b></p>
+        <p>消費電力は300W。1日6〜7時間・月25日の営業でお使いの場合の目安です（電力単価31円/kWhで計算。ご契約内容や稼働時間により変わります）。</p>
+      </div>
+    </div>
+    <p class="foot"><b>06</b>野田の消煙機 JL-8A</p>
+  </div>
+</section>
+
+<!-- ======================= P7 SPEC & INSTALL ======================= -->
+<section class="page page--r">
+  <div class="trim">
+    <div class="body">
+      <p class="eyebrow"><span class="num">06</span>製品仕様と設置</p>
+      <h2 class="h2">畳1枚に収まる大きさで、<br>既存の店舗にも後から設置できます。</h2>
+      <div class="spec">
+        <figure class="spec__fig">{{DIM}}</figure>
+        <table>
+          <caption>主な仕様</caption>
+          <tr><th>型番</th><td><span class="num">JL-8A</span></td></tr>
+          <tr><th>方式</th><td>電気集塵方式（高電圧部12kV・低電圧部6kV）</td></tr>
+          <tr><th>処理風量</th><td><span class="num">3,000</span> ㎥/h</td></tr>
+          <tr><th>外形寸法</th><td><span class="num">750</span>(W) × <span class="num">840</span>(D) × <span class="num">680</span>(H) mm</td></tr>
+          <tr><th>重量</th><td><span class="num">100</span> kg</td></tr>
+          <tr><th>電源</th><td>単相 AC100V　50/60Hz</td></tr>
+          <tr><th>消費電力</th><td><span class="num">300</span> W</td></tr>
+          <tr><th>静圧</th><td><span class="num">98</span> Pa（10mmAq）</td></tr>
+          <tr><th>使用環境</th><td>温度 0〜50℃／湿度 80%以下</td></tr>
+        </table>
+      </div>
+      <div class="cases">
+        <figure><img src="{{IMG}}/v2/assets/img/install-outdoor.webp" alt=""><figcaption><b>設置例1</b>屋外の架台に設置</figcaption></figure>
+        <figure><img src="{{IMG}}/v2/assets/img/install-ceiling.webp" alt="" style="object-position:50% 40%"><figcaption><b>設置例2</b>壁ぎわの高い位置に設置</figcaption></figure>
+        <figure><img src="{{IMG}}/v2/assets/img/install-yakitori-night.webp" alt="" style="object-position:50% 55%"><figcaption><b>設置例3</b>排気ファンと組み合わせて設置</figcaption></figure>
+      </div>
+      <div class="inst">
+        <h3>設置について</h3>
+        <ul class="dots">
+          <li><b>工事は通常1〜2日。</b>今お使いの排気ダクトに、チャンバーボックスを介して接続します。</li>
+          <li><b>設置場所は現地調査でご提案。</b>屋内・屋外・天井吊りなど、店舗に合わせて配置します。</li>
+          <li><b>正面に0.7m以上の作業スペース</b>が必要です（毎月のメンテナンスで扉を開けるため）。</li>
+          <li><b>電源は単相100V。</b>アース接続と漏電遮断器の設置を行います（電気工事士が施工）。</li>
+          <li><b>屋外設置にも対応。</b>防雨カバー（別売）を取り付け、雨水や虫の侵入を防ぎます。</li>
+          <li><b>運転音はほとんどありません。</b>電源を入れた直後に小さな放電音がすることがあります。</li>
+        </ul>
+        <p class="caution">焼肉・焼き鳥など煙が特に多い業態では、処理能力に余裕を持たせた台数・配置をご提案します。お店の排気量に合うかどうかは、現地調査でしっかり確認します。</p>
+      </div>
+    </div>
+    <p class="foot"><b>07</b>野田の消煙機 JL-8A</p>
+  </div>
+</section>
+
+<!-- ======================= P8 BACK COVER ======================= -->
+<section class="page page--l">
+  <div class="trim">
+    <div class="body">
+      <p class="eyebrow"><span class="num">07</span>ご利用の流れ</p>
+      <h2 class="h2">ご相談から稼働後のメンテナンスまで、<br>一貫して対応します。</h2>
+      <ol class="flow">
+        <li><span class="no">1</span><h3>ご相談</h3><p>お電話・フォーム・LINEから。設置できるか、費用はどのくらいか、まずはお聞かせください。</p></li>
+        <li><span class="no">2</span><h3>現地調査</h3><p>ご都合に合わせて伺い、排気設備や設置スペースを専門スタッフが確認します。</p></li>
+        <li><span class="no">3</span><h3>プランニング・<br>お見積り</h3><p>店舗の状況とご要望に合わせてプランをご提案し、正式なお見積りをお出しします。</p></li>
+        <li><span class="no">4</span><h3>ご契約・<br>設置工事</h3><p>施工日を決めて着工します。工事は通常1〜2日で、進み具合は随時ご報告します。</p></li>
+        <li><span class="no">5</span><h3>稼働開始・<br>毎月のメンテナンス</h3><p>使い方をご説明して稼働開始。その後は毎月訪問して点検・清掃を行います。</p></li>
+      </ol>
+      <div class="area">
+        <p class="area__badge"><b>全国対応</b><span>全国の飲食店から<br>ご相談を受け付けています</span></p>
+        <dl>
+          <div><dt>九州・中国地方</dt><dd>当社スタッフが、設置工事と毎月のメンテナンスを担当します。</dd></div>
+          <div><dt>その他の地域</dt><dd>当社の提携業者が、設置工事と毎月のメンテナンスを担当します。進め方はお見積りの際にご案内します。</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="fb contact">
+      <h2 class="contact__ttl">まずはお気軽にご相談ください</h2>
+      <p class="contact__lead">製品のご紹介・<b>現地調査は無料</b>です。設置できるかどうかだけのご相談も歓迎します。</p>
+      <div class="tel"><span class="tel__fd">通話料<br>無料</span><b>0120-77-3408</b></div>
+      <p class="tel__hours">受付時間 9:00〜17:00（土・日・祝 定休）</p>
+      <p class="mail"><span>メール</span>info@noda-duct.com</p>
+      <div class="qrs">
+        <figure><div class="qr">{{QR_LP}}</div><figcaption>Webサイト<br>お問い合わせ</figcaption></figure>
+        <figure><div class="qr">{{QR_LINE}}</div><figcaption>LINEで<br>相談する</figcaption></figure>
+      </div>
+      <div class="company">
+        <div><p class="company__co">株式会社野田</p><p>飲食店換気の専門事業者として<br>20年以上の実績</p></div>
+        <div><h4>本社</h4><p>〒812-0854<br>福岡県福岡市博多区東月隈3-5-4<br>TEL 092-504-5502　FAX 092-504-5518</p></div>
+        <div><h4>広島出張所</h4><p>〒731-0113<br>広島県広島市安佐南区西原1-8-16-405</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
