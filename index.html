@@ -187,25 +187,99 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <h2 class="sh__ttl" id="problem-ttl"><span class="nb">近隣クレーム・</span><span class="nb">油煙汚れ・</span><span class="nb">物件審査…</span><br><span class="nb">飲食店の“煙問題”を</span><span class="nb">放置していませんか？</span></h2>
       <p class="sh__lead">煙や臭いの問題は、近隣トラブルだけでなく、<span class="nb">物件契約・清掃コスト・営業継続にも影響します。</span></p>
     </header>
+    <figure class="problem__map" data-map>
+      <svg class="illust illust--map" viewBox="0 0 960 480" role="img" aria-labelledby="map-ttl">
+      <title id="map-ttl">煙の問題が起きている街並みのイラスト。①焼肉店の煙が隣のマンションに届き、住民が洗濯物の臭いに困っている。②排気口まわりの外壁が油で黒ずんでいる。③隣の空き店舗は「重飲食不可」。④店主が管理会社から「改善のお願い」を受け取っている。</title>
+      <defs>
+        <linearGradient id="mp-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7e7f5"/><stop offset=".75" stop-color="#eef4f9"/></linearGradient>
+        <radialGradient id="mp-smk"><stop offset="0" stop-color="#6c625a" stop-opacity=".95"/><stop offset=".55" stop-color="#7a7068" stop-opacity=".7"/><stop offset="1" stop-color="#8a8078" stop-opacity="0"/></radialGradient>
+        <radialGradient id="mp-stain" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#3a2c21" stop-opacity=".8"/><stop offset=".6" stop-color="#3a2c21" stop-opacity=".35"/><stop offset="1" stop-color="#3a2c21" stop-opacity="0"/></radialGradient>
+        <radialGradient id="mp-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd27a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="960" height="480" fill="url(#mp-sky)"/>
+      <g fill="#fff" opacity=".75"><path d="M84 70a18 18 0 0 1 34-8a14 14 0 0 1 24 10h-58z"/><path d="M640 34a16 16 0 0 1 30-6a12 12 0 0 1 21 8h-51z"/></g>
+      <g fill="#d3e0ec"><rect x="0" y="250" width="46" height="150"/><rect x="40" y="210" width="50" height="190"/><rect x="96" y="236" width="40" height="164"/><rect x="330" y="190" width="44" height="210"/><rect x="380" y="228" width="52" height="172"/><rect x="560" y="200" width="46" height="200"/><rect x="604" y="238" width="40" height="162"/><rect x="900" y="220" width="60" height="180"/></g>
+      <g fill="#c6d6e5"><rect x="8" y="264" width="8" height="10"/><rect x="8" y="286" width="8" height="10"/><rect x="8" y="308" width="8" height="10"/><rect x="48" y="224" width="8" height="10"/><rect x="48" y="246" width="8" height="10"/><rect x="48" y="268" width="8" height="10"/><rect x="104" y="250" width="8" height="10"/><rect x="104" y="272" width="8" height="10"/><rect x="104" y="294" width="8" height="10"/><rect x="338" y="204" width="8" height="10"/><rect x="338" y="226" width="8" height="10"/><rect x="338" y="248" width="8" height="10"/><rect x="388" y="242" width="8" height="10"/><rect x="388" y="264" width="8" height="10"/><rect x="388" y="286" width="8" height="10"/><rect x="568" y="214" width="8" height="10"/><rect x="568" y="236" width="8" height="10"/><rect x="568" y="258" width="8" height="10"/><rect x="612" y="252" width="8" height="10"/><rect x="612" y="274" width="8" height="10"/><rect x="612" y="296" width="8" height="10"/><rect x="908" y="234" width="8" height="10"/><rect x="908" y="256" width="8" height="10"/><rect x="908" y="278" width="8" height="10"/></g>
+      <rect y="400" width="960" height="46" fill="#e3e7ea"/>
+      <g stroke="#d3d9de" stroke-width="2"><path d="M24 400v46"/><path d="M80 400v46"/><path d="M136 400v46"/><path d="M192 400v46"/><path d="M248 400v46"/><path d="M304 400v46"/><path d="M360 400v46"/><path d="M416 400v46"/><path d="M472 400v46"/><path d="M528 400v46"/><path d="M584 400v46"/><path d="M640 400v46"/><path d="M696 400v46"/><path d="M752 400v46"/><path d="M808 400v46"/><path d="M864 400v46"/><path d="M920 400v46"/><path d="M0 423h960"/></g>
+      <rect y="446" width="960" height="6" fill="#c3cbd2"/><rect y="452" width="960" height="28" fill="#b3bdc6"/>
+      <path d="M20 467h60M140 467h60M260 467h60M380 467h60M500 467h60M620 467h60M740 467h60M860 467h60" stroke="#fff" stroke-width="3" opacity=".55"/>
+      <g fill="#15324a" opacity=".07"><rect x="44" y="400" width="300" height="8"/><rect x="420" y="400" width="172" height="8"/><rect x="616" y="400" width="304" height="8"/></g>
+      <g>
+      <rect x="50" y="140" width="290" height="260" fill="#f4e6d3"/><rect x="326" y="140" width="14" height="260" fill="#e7d4bc"/>
+      <rect x="42" y="126" width="306" height="18" rx="3" fill="#15324a"/>
+      <rect x="72" y="164" width="60" height="54" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M102 164v54" stroke="#15324a" stroke-width="2"/><path d="M78 212l14-42h8l-14 42z" fill="#fff" opacity=".6"/>
+      <rect x="152" y="164" width="60" height="54" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M182 164v54" stroke="#15324a" stroke-width="2"/><path d="M158 212l14-42h8l-14 42z" fill="#fff" opacity=".6"/>
+      <ellipse cx="282" cy="226" rx="44" ry="40" fill="url(#mp-stain)"/>
+      <g stroke="#3a2c21" stroke-linecap="round" opacity=".55"><path d="M256 206c-2 12 2 22-1 34" stroke-width="5"/><path d="M272 208c1 10-1 20 1 30" stroke-width="4"/><path d="M290 208c-1 14 2 18 0 28" stroke-width="5"/><path d="M306 206c1 8-1 14 1 22" stroke-width="4"/></g>
+      <g fill="#3a2c21" opacity=".55"><circle cx="255" cy="246" r="3.5"/><circle cx="273" cy="243" r="3"/><circle cx="290" cy="241" r="3.5"/></g>
+      <rect x="248" y="164" width="64" height="40" rx="4" fill="#a7b2bb"/><path d="M256 174h48M256 182h48M256 190h48" stroke="#7b8893" stroke-width="3"/><rect x="244" y="202" width="72" height="7" rx="2" fill="#7b8893"/>
+      <rect x="62" y="246" width="266" height="40" rx="4" fill="#15324a"/><text x="195" y="274" text-anchor="middle" font-size="21" font-weight="700" fill="#fff" letter-spacing="10">炭火焼肉</text><circle cx="86" cy="266" r="5" fill="#f08c1c"/><circle cx="304" cy="266" r="5" fill="#f08c1c"/>
+      <path d="M54 290h282l-10 16H64z" fill="#3c4954"/><path d="M72 292v12M84 292v12M96 292v12M108 292v12M120 292v12M132 292v12M144 292v12M156 292v12M168 292v12M180 292v12M192 292v12M204 292v12M216 292v12M228 292v12M240 292v12M252 292v12M264 292v12M276 292v12M288 292v12M300 292v12M312 292v12M324 292v12" stroke="#55636f" stroke-width="2"/>
+      <rect x="68" y="314" width="92" height="86" fill="#ffe1a6"/><path d="M78 314v86M88 314v86M98 314v86M108 314v86M118 314v86M128 314v86M138 314v86M148 314v86M158 314v86" stroke="#6b4526" stroke-width="3"/><rect x="68" y="314" width="92" height="86" fill="none" stroke="#5a391f" stroke-width="4"/>
+      <rect x="196" y="314" width="70" height="86" fill="#f6d697" stroke="#5a391f" stroke-width="4"/><path d="M231 314v86" stroke="#5a391f" stroke-width="3"/>
+      <g><rect x="192" y="308" width="37" height="44" fill="#15324a"/><rect x="233" y="308" width="37" height="44" fill="#15324a"/><text x="210.5" y="337" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">焼</text><text x="251.5" y="337" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">肉</text><rect x="188" y="304" width="86" height="5" rx="2" fill="#6b4526"/></g>
+      <ellipse cx="178" cy="338" rx="26" ry="30" fill="url(#mp-glow)"/><path d="M178 306v10" stroke="#3c4954" stroke-width="2"/><rect x="170" y="315" width="16" height="5" rx="1.5" fill="#222"/><rect x="170" y="355" width="16" height="5" rx="1.5" fill="#222"/><ellipse cx="178" cy="338" rx="13" ry="19" fill="#d23f31"/><path d="M166 330h24M166 346h24" stroke="#a92e23" stroke-width="1.5"/><text x="178" y="343" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">焼</text>
+      <rect x="278" y="314" width="44" height="64" fill="#ffe1a6" stroke="#5a391f" stroke-width="4"/><path d="M289 314v64M300 314v64M311 314v64" stroke="#6b4526" stroke-width="2.5"/>
+      <path d="M52 380h14l-2 20H54z" fill="#b5653a"/><g fill="#2f8f5b"><ellipse cx="54" cy="372" rx="6" ry="11" transform="rotate(-20 54 372)"/><ellipse cx="64" cy="370" rx="6" ry="12" transform="rotate(18 64 370)"/><ellipse cx="59" cy="366" rx="5" ry="12"/></g>
+      </g>
+      <g>
+      <rect x="426" y="296" width="160" height="104" fill="#e4e8ec"/><rect x="576" y="296" width="10" height="104" fill="#d6dce2"/>
+      <rect x="420" y="286" width="172" height="14" rx="3" fill="#15324a"/>
+      <rect x="438" y="330" width="134" height="70" fill="#c8cfd6"/><path d="M438 338h134M438 346h134M438 354h134M438 362h134M438 370h134M438 378h134M438 386h134M438 394h134" stroke="#adb7c0" stroke-width="2"/>
+      <rect x="438" y="305" width="134" height="20" rx="3" fill="#fff" stroke="#15324a" stroke-width="2"/><text x="505" y="320" text-anchor="middle" font-size="13" font-weight="700" fill="#15324a" letter-spacing="2">テナント募集</text>
+      <g transform="rotate(-6 505 360)"><rect x="454" y="345" width="102" height="32" rx="4" fill="#fff" stroke="#d23f31" stroke-width="3"/><text x="505" y="367" text-anchor="middle" font-size="16" font-weight="700" fill="#d23f31">重飲食不可</text></g>
+      </g>
+      <g><rect x="601" y="250" width="6" height="190" fill="#56616b"/><rect x="594" y="436" width="20" height="6" rx="2" fill="#56616b"/><path d="M604 252c0-14-10-18-22-18" fill="none" stroke="#56616b" stroke-width="5"/><rect x="568" y="230" width="20" height="10" rx="3" fill="#56616b"/><path d="M570 240h16l-3 6h-10z" fill="#ffe1a6"/></g>
+      <g>
+      <rect x="620" y="66" width="296" height="334" fill="#f1f3f6"/><rect x="900" y="66" width="16" height="334" fill="#e2e6eb"/>
+      <rect x="612" y="52" width="312" height="16" rx="3" fill="#15324a"/>
+      <rect x="642" y="80" width="118" height="72" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M701 80v72" stroke="#15324a" stroke-width="2"/><rect x="780" y="80" width="110" height="72" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M835 80v72" stroke="#15324a" stroke-width="2"/><path d="M650 144l18-56h9l-18 56z" fill="#fff" opacity=".55"/><path d="M788 144l18-56h9l-18 56z" fill="#fff" opacity=".55"/>
+      <rect x="642" y="180" width="118" height="72" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M701 180v72" stroke="#15324a" stroke-width="2"/><rect x="780" y="180" width="110" height="72" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M835 180v72" stroke="#15324a" stroke-width="2"/><path d="M650 244l18-56h9l-18 56z" fill="#fff" opacity=".55"/><path d="M788 244l18-56h9l-18 56z" fill="#fff" opacity=".55"/>
+      <rect x="642" y="290" width="70" height="56" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><rect x="820" y="290" width="70" height="56" rx="3" fill="#cfe2f2" stroke="#15324a" stroke-width="3"/><path d="M726 300h82v-8h-82z" fill="#15324a"/><rect x="736" y="308" width="62" height="92" rx="2" fill="#d6eafb" stroke="#15324a" stroke-width="3"/><path d="M767 308v92" stroke="#15324a" stroke-width="2"/>
+      <path d="M654 94h150" stroke="#15324a" stroke-width="2.5"/><path d="M654 88v10M804 88v10" stroke="#15324a" stroke-width="2.5"/>
+      <path d="M682 94l-12 8 5 9 6-3v28h28v-28l6 3 5-9-12-8c-3 6-7 8-13 8s-10-2-13-8z" fill="#fff" stroke="#15324a" stroke-width="2"/><g fill="#8a7d70" opacity=".5"><circle cx="688" cy="118" r="5"/><circle cx="702" cy="126" r="4"/><circle cx="694" cy="131" r="3"/></g>
+      <path d="M730 94h26v40h-26z" fill="#fca624" stroke="#15324a" stroke-width="2"/><path d="M730 124h26" stroke="#fff" stroke-width="3"/><path d="M772 94h12v18l4 8h-12l-4-8z" fill="#d6eafb" stroke="#15324a" stroke-width="2"/>
+      <g fill="none" stroke="#6c625a" stroke-width="3" stroke-linecap="round" opacity=".75"><path d="M690 82c-6-6 6-10 0-16"/><path d="M706 84c-6-6 6-10 0-16"/><path d="M744 86c-6-6 6-10 0-16"/></g>
+      <path d="M654 194h150" stroke="#15324a" stroke-width="2.5"/><path d="M654 188v10M804 188v10" stroke="#15324a" stroke-width="2.5"/><path d="M700 194h30v38h-30z" fill="#fff" stroke="#15324a" stroke-width="2"/><path d="M700 222h30" stroke="#3498db" stroke-width="3"/>
+      <g transform="translate(156 0)"><path d="M680 160v-26c0-10 8-16 20-16s20 6 20 16v26z" fill="#7fb3e0"/><rect x="694" y="112" width="12" height="10" fill="#f5cfab"/><circle cx="700" cy="100" r="16" fill="#f5cfab"/><path d="M684 104c-4-18 6-28 17-28c12 0 20 8 17 28c-2-8-4-12-8-14c-6 4-16 6-24 4c-1 3-1 6-2 10z" fill="#5b3b2a"/><path d="M690 100l4 2-4 2M710 100l-4 2 4 2" fill="none" stroke="#15324a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M689 94l6-2M711 94l-6-2" stroke="#15324a" stroke-width="2" stroke-linecap="round"/><path d="M688 132c4-10 6-18 10-22" stroke="#7fb3e0" stroke-width="9" stroke-linecap="round" fill="none"/><ellipse cx="700" cy="108" rx="8" ry="6" fill="#f2c39c"/></g>
+      <rect x="628" y="130" width="280" height="28" fill="#fff" fill-opacity=".82" stroke="#15324a" stroke-width="3"/><path d="M698 130v28M768 130v28M838 130v28" stroke="#15324a" stroke-width="2" opacity=".35"/><rect x="622" y="156" width="292" height="8" fill="#15324a"/>
+      <rect x="628" y="230" width="280" height="28" fill="#fff" fill-opacity=".82" stroke="#15324a" stroke-width="3"/><path d="M698 230v28M768 230v28M838 230v28" stroke="#15324a" stroke-width="2" opacity=".35"/><rect x="622" y="256" width="292" height="8" fill="#15324a"/>
+      </g>
+      <g class="map__smoke">
+      <g class="map__puff map__puff--1" opacity="0.92" fill="url(#mp-smk)"><circle cx="282" cy="168" r="14"/><circle cx="280" cy="172" r="9"/><circle cx="279" cy="164" r="8"/><circle cx="298" cy="156" r="19"/><circle cx="290" cy="155" r="13"/><circle cx="305" cy="158" r="14"/><circle cx="316" cy="144" r="24"/><circle cx="326" cy="146" r="17"/><circle cx="325" cy="147" r="15"/><circle cx="340" cy="132" r="30"/><circle cx="329" cy="137" r="24"/><circle cx="349" cy="139" r="19"/></g>
+      <g class="map__puff map__puff--2" opacity="0.78" fill="url(#mp-smk)"><circle cx="370" cy="120" r="35"/><circle cx="360" cy="112" r="29"/><circle cx="357" cy="115" r="25"/><circle cx="404" cy="110" r="40"/><circle cx="420" cy="108" r="25"/><circle cx="414" cy="100" r="27"/><circle cx="442" cy="102" r="45"/><circle cx="453" cy="114" r="28"/><circle cx="435" cy="116" r="36"/><circle cx="484" cy="96" r="49"/><circle cx="492" cy="111" r="36"/><circle cx="471" cy="84" r="34"/></g>
+      <g class="map__puff map__puff--3" opacity="0.58" fill="url(#mp-smk)"><circle cx="528" cy="94" r="51"/><circle cx="508" cy="89" r="32"/><circle cx="547" cy="100" r="33"/><circle cx="572" cy="96" r="51"/><circle cx="563" cy="81" r="36"/><circle cx="564" cy="112" r="38"/><circle cx="614" cy="100" r="49"/><circle cx="595" cy="105" r="33"/><circle cx="619" cy="84" r="38"/><circle cx="652" cy="104" r="43"/><circle cx="653" cy="118" r="32"/><circle cx="635" cy="102" r="35"/></g>
+      <g class="map__puff map__puff--4" opacity="0.38" fill="url(#mp-smk)"><circle cx="688" cy="104" r="35"/><circle cx="686" cy="92" r="24"/><circle cx="702" cy="103" r="22"/><circle cx="722" cy="100" r="30"/><circle cx="711" cy="105" r="23"/><circle cx="729" cy="108" r="21"/><circle cx="754" cy="96" r="24"/><circle cx="764" cy="98" r="19"/><circle cx="755" cy="88" r="18"/></g>
+      </g>
+      <g transform="translate(-9 0)"><ellipse cx="375" cy="442" rx="26" ry="4" fill="#15324a" opacity=".14"/><rect x="363" y="402" width="10" height="38" rx="3" fill="#2c3e50"/><rect x="377" y="402" width="10" height="38" rx="3" fill="#2c3e50"/><rect x="359" y="434" width="15" height="8" rx="3" fill="#1b2730"/><rect x="376" y="434" width="15" height="8" rx="3" fill="#1b2730"/><rect x="354" y="350" width="42" height="60" rx="13" fill="#fff" stroke="#15324a" stroke-width="2.5"/><rect x="359" y="380" width="32" height="36" rx="3" fill="#15324a"/><rect x="369" y="340" width="12" height="12" fill="#f5cfab"/><circle cx="375" cy="326" r="17" fill="#f5cfab"/><path d="M358 324c-1-14 8-20 17-20s18 6 17 20c-3-6-9-9-17-9s-14 3-17 9z" fill="#2b2420"/><rect x="357" y="313" width="36" height="7" rx="3" fill="#fff" stroke="#15324a" stroke-width="1.5"/><path d="M358 314l-7-5v12z" fill="#fff" stroke="#15324a" stroke-width="1.5" stroke-linejoin="round"/><path d="M364 324l7-2.5M386 324l-7-2.5" stroke="#15324a" stroke-width="2" stroke-linecap="round"/><circle cx="368" cy="329" r="2" fill="#15324a"/><circle cx="382" cy="329" r="2" fill="#15324a"/><path d="M369 337c2-2 4-2 6 0s4 2 6 0" fill="none" stroke="#15324a" stroke-width="1.8" stroke-linecap="round"/><path d="M397 318c-3 5-4 8-1 10s6-1 4-5z" fill="#8ec9f0"/><path d="M358 360l-6 18 10 4M392 360l6 18-10 4" fill="none" stroke="#15324a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M358 360l-6 18 10 4M392 360l6 18-10 4" fill="none" stroke="#fff" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/><g transform="rotate(-5 375 370)"><rect x="363" y="354" width="24" height="30" rx="2" fill="#fff" stroke="#15324a" stroke-width="2"/><path d="M367 362h16M367 368h16M367 374h10" stroke="#b9c3cb" stroke-width="2"/></g><circle cx="364" cy="381" r="4.5" fill="#f5cfab"/><circle cx="386" cy="381" r="4.5" fill="#f5cfab"/></g>
+      <g><path d="M404 262l-24 94 46-94z" fill="#fff" stroke="#15324a" stroke-width="3" stroke-linejoin="round"/><rect x="384" y="176" width="164" height="90" rx="10" fill="#fff" stroke="#15324a" stroke-width="3"/><path d="M406 262h18" stroke="#fff" stroke-width="5"/><path d="M384 202v-16a10 10 0 0 1 10-10h144a10 10 0 0 1 10 10v16z" fill="#15324a"/><text x="466" y="195" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" letter-spacing="1">管理会社より</text><text x="466" y="227" text-anchor="middle" font-size="17" font-weight="700" fill="#15324a">改善のお願い</text><path d="M402 242h96M402 254h70" stroke="#c3ccd3" stroke-width="4" stroke-linecap="round"/><circle cx="522" cy="248" r="11" fill="none" stroke="#d23f31" stroke-width="2.5"/><text x="522" y="252" text-anchor="middle" font-size="9" font-weight="700" fill="#d23f31">印</text></g>
+      <g class="map__nos" font-size="30" font-weight="700" text-anchor="middle" fill="#fff">
+      <g class="map__no" data-no="1"><circle cx="904" cy="120" r="25" fill="#f08c1c" stroke="#fff" stroke-width="5"/><text x="904" y="130.5">1</text></g>
+      <g class="map__no" data-no="2"><circle cx="338" cy="232" r="25" fill="#f08c1c" stroke="#fff" stroke-width="5"/><text x="338" y="242.5">2</text></g>
+      <g class="map__no" data-no="3"><circle cx="588" cy="304" r="25" fill="#f08c1c" stroke="#fff" stroke-width="5"/><text x="588" y="314.5">3</text></g>
+      <g class="map__no" data-no="4"><circle cx="548" cy="180" r="25" fill="#f08c1c" stroke="#fff" stroke-width="5"/><text x="548" y="190.5">4</text></g>
+      </g>
+      </svg>
+    </figure>
     <ul class="worries">
-      <li class="card worry">
-        <h3><span class="nb">近隣から煙・臭いの</span><span class="nb">苦情が入っている</span></h3>
+      <li class="card worry" data-no="1">
+        <h3><span class="worry__no num" aria-hidden="true">1</span><span class="nb">近隣から煙・臭いの</span><span class="nb">苦情が入っている</span></h3>
         <p>「洗濯物に臭いがつく」「窓を開けられない」など、住民トラブルにつながりやすい問題です。</p>
       </li>
-      <li class="card worry">
-        <h3><span class="nb">排気口まわりの外壁・ダクトが</span><span class="nb">油で汚れている</span></h3>
+      <li class="card worry" data-no="2">
+        <h3><span class="worry__no num" aria-hidden="true">2</span><span class="nb">排気口まわりの</span><span class="nb">外壁・ダクトが</span><span class="nb">油で汚れている</span></h3>
         <p>油煙がそのまま排出されると、外壁の黒ずみや清掃コストの増加につながります。</p>
       </li>
-      <li class="card worry">
-        <h3><span class="nb">焼肉・焼き鳥など</span><span class="nb">重飲食の出店を</span><span class="nb">断られそう</span></h3>
+      <li class="card worry" data-no="3">
+        <h3><span class="worry__no num" aria-hidden="true">3</span><span class="nb">焼肉・焼き鳥など</span><span class="nb">重飲食の出店を</span><span class="nb">断られそう</span></h3>
         <p>煙・臭い対策が不十分だと、物件オーナーや管理会社の許可が取りにくくなります。</p>
       </li>
-      <li class="card worry">
-        <h3><span class="nb">管理会社・ビルオーナーから</span><span class="nb">改善を求められている</span></h3>
+      <li class="card worry" data-no="4">
+        <h3><span class="worry__no num" aria-hidden="true">4</span><span class="nb">管理会社・ビルオーナーから</span><span class="nb">改善を求められている</span></h3>
         <p>営業継続のために、具体的な排煙対策を提示する必要が出てきます。</p>
       </li>
     </ul>
-    <img class="problem__img" src="assets/img/worry.webp" width="740" height="716" alt="煙の問題に頭を抱える飲食店の店主とスタッフ" loading="lazy">
   </div>
 </section>
 
@@ -569,7 +643,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="dl__alt">
       <a class="telbox" href="tel:0120773408"><small>お急ぎの方はお電話でもご相談いただけます</small><b class="num">0120-77-3408</b><span>受付時間：9:00〜17:00（土・日・祝 定休）</span></a>
       <a class="linebtn" href="https://line.me/R/ti/p/@254bbzux" target="_blank" rel="noopener">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+        <img class="ic ic--line" src="assets/img/line-icon.webp" width="24" height="24" alt="">
         LINEで問い合わせる
       </a>
     </div>
@@ -596,7 +670,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>お電話
   </a>
   <a class="fixbar__line" href="https://line.me/R/ti/p/@254bbzux" target="_blank" rel="noopener">
-    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s6-3.5 8.2-6C21.4 14.2 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINE
+    <img class="ic ic--line" src="assets/img/line-icon.webp" width="24" height="24" alt="">LINE
   </a>
   <a class="fixbar__dl" href="#download">無料で資料請求</a>
 </nav>

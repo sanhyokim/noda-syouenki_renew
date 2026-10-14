@@ -23,6 +23,29 @@
     track.appendChild(copy);
   }
 
+  /* ---------- problem scene: numbers pop in and light up with their card ---------- */
+  const map = $('[data-map]');
+  if (map) {
+    const nos = $$('.map__no', map);
+    const cards = $$('.worry[data-no]');
+    const light = n => {
+      map.classList.toggle('has-on', !!n);
+      nos.forEach(g => g.classList.toggle('is-on', g.dataset.no === n));
+      cards.forEach(c => c.classList.toggle('is-on', c.dataset.no === n));
+    };
+    cards.forEach(c => {
+      c.addEventListener('pointerenter', () => light(c.dataset.no));
+      c.addEventListener('pointerleave', () => light(null));
+    });
+    nos.forEach(g => g.addEventListener('pointerenter', () => light(g.dataset.no)));
+    map.addEventListener('pointerleave', () => light(null));
+    map.classList.add('is-ready');
+    new IntersectionObserver(([e]) => {
+      map.classList.toggle('is-vis', e.isIntersecting);
+      if (e.isIntersecting) map.classList.add('is-in');
+    }, { threshold: .3 }).observe(map);
+  }
+
   /* ---------- YouTube: load the player only when asked ---------- */
   $$('[data-video]').forEach(frame => {
     const btn = $('.video__play', frame);
