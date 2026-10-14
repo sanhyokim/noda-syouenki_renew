@@ -23,6 +23,7 @@
 const DOWNLOAD_URL = 'https://example.com/noda-shoenki-jl8a.pdf';   // 資料PDFのURL（Googleドライブの共有リンクでも可）
 const NOTIFY_TO    = 'info@noda-duct.com,koroyasu@duct-noda.com,azuma@duct-noda.com,nagamizu@duct-noda.com';  // 通知を受け取るアドレス（カンマ区切り。お客様からの返信は先頭のアドレスに届きます）
 const FROM_NAME    = '野田の消煙機（株式会社野田）';
+const SITE_URL     = 'https://shoenki.duct-noda.com/';
 // ================
 
 // フォームごとのシート名と列（form=download が資料請求、form=contact がお問い合わせ）
@@ -133,21 +134,31 @@ function notify_(form, p, email, name) {
   const f = FORMS[form];
   const pref = clean_(p.pref);
   const lines = [
-    'LPから' + f.label + 'がありました。',
+    '野田の消煙機のLP（' + SITE_URL + '）の' + f.label + 'フォームから、' + f.label + 'がありました。',
+    '※ このメールは、消煙機のLPのフォームから自動で送られています。',
     '',
+    '■ お客様',
     '貴店名・貴社名：' + (clean_(p.shop) || '（未入力）'),
     '店舗の所在地：' + (pref || '（未入力）'),
     '担当者名：' + name,
     'メールアドレス：' + email,
     '電話番号：' + (clean_(p.tel) || '（未入力）'),
+    '',
+    '■ ' + f.label + 'の内容',
     f.field[0] + '：' + clean_(p[f.field[1]]),
     f.text[0] + '：' + (clean_(p[f.text[1]]) || '（なし）'),
     '',
+    '■ 送信元',
+    'フォーム：野田の消煙機LP「' + f.label + '」フォーム',
+    '送信ページ：' + (clean_(p.page) || SITE_URL),
+    '受付日時：' + Utilities.formatDate(new Date(), 'Asia/Tokyo', 'yyyy/MM/dd HH:mm'),
     '流入：' + ([clean_(p.utm_source), clean_(p.utm_medium), clean_(p.utm_campaign)].filter(String).join(' / ') || '（不明）'),
-    '参照元：' + (clean_(p.referrer) || '（なし）')
+    '参照元：' + (clean_(p.referrer) || '（なし）'),
+    '',
+    'このメールに返信すると、お客様（' + email + '）に届きます。'
   ];
-  const subject = '【' + f.label + '】' + (pref ? '［' + pref + '］' : '') + (clean_(p.shop) || name) + ' 様';
-  MailApp.sendEmail({ to: NOTIFY_TO, subject: subject, body: lines.join('\n'), name: 'LP' + f.label + 'フォーム', replyTo: email });
+  const subject = '【野田の消煙機LP】' + f.label + 'がありました' + (pref ? '［' + pref + '］' : '') + (clean_(p.shop) || name) + ' 様';
+  MailApp.sendEmail({ to: NOTIFY_TO, subject: subject, body: lines.join('\n'), name: '野田の消煙機LP ' + f.label + 'フォーム', replyTo: email });
 }
 
 /* plain text: strip control characters and cap the length */
