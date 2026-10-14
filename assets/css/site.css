@@ -277,7 +277,7 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 .video figcaption { padding: 14px 18px 16px; text-align: center; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
 .video figcaption b { display: block; font-size: 16px; color: var(--navy); }
 .product { margin: 28px auto 0; max-width: 460px; text-align: center; }
-.product img { border-radius: 12px; box-shadow: 0 24px 40px -24px rgba(0, 0, 0, .6); }
+.product img { border-radius: 12px; }
 .product figcaption { margin-top: 12px; font-size: 15px; font-weight: 700; }
 
 /* ---------- merits ---------- */
