@@ -46,7 +46,7 @@
     let formVisible = false, typing = false;
     const sync = () => bar.classList.toggle('is-hidden', formVisible || typing);
     new IntersectionObserver(([e]) => { formVisible = e.isIntersecting; sync(); }, { rootMargin: '0px 0px -20% 0px' }).observe(formCard);
-    document.addEventListener('focusin', e => { typing = !!e.target.closest('input, textarea'); sync(); });
+    document.addEventListener('focusin', e => { typing = !!e.target.closest('input, textarea, select'); sync(); });
     document.addEventListener('focusout', () => { typing = false; sync(); });
   }
 
@@ -60,20 +60,22 @@
     if (!sessionStorage.getItem(SRC_KEY + '_ref') && document.referrer) sessionStorage.setItem(SRC_KEY + '_ref', document.referrer);
   } catch (_) { /* storage may be unavailable */ }
 
-  /* ---------- download form ---------- */
+  /* ---------- forms: 資料請求 (data-form="download") and お問い合わせ (data-form="contact") ---------- */
   const form = $('[data-form]');
   if (form) {
+    const formId = form.dataset.form || 'download';
     const done = $('[data-form-done]');
     const msg = $('[data-form-msg]');
     const submit = $('[data-submit]', form);
     const label = $('[data-submit-label]', form);
+    const labelText = label.textContent;
     const endpoint = (form.dataset.endpoint || '').trim();
 
     // full-width letters, digits and symbols (common with Japanese input) → half-width
     const toHalf = s => s.replace(/[！-～]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0)).replace(/　/g, ' ').replace(/[‐－―ー−]/g, '-');
 
     const rules = {
-      name: v => v.trim() ? '' : '担当者名を入力してください。',
+      name: (v, el) => v.trim() ? '' : `${el.dataset.label || '担当者名'}を入力してください。`,
       email: v => {
         if (!v.trim()) return 'メールアドレスを入力してください。';
         return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) ? '' : 'メールアドレスの形式をご確認ください（例：info@example.com）。';
@@ -83,6 +85,8 @@
         const digits = v.replace(/\D/g, '');
         return digits.length >= 10 && digits.length <= 11 ? '' : '電話番号は数字10〜11桁で入力してください（ハイフンはあってもなくても大丈夫です）。';
       },
+      pref: v => v ? '' : '都道府県を選んでください。',
+      message: v => v.trim() ? '' : 'お問い合わせ内容を入力してください。',
       agree: (v, el) => el.checked ? '' : 'プライバシーポリシーへの同意が必要です。'
     };
 
@@ -106,13 +110,13 @@
     const inputs = Object.keys(rules).map(n => form.elements[n]).filter(Boolean);
     inputs.forEach(el => {
       el.addEventListener('blur', () => { if (el.value || el.dataset.touched) check(el); el.dataset.touched = '1'; });
-      el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', () => { if (el.getAttribute('aria-invalid') === 'true') check(el); });
+      el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', () => { if (el.tagName === 'SELECT' || el.getAttribute('aria-invalid') === 'true') check(el); });
     });
 
     const setBusy = (on) => {
       submit.disabled = on;
       submit.setAttribute('aria-busy', on ? 'true' : 'false');
-      label.textContent = on ? '送信しています…' : '無料で資料を受け取る';
+      label.textContent = on ? '送信しています…' : labelText;
     };
     const showDone = (preview) => {
       form.hidden = true;
@@ -139,6 +143,7 @@
       const fd = new FormData(form);
       if (fd.get('website')) { showDone(false); return; }   // bot trap filled: pretend it worked
       fd.delete('website');
+      fd.set('form', formId);
       fd.set('page', location.href.split('#')[0]);
       try {
         const src = JSON.parse(sessionStorage.getItem(SRC_KEY) || '{}');
@@ -148,9 +153,10 @@
       } catch (_) { /* ignore */ }
 
       const track = () => {
-        const purpose = fd.get('purpose') || '';
-        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_id: 'download', purpose });
-        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_id: 'download', purpose });
+        const purpose = fd.get('purpose') || fd.get('kind') || '';
+        const pref = fd.get('pref') || '';
+        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_id: formId, purpose, pref });
+        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_id: formId, purpose, pref });
       };
 
       if (!endpoint) { track(); showDone(true); return; }
