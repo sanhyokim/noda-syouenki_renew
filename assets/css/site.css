@@ -492,9 +492,10 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 @media (min-width: 980px) { .ct__grid { grid-template-columns: minmax(0, 1fr) minmax(0, .62fr); gap: 48px; align-items: start; } .ct__side { position: sticky; top: calc(var(--hd-h) + 24px); } }
 .ct__side { display: grid; gap: 12px; }
 .ct__side-ttl { font-size: 15px; font-weight: 700; color: var(--ink-2); }
-.mailbox { display: grid; gap: 2px; padding: 14px 20px; border-radius: var(--radius); background: #fff; border: 1px solid var(--line); line-height: 1.5; }
-.mailbox small { font-size: 13px; color: var(--ink-3); }
-.mailbox a { font-size: 18px; font-weight: 700; color: var(--blue-ink); word-break: break-all; }
+.ct__notice { display: grid; gap: 6px; margin-bottom: 28px; padding: 16px 18px 16px 20px; border-left: 5px solid var(--orange-2); border-radius: 8px; background: var(--cream); font-size: 15px; line-height: 1.7; color: var(--ink-2); }
+.ct__notice-ttl { font-size: 16.5px; font-weight: 700; color: var(--navy); }
+.ct__notice-link { display: inline-flex; align-items: center; gap: 8px; justify-self: start; margin-top: 2px; color: var(--orange-ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.ct__notice-link .arw { width: 7px; height: 7px; border-width: 2px; }
 .dlcard { display: grid; gap: 10px; margin-top: 8px; padding: 18px 20px; border-radius: var(--radius); background: var(--cream); border: 1px solid #f6d7ad; }
 .dlcard p { font-size: 15px; line-height: 1.7; }
 .dlcard .btn { justify-self: start; min-height: 44px; font-size: 15px; }
