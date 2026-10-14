@@ -220,11 +220,7 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 .worry { padding: 24px 24px 26px; border-top: 4px solid var(--navy); }
 .worry h3 { font-size: clamp(18px, 1.9vw, 21px); font-weight: 700; line-height: 1.5; letter-spacing: .02em; font-feature-settings: "palt"; color: var(--navy); }
 .worry p { margin-top: 10px; font-size: 15.5px; line-height: 1.85; color: var(--ink-2); }
-.problem__map { max-width: 960px; margin: 0 auto clamp(28px, 4vw, 44px); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
-.illust { display: block; width: 100%; height: auto; }
-@media (max-width: 599px) { .problem__map { margin-inline: calc(var(--gutter) * -1); border-radius: 0; box-shadow: none; } }
-.worry h3:has(.worry__no) { position: relative; padding-left: 46px; }
-.worry__no { position: absolute; left: 0; top: -1px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--orange-2); color: #fff; font-size: 21px; font-weight: 700; line-height: 1; }
+.problem__img { width: min(360px, 78%); margin: 40px auto 0; }
 
 /* the original's triangle notch into the navy section */
 .solution { padding-top: clamp(96px, 11vw, 150px); }
@@ -264,7 +260,7 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 @media (min-width: 900px) { .merits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
 @media (min-width: 600px) and (max-width: 899px) { .merits { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .merit-card { overflow: hidden; display: flex; flex-direction: column; }
-.merit-card .illust { aspect-ratio: 2 / 1; }
+.merit-card img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
 .merit-card__body { padding: 20px 22px 24px; }
 .merit-card h3 { font-size: 19px; font-weight: 700; line-height: 1.5; text-align: center; color: var(--navy); font-feature-settings: "palt"; }
 .dots { margin-top: 12px; }
