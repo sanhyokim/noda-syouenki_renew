@@ -75,6 +75,15 @@ npx serve .
 - 写真は現行LPから取得したものです（WebPに変換して軽量化）。
 - 導入事例ギャラリーの小さな写真は、現行LPのサムネイル画像から写真部分を切り出したもので解像度が低めです。高解像度の元写真があれば差し替えます。
 
+## 現行サイト（WordPress）への部分移植
+
+[`wordpress/elementor-shikumi.html`](wordpress/elementor-shikumi.html) は「仕組み」セクション（集塵シミュレーション）だけを、現行サイトの Elementor に載せるための部品です。中身をすべて HTML ウィジェットに貼り付けると動きます。
+
+- CSS と JavaScript はすべて `.nesp` の中だけに効くようにしてあり、画像は使っていません。
+- 固定ヘッダーの高さ（WordPress の管理バーを含む）は自動で読み取ります。ずれる場合は `<section class="nesp" data-offset="70">` のように指定できます。
+- 親のコンテナに「オーバーフロー：非表示」が設定されているなど、スクロールに合わせた固定表示ができない場合は、3つの段階を自動で繰り返し再生します。
+- シミュレーションの中身は `assets/js/main.js` と同じです。どちらかを直したら、もう一方も合わせてください。
+
 ## ファイル構成
 
 ```
@@ -85,6 +94,7 @@ assets/
   img/                写真・製品画像・favicon・OGP
   img/cases/          導入事例サムネイル
 docs/preview/         スクリーンショット
+wordpress/            現行サイト（WordPress + Elementor）用の部品
 ```
 
 ## 実装メモ
