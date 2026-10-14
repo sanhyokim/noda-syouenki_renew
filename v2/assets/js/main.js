@@ -284,7 +284,7 @@
   });
 
   /* ------------------------------------------------------------------
-     Electricity cost estimate (300W × hours × days × 31円/kWh)
+     Electricity cost estimate (500W × hours × days × 31円/kWh)
      ------------------------------------------------------------------ */
   const calc = $('[data-calc]');
   if (calc) {
@@ -292,7 +292,7 @@
     const outH = $('[data-calc-hours]', calc), outD = $('[data-calc-days]', calc), outY = $('[data-calc-yen]', calc);
     const update = () => {
       const h = +hours.value, d = +days.value;
-      const yen = Math.round(0.3 * h * d * 31 / 10) * 10;
+      const yen = Math.round(0.5 * h * d * 31 / 10) * 10;
       outH.textContent = Number.isInteger(h) ? String(h) : h.toFixed(1);
       outD.textContent = String(d);
       outY.textContent = yen.toLocaleString('ja-JP');
