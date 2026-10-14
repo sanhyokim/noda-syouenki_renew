@@ -1,13 +1,13 @@
 # 資料請求パンフレット（野田の消煙機 JL-8A）
 
-A4・中綴じ8ページのパンフレットの元データです。LP の資料請求でお送りするPDFと、印刷入稿用PDFをここから作ります。数値は取扱説明書（消煙機 JL-8A 取扱説明書）を優先しています。
+A4・中綴じ12ページの製品カタログの元データです。LP の資料請求でお送りするPDFと、印刷入稿用PDFをここから作ります。数値は取扱説明書（消煙機 JL-8A 取扱説明書）を優先しています。
 
 ## 作り方
 
 ```sh
 python3 -m pip install segno pillow   # 初回のみ
 python3 brochure/build.py             # brochure/dist/ に出力
-brochure/preview.sh                   # 見開きの確認画像（poppler-utils が必要）
+brochure/preview.sh                   # 見開きの確認画像（poppler-utils が必要、12ページの中綴じの並び）
 ```
 
 - `brochure-bleed0.pdf`：Web用（A4、画像は軽め）
@@ -19,8 +19,9 @@ brochure/preview.sh                   # 見開きの確認画像（poppler-utils
 
 | ファイル | 内容 |
 |---|---|
-| `src/brochure.html` | 8ページ分のHTML/CSS（mm単位で組版） |
-| `src/parts.py` | 仕組みの図、寸法図、QRコード、LPの街並みの挿絵の取り込み |
+| `src/brochure.html` | 12ページ分のHTML/CSS（mm単位で組版） |
+| `src/drawings.py` | 技術図面のSVG（システム構成図、原理図、構造の模式図、外形図、設置図、設置スペース図、導入前後の図、累計費用のグラフ） |
+| `src/parts.py` | QRコード |
 | `build.py` | HTMLを組み立て、画像をJPEGに変換して `render.mjs` でPDF化 |
 
-写真・イラストはリポジトリの `assets/img/` と `v2/assets/img/` のものを使っています。
+写真はリポジトリの `assets/img/` と `v2/assets/img/` のものを使っています（旧型機の写真。新型の写真が届いたら差し替え）。料金の累計比較は `drawings.py` の `BUY0` などの定数から計算しています。

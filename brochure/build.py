@@ -12,6 +12,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "src"))
+import drawings  # noqa: E402
 import parts  # noqa: E402
 
 DIST = HERE / "dist"
@@ -72,6 +73,19 @@ def images(html, kind):
     return re.sub(r"\{\{IMG\}\}/([^\"']+)", conv, html)
 
 
+def cost_rows():
+    """Cumulative cost table under the chart (years across); the cheaper plan is marked."""
+    years = (1, 3, 5, 7)
+    costs = [drawings.cost_at(y) for y in years]
+    head = "<thead><tr><th>経過</th>" + "".join(f"<th>{y}年</th>" for y in years) + "</tr></thead>"
+    body = []
+    for i, name in enumerate(("購入", "レンタル")):
+        cells = "".join(
+            f'<td{" class=low" if c[i] < c[1 - i] else ""}>{c[i]:,}円</td>' for c in costs)
+        body.append(f"<tr><th>{name}</th>{cells}</tr>")
+    return head + "<tbody>" + "".join(body) + "</tbody>"
+
+
 def build(bleed):
     tpl = (HERE / "src" / "brochure.html").read_text(encoding="utf-8")
     rep = {
@@ -79,9 +93,18 @@ def build(bleed):
         "{{PW}}": str(210 + 2 * bleed),
         "{{PH}}": str(297 + 2 * bleed),
         "{{FONTS}}": ensure_fonts(),
-        "{{MAP}}": parts.map_svg(),
-        "{{MECH}}": parts.mechanism_svg(),
-        "{{DIM}}": parts.dim_svg(),
+        "{{STREET_B}}": drawings.street_svg(False),
+        "{{STREET_A}}": drawings.street_svg(True),
+        "{{SYSTEM}}": drawings.system_svg(),
+        "{{PRINCIPLE}}": drawings.principle_svg(),
+        "{{STRUCTURE}}": drawings.structure_svg(),
+        "{{ORTHO}}": drawings.ortho_svg(),
+        "{{INST_FLOOR}}": drawings.install_svg("floor"),
+        "{{INST_CEIL}}": drawings.install_svg("ceiling"),
+        "{{INST_OUT}}": drawings.install_svg("outdoor"),
+        "{{FOOTPRINT}}": drawings.footprint_svg(),
+        "{{COST}}": drawings.cost_chart_svg(),
+        "{{COSTROWS}}": cost_rows(),
         "{{QR_LP}}": parts.qr_svg(LP_URL),
         "{{QR_YT}}": parts.qr_svg(VIDEO_URL),
         "{{QR_LINE}}": parts.qr_svg(LINE_URL),

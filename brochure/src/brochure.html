@@ -2,660 +2,813 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>野田の消煙機 JL-8A パンフレット</title>
+<title>野田の消煙機 JL-8A 製品カタログ</title>
 {{FONTS}}
 <style>
 @page { size: {{PW}}mm {{PH}}mm; margin: 0; }
 :root {
   --b: {{B}}mm;
-  --navy: #15324a; --navy-2: #1c405d; --navy-3: #0f2638;
-  --ink: #1e2b35; --ink-2: #44535f; --ink-3: #66737d;
-  --line: #d9dfe4; --bg-light: #edf1f4; --bg-hero: #ecf0f1;
-  --orange: #f39c12; --orange-2: #f08c1c; --orange-ink: #c46a00; --cream: #fff7ed;
-  --blue: #3498db; --blue-ink: #1f6fb8; --blue-pale: #d6eafb;
+  --navy: #15324a; --navy-2: #1f425e; --ink: #1e2b35; --ink-2: #3f4d58; --gray: #6b7781;
+  --hair: #c9d0d6; --tint: #eef1f3; --tint-2: #f6f7f8;
+  --blue: #1a6aa8; --orange: #d9770b; --orange-l: #f39c12;
   --font: "Noto Sans JP", sans-serif;
   --num: "Barlow Condensed", "Noto Sans JP", sans-serif;
-  /* margins: inner = binding side */
-  --mt: 16mm; --mb: 15mm; --mo: 15mm; --mi: 17mm;
+  --mo: 15mm; --mi: 18mm;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: var(--font); color: var(--ink);
-  font-size: 9.4pt; line-height: 1.75; letter-spacing: .03em;
-  font-feature-settings: "palt" 0;
-  word-break: auto-phrase;
-  -webkit-print-color-adjust: exact; print-color-adjust: exact;
-  background: #8a949c;
+  font-family: var(--font); color: var(--ink); font-size: 8.8pt; line-height: 1.75; letter-spacing: .02em;
+  word-break: auto-phrase; -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #8a949c;
 }
-h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; padding: 0; }
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure, table { margin: 0; padding: 0; }
 ul, ol { list-style: none; }
 img { display: block; max-width: 100%; }
+svg { display: block; width: 100%; height: auto; }
+b, strong { font-weight: 700; }
 .num { font-family: var(--num); letter-spacing: 0; font-variant-numeric: tabular-nums; }
-.nb { display: inline-block; }
 
 /* ---------- page frame ---------- */
-.page {
-  position: relative; width: {{PW}}mm; height: {{PH}}mm; overflow: hidden;
-  background: #fff; break-after: page; page-break-after: always;
-}
+.page { position: relative; width: {{PW}}mm; height: {{PH}}mm; overflow: hidden; background: #fff; break-after: page; page-break-after: always; }
 .page:last-child { break-after: auto; page-break-after: auto; }
 .trim { position: absolute; left: var(--b); top: var(--b); width: 210mm; height: 297mm; }
-.body { position: absolute; top: var(--mt); bottom: var(--mb); }
-.page--l .body { left: var(--mo); right: var(--mi); }
-.page--r .body { left: var(--mi); right: var(--mo); }
-/* full-bleed helpers (relative to the trim box) */
 .fb { position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); }
+.body { position: absolute; top: 25mm; bottom: 18mm; }
+.page--l .body, .page--l .rh, .page--l .fo { left: var(--mo); right: var(--mi); }
+.page--r .body, .page--r .rh, .page--r .fo { left: var(--mi); right: var(--mo); }
 
-/* running foot */
-.foot {
-  position: absolute; bottom: 7.5mm; font-size: 6.8pt; letter-spacing: .08em; color: var(--ink-3);
-  display: flex; align-items: center; gap: 2.4mm;
-}
-.foot b { font-family: var(--num); font-size: 10pt; font-weight: 600; color: var(--navy); letter-spacing: 0; }
-.page--l .foot { left: var(--mo); }
-.page--r .foot { right: var(--mo); flex-direction: row-reverse; }
-.foot--inv, .foot--inv b { color: rgba(255,255,255,.75); }
+/* running head */
+.rh { position: absolute; top: 10mm; display: flex; align-items: baseline; gap: 2.4mm; padding-bottom: 1.8mm; border-bottom: .25mm solid var(--navy); }
+.rh__no { font-family: var(--num); font-size: 12pt; font-weight: 700; color: var(--orange); line-height: 1; }
+.rh__en { font-family: var(--num); font-size: 8.6pt; font-weight: 600; letter-spacing: .22em; color: var(--navy); }
+.rh__ja { font-size: 7.6pt; font-weight: 700; color: var(--gray); letter-spacing: .1em; }
+.rh__model { margin-left: auto; font-family: var(--num); font-size: 8.6pt; font-weight: 600; letter-spacing: .16em; color: var(--gray); }
+.page--r .rh { flex-direction: row-reverse; }
+.page--r .rh__model { margin-left: 0; margin-right: auto; }
+/* folio */
+.fo { position: absolute; bottom: 8mm; display: flex; align-items: baseline; gap: 3mm; font-size: 6.8pt; letter-spacing: .1em; color: var(--gray); }
+.fo b { font-family: var(--num); font-size: 11pt; font-weight: 700; color: var(--navy); letter-spacing: 0; }
+.page--r .fo { flex-direction: row-reverse; }
 
-/* ---------- section heading ---------- */
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 2.2mm;
-  font-size: 8.4pt; font-weight: 700; letter-spacing: .14em; color: var(--navy);
-}
-.eyebrow .num { font-size: 13pt; font-weight: 700; color: var(--orange-2); letter-spacing: 0; }
-.eyebrow::after { content: ""; width: 14mm; height: .5mm; background: var(--orange-2); }
-.h2 { margin-top: 3.5mm; font-size: 19pt; line-height: 1.42; font-weight: 900; letter-spacing: .04em; color: var(--navy); }
-.lead { margin-top: 3.5mm; font-size: 9.6pt; line-height: 1.85; color: var(--ink-2); }
-.inv .eyebrow, .inv .h2 { color: #fff; }
-.inv .lead { color: rgba(255,255,255,.86); }
+/* type */
+.ttl { font-size: 18pt; line-height: 1.45; font-weight: 700; letter-spacing: .03em; color: var(--navy); }
+.lead { margin-top: 3.6mm; font-size: 9.2pt; line-height: 1.9; color: var(--ink-2); }
+.h3 { font-size: 10.6pt; font-weight: 700; color: var(--navy); line-height: 1.5; letter-spacing: .03em; }
+.h3--rule { display: flex; align-items: center; gap: 3mm; }
+.h3--rule::after { content: ""; flex: 1; height: .25mm; background: var(--hair); }
+.cap { font-size: 7.2pt; line-height: 1.6; color: var(--gray); }
+.note { font-size: 7.2pt; line-height: 1.6; color: var(--gray); }
+.blue { color: var(--blue); }
 
-.h3 { font-size: 11.6pt; line-height: 1.5; font-weight: 700; color: var(--navy); letter-spacing: .03em; }
-.dots li { position: relative; padding-left: 3.4mm; }
-.dots li::before { content: ""; position: absolute; left: .3mm; top: .78em; width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--orange-2); }
-.note { font-size: 7.4pt; line-height: 1.6; color: var(--ink-3); letter-spacing: .02em; }
+/* tables */
+.tbl { width: 100%; border-collapse: collapse; font-size: 8.4pt; line-height: 1.6; }
+.tbl th, .tbl td { padding: 1.7mm 2.4mm; border-bottom: .25mm solid var(--hair); text-align: left; vertical-align: top; }
+.tbl tr:first-child th, .tbl tr:first-child td { border-top: .5mm solid var(--navy); }
+.tbl thead th { background: var(--tint); font-size: 7.8pt; color: var(--navy); }
+.tbl tbody th { color: var(--navy); font-weight: 700; white-space: nowrap; }
+.tbl .n { font-family: var(--num); font-size: 10.5pt; font-weight: 700; color: var(--navy); text-align: center; width: 8mm; }
+.tbl td .num { font-size: 10.5pt; font-weight: 600; }
+
+/* numbered callout chip used in lists */
+.co { display: inline-grid; place-items: center; width: 4.6mm; height: 4.6mm; border-radius: 50%; border: .3mm solid var(--navy); font-family: var(--num); font-size: 8pt; font-weight: 700; color: var(--navy); line-height: 1; flex: none; }
 
 /* =========================================================
    P1 COVER
    ========================================================= */
-.cover { background: #fff; }
-.cover__photo {
-  top: calc(-1 * var(--b)); height: calc(150mm + var(--b));
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 84%);
-  background: var(--navy);
-}
-.cover__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
-.cover__tag {
-  position: absolute; top: 15mm; left: 15mm;
-  background: rgba(15, 38, 56, .88); color: #fff;
-  font-size: 9pt; font-weight: 700; letter-spacing: .12em; padding: 2mm 4mm; border-radius: 1mm;
-}
-.cover__tag b { color: var(--orange); font-weight: 700; margin-right: 2mm; }
-.cover__main { position: absolute; left: 15mm; right: 15mm; top: 143mm; }
-.cover__catch { font-size: 21pt; font-weight: 900; line-height: 1.3; letter-spacing: .05em; color: var(--navy); }
-.cover__catch .big { display: block; font-size: 33pt; margin-top: 1mm; letter-spacing: .02em; }
-.cover__catch .pct { font-family: var(--num); font-weight: 700; font-size: 64pt; line-height: .9; color: var(--blue-ink); letter-spacing: 0; vertical-align: -2mm; margin: 0 .6mm; }
-.cover__catch .pct small { font-size: 36pt; }
-.cover__sub { margin-top: 4mm; font-size: 10.6pt; line-height: 1.6; font-weight: 700; color: var(--ink-2); letter-spacing: .06em; }
-.cover__logo { margin-top: 5mm; width: 92mm; }
-.cover__model { margin-top: 2.5mm; font-size: 8.6pt; font-weight: 500; color: var(--ink-3); letter-spacing: .1em; }
-.cover__model .num { font-size: 12pt; font-weight: 600; color: var(--navy); margin-right: 1.5mm; }
-.cover__product { position: absolute; right: 8mm; top: 196mm; width: 92mm; filter: drop-shadow(0 4mm 5mm rgba(21,50,74,.22)); }
-.points { position: absolute; left: 15mm; top: 238mm; display: flex; gap: 4mm; }
-.point {
-  width: 29mm; height: 29mm; border-radius: 50%; border: .7mm solid var(--blue);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-  background: #fff; color: var(--navy); font-weight: 700; font-size: 8pt; line-height: 1.35; letter-spacing: .02em;
-}
-.point i { font-style: normal; font-family: var(--num); font-size: 7.4pt; font-weight: 600; color: var(--blue-ink); letter-spacing: .14em; margin-bottom: .6mm; }
-.point .num { font-size: 25pt; line-height: 1; color: var(--blue-ink); }
-.point .num small { font-size: 13pt; }
-.cover__bar {
-  bottom: calc(-1 * var(--b)); height: calc(20mm + var(--b)); background: var(--navy); color: #fff;
-  display: flex; align-items: flex-start; justify-content: space-between;
-  padding: 6.2mm calc(15mm + var(--b)) 0;
-}
-.cover__bar p { font-size: 8.6pt; font-weight: 500; letter-spacing: .08em; }
-.cover__bar p b { display: inline-block; background: var(--orange); color: var(--navy-3); padding: .4mm 2.2mm; border-radius: .8mm; margin-right: 2.4mm; font-weight: 700; }
-.cover__co { font-size: 11pt !important; font-weight: 700 !important; letter-spacing: .14em !important; }
-.cover__co::before { content: ""; display: inline-block; width: 3.2mm; height: 3.2mm; background: var(--orange); margin-right: 2mm; vertical-align: .2mm; }
+.cv { background: var(--tint); }
+.cv__bg { top: calc(-1 * var(--b)); bottom: calc(-1 * var(--b)); background:
+  linear-gradient(180deg, #f4f6f7 0%, #e7ebee 100%); }
+.cv__grid { top: calc(-1 * var(--b)); height: calc(250mm + var(--b)); background-image:
+  linear-gradient(rgba(21,50,74,.05) .25mm, transparent .25mm), linear-gradient(90deg, rgba(21,50,74,.05) .25mm, transparent .25mm);
+  background-size: 10mm 10mm; background-position: calc(var(--b) + 5mm) calc(var(--b) + 5mm); }
+.cv__logo { position: absolute; left: 15mm; top: 14mm; width: 50mm; }
+.cv__cat { position: absolute; right: 15mm; top: 14mm; text-align: right; }
+.cv__cat p { font-size: 8.4pt; font-weight: 700; color: var(--navy); letter-spacing: .12em; }
+.cv__cat span { display: block; font-family: var(--num); font-size: 9pt; font-weight: 600; letter-spacing: .3em; color: var(--gray); }
+.cv__copy { position: absolute; left: 15mm; top: 44mm; }
+.cv__copy h1 { font-size: 30pt; font-weight: 900; line-height: 1.32; letter-spacing: .06em; color: var(--navy); }
+.cv__copy p { margin-top: 5mm; font-size: 10pt; font-weight: 500; line-height: 1.8; color: var(--ink-2); letter-spacing: .06em; }
+.cv__model { position: absolute; left: 12mm; top: 176mm; font-family: var(--num); font-weight: 700; font-size: 128pt; line-height: .8; color: var(--navy); letter-spacing: -.01em; }
+.cv__model small { display: block; margin: 0 0 3mm 2mm; font-family: var(--font); font-size: 8pt; font-weight: 700; letter-spacing: .2em; color: var(--gray); line-height: 1; }
+.cv__product { position: absolute; right: 4mm; top: 98mm; width: 140mm; }
+.cv__band { bottom: calc(-1 * var(--b)); height: calc(47mm + var(--b)); background: var(--navy); color: #fff; padding: 7mm calc(15mm + var(--b)) 0; }
+.cv__specs { display: grid; grid-template-columns: repeat(4, 1fr); }
+.cv__specs li { padding: 0 3mm; border-left: .25mm solid rgba(255,255,255,.3); }
+.cv__specs li:first-child { padding-left: 0; border-left: 0; }
+.cv__specs span { display: block; font-size: 7.4pt; color: rgba(255,255,255,.75); letter-spacing: .08em; }
+.cv__specs b { font-family: var(--num); font-size: 24pt; font-weight: 600; line-height: 1.15; }
+.cv__specs b small { font-family: var(--font); font-size: 8.4pt; font-weight: 500; margin-left: .8mm; }
+.cv__foot { position: absolute; left: calc(15mm + var(--b)); right: calc(15mm + var(--b)); bottom: calc(8mm + var(--b)); display: flex; justify-content: space-between; align-items: baseline; }
+.cv__foot p { font-size: 6.8pt; color: rgba(255,255,255,.6); }
+.cv__foot strong { font-size: 11pt; letter-spacing: .2em; }
 
 /* =========================================================
-   P2 PROBLEM
+   P2 INTRODUCTION
    ========================================================= */
-.problem .map { display: block; width: 100%; height: auto; margin-top: 6mm; border-radius: 2mm; font-family: var(--font); }
-.worries { margin-top: 8mm; display: grid; grid-template-columns: 1fr 1fr; gap: 7mm 6mm; }
-.worry { border-top: .6mm solid var(--navy); padding-top: 3mm; }
-.worry h3 { display: flex; gap: 2.6mm; align-items: flex-start; font-size: 11.4pt; line-height: 1.45; color: var(--navy); font-weight: 700; }
-.worry h3 .no {
-  flex: none; width: 7mm; height: 7mm; border-radius: 50%; background: var(--orange-2); color: #fff;
-  display: grid; place-items: center; font-family: var(--num); font-size: 12pt; font-weight: 700; margin-top: .3mm;
-}
-.worry p { margin-top: 2mm; padding-left: 9.6mm; font-size: 9.2pt; line-height: 1.75; color: var(--ink-2); }
-.bridge {
-  position: absolute; left: 0; right: 0; bottom: 6mm;
-  display: flex; align-items: center; justify-content: space-between; gap: 4mm;
-  background: var(--cream); border-left: 1.2mm solid var(--orange-2); padding: 4mm 5mm;
-}
-.bridge p { font-size: 10.6pt; font-weight: 700; color: var(--navy); line-height: 1.5; }
-.bridge p small { display: block; font-size: 8.4pt; font-weight: 500; color: var(--ink-2); }
-.bridge svg { flex: none; width: 11mm; height: 11mm; }
+.ba { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.ba figcaption { margin-top: 2.4mm; font-size: 8.2pt; line-height: 1.7; color: var(--ink-2); }
+.ba figcaption b { display: block; font-size: 9.2pt; color: var(--navy); }
+.ba figure:last-child figcaption b { color: var(--blue); }
+.scene { margin-top: 8mm; }
+.scene ul { margin-top: 3mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.scene li { background: var(--tint-2); border-left: .8mm solid var(--navy); padding: 2.8mm 3.4mm; font-size: 7.9pt; line-height: 1.65; color: var(--ink-2); }
+.scene li b { display: block; font-size: 9pt; color: var(--navy); margin-bottom: .8mm; }
+.toc { position: absolute; left: 0; right: 0; bottom: 0; }
+.toc ol { margin-top: 3mm; display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; }
+.toc li { display: flex; align-items: baseline; gap: 3mm; padding: 1.6mm 0; border-bottom: .25mm solid var(--hair); font-size: 8.8pt; }
+.toc li .num { width: 7mm; font-size: 11pt; font-weight: 700; color: var(--orange); }
+.toc li em { font-style: normal; font-family: var(--num); font-size: 7.8pt; font-weight: 600; letter-spacing: .14em; color: var(--gray); }
+.toc li i { margin-left: auto; font-style: normal; font-family: var(--num); font-size: 10pt; font-weight: 600; color: var(--navy); }
 
 /* =========================================================
-   P3 AFTER (benefits)
+   P3 SYSTEM
    ========================================================= */
-.sol__band { top: calc(-1 * var(--b)); height: calc(176mm + var(--b)); background: var(--navy); }
-.sol__band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120mm 80mm at 85% 8%, rgba(52,152,219,.25), transparent 70%); }
-.sol__head { position: relative; }
-.afters { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; position: relative; }
-.after { background: #fff; border-radius: 2mm; overflow: hidden; display: flex; flex-direction: column; }
-.after__before { display: flex; align-items: center; gap: 2mm; background: #e9edf0; color: var(--ink-3); font-size: 7.9pt; line-height: 1.4; padding: 2.2mm 4mm; }
-.after__before .no { flex: none; width: 4.8mm; height: 4.8mm; border-radius: 50%; background: #9aa6b1; color: #fff; display: grid; place-items: center; font-family: var(--num); font-size: 9pt; font-weight: 700; }
-.after__before s { text-decoration: none; }
-.after__body { padding: 3.4mm 4.4mm 4.2mm; position: relative; flex: 1; }
-.after__body::before { content: ""; position: absolute; left: 6.2mm; top: -1.6mm; border: 1.6mm solid transparent; border-top-color: #e9edf0; border-bottom: 0; }
-.after h3 { font-size: 12pt; line-height: 1.42; font-weight: 900; color: var(--navy); }
-.after h3 em { font-style: normal; color: var(--orange-ink); }
-.after p { margin-top: 1.6mm; font-size: 8.5pt; line-height: 1.7; color: var(--ink-2); }
-.after p b { color: var(--navy); }
-.reasons-ttl { position: absolute; left: 0; right: 0; top: 172mm; }
-.reasons-ttl .h3 { font-size: 12pt; font-weight: 900; }
-.reasons { position: absolute; left: 0; right: 0; top: 182mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
-.reason { border-top: .6mm solid var(--orange-2); padding-top: 2.4mm; }
-.reason svg { width: 9mm; height: 9mm; display: block; }
-.reason h4 { margin-top: 1.4mm; font-size: 9.4pt; line-height: 1.4; font-weight: 700; color: var(--navy); }
-.reason p { margin-top: .8mm; font-size: 8.2pt; line-height: 1.6; color: var(--ink-2); }
-.results { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); border-top: .5mm solid var(--navy); border-bottom: .3mm solid var(--line); }
-.result { padding: 3.4mm 2mm 3mm; text-align: center; }
-.result + .result { border-left: .3mm solid var(--line); }
-.result .num { display: block; font-size: 27pt; font-weight: 700; line-height: 1; color: var(--navy); }
-.result .num small { font-size: 12pt; font-family: var(--font); font-weight: 700; margin-left: .6mm; }
-.result p { margin-top: 1.4mm; font-size: 7.8pt; line-height: 1.5; color: var(--ink-2); }
-.results-cap { position: absolute; right: 0; bottom: 3mm; font-size: 6.6pt; color: var(--ink-3); }
+.sys { margin-top: 7mm; }
+.legend5 { margin-top: 4mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 3.4mm; }
+.legend5 li { border-top: .25mm solid var(--navy); padding-top: 2mm; font-size: 7.8pt; line-height: 1.65; color: var(--ink-2); }
+.legend5 b { display: flex; align-items: center; gap: 1.6mm; font-size: 8.8pt; color: var(--navy); margin-bottom: 1mm; line-height: 1.35; }
+.legend5 li:nth-child(3) b { color: var(--blue); }
+.sel { margin-top: 8mm; }
+.sel ol { margin-top: 3mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.4mm; }
+.sel li { position: relative; background: var(--tint); padding: 2.6mm 3mm 3mm; font-size: 7.6pt; line-height: 1.5; color: var(--ink-2); }
+.sel li span { display: block; font-size: 7.2pt; font-weight: 700; color: var(--gray); letter-spacing: .06em; }
+.sel li b { display: block; font-size: 9pt; color: var(--navy); line-height: 1.4; min-height: 8.4mm; }
+.sel li em { display: block; margin-top: 1.8mm; padding-top: 1.8mm; border-top: .25mm solid var(--hair); font-style: normal; font-weight: 700; color: var(--blue); }
+.sel li em::before { content: "→ "; }
+.points { position: absolute; left: 0; right: 0; bottom: 0; }
+.points .tbl { margin-top: 3mm; }
+.points .tbl th { width: 32mm; }
 
 /* =========================================================
-   P4 MECHANISM
+   P4 PRINCIPLE
    ========================================================= */
-.mech__fig { margin-top: 6mm; }
-.mech__fig svg { display: block; width: 100%; height: auto; }
-.steps3 { margin-top: 5mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
-.step3 { border-top: .6mm solid var(--navy); padding-top: 3mm; }
-.step3 .part { font-size: 7.8pt; font-weight: 700; color: var(--orange-ink); letter-spacing: .08em; }
-.step3 h3 { display: flex; align-items: center; gap: 2.2mm; font-size: 14pt; font-weight: 900; color: var(--navy); line-height: 1.3; margin-top: .6mm; }
-.step3 h3 .no { width: 6.4mm; height: 6.4mm; border-radius: 50%; background: var(--orange-2); color: #fff; display: grid; place-items: center; font-family: var(--num); font-size: 11.5pt; font-weight: 700; }
-.step3 p { margin-top: 1.6mm; font-size: 9pt; line-height: 1.75; color: var(--ink-2); }
-.why { margin-top: 8mm; background: var(--bg-light); border-radius: 2mm; padding: 5mm 5mm 5.4mm; }
-.why h3 { font-size: 11pt; font-weight: 900; color: var(--navy); }
-.why ul { margin-top: 3mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
-.why li { font-size: 8.6pt; line-height: 1.72; color: var(--ink-2); border-left: .6mm solid var(--orange-2); padding-left: 3mm; }
-.why li b { display: block; font-size: 9.8pt; color: var(--navy); margin-bottom: 1mm; line-height: 1.45; }
-.mech__bottom { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: 70mm 1fr; gap: 5mm; }
-.rate { background: var(--navy); color: #fff; border-radius: 2mm; padding: 4.4mm 5mm; }
-.rate__lbl { font-size: 9pt; font-weight: 700; letter-spacing: .1em; }
-.rate__num .num { font-size: 40pt; font-weight: 700; line-height: 1; }
-.rate__num small { font-size: 17pt; font-weight: 700; margin-left: .6mm; }
-.rate__cap { margin-top: 1.4mm; font-size: 7.2pt; line-height: 1.5; color: rgba(255,255,255,.78); }
-.video { border: .4mm solid var(--line); border-radius: 2mm; padding: 4mm 5mm; display: flex; align-items: center; gap: 5mm; }
-.video h3 { font-size: 10.4pt; font-weight: 700; color: var(--navy); line-height: 1.45; }
-.video .qr { flex: none; width: 24mm; height: 24mm; }
-.video p { margin-top: 1.6mm; font-size: 8pt; line-height: 1.6; color: var(--ink-2); }
-.qr svg { display: block; width: 100%; height: 100%; }
+.prn { margin-top: 6mm; }
+.steps { margin-top: 4mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.steps li { border-top: .5mm solid var(--navy); padding-top: 2.4mm; }
+.steps h3 { display: flex; align-items: center; gap: 2mm; font-size: 11pt; color: var(--navy); }
+.steps h3 small { margin-left: auto; font-size: 7.4pt; color: var(--blue); font-weight: 700; }
+.steps p { margin-top: 1.4mm; font-size: 8.3pt; line-height: 1.75; color: var(--ink-2); }
+.oil { margin-top: 6mm; }
+.oil ol { margin-top: 3mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6mm; }
+.oil li { position: relative; border: .25mm solid var(--hair); border-top: .8mm solid #c98b3a; padding: 2mm 3mm 2.2mm; font-size: 7.7pt; line-height: 1.6; color: var(--ink-2); }
+.oil li b { display: block; font-size: 9pt; color: var(--navy); margin-bottom: .6mm; }
+.oil li + li::before { content: ""; position: absolute; left: -4.6mm; top: 50%; border: 1.5mm solid transparent; border-left: 2.2mm solid var(--navy); transform: translateY(-50%); }
+.vs { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 44mm; gap: 6mm; align-items: end; }
+.vs .tbl { margin-top: 3mm; }
+.vs .tbl thead th:nth-child(2) { color: var(--blue); }
+.vs .tbl td { width: 40%; }
+.rate { border-top: .5mm solid var(--navy); padding-top: 3mm; }
+.rate span { font-size: 8pt; font-weight: 700; color: var(--navy); letter-spacing: .08em; }
+.rate b { display: block; font-family: var(--num); font-size: 46pt; line-height: 1; color: var(--blue); }
+.rate b small { font-size: 20pt; }
+.rate p { margin-top: 1.4mm; }
 
 /* =========================================================
-   P5 MAINTENANCE
+   P5 STRUCTURE
    ========================================================= */
-.mt__grid { margin-top: 6mm; display: grid; grid-template-columns: 1fr 58mm; gap: 6mm; }
-.mt__list { counter-reset: s; }
-.mt__list li { position: relative; padding: 0 0 4.2mm 11mm; }
-.mt__list li::before {
-  counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0;
-  width: 7.4mm; height: 7.4mm; border-radius: 50%; background: var(--navy); color: #fff;
-  display: grid; place-items: center; font-family: var(--num); font-size: 12.5pt; font-weight: 700;
-}
-.mt__list li::after { content: ""; position: absolute; left: 3.55mm; top: 8.4mm; bottom: 1mm; width: .3mm; background: var(--line); }
-.mt__list li:last-child::after { display: none; }
-.mt__list h3 { font-size: 10.6pt; font-weight: 700; color: var(--navy); line-height: 1.45; padding-top: .7mm; }
-.mt__list p { margin-top: 1mm; font-size: 8.6pt; line-height: 1.72; color: var(--ink-2); }
-.volt { background: var(--navy); color: #fff; border-radius: 2mm; padding: 5mm 4.6mm 4.6mm; }
-.volt h3 { font-size: 10.4pt; font-weight: 700; line-height: 1.45; }
-.volt > p { margin-top: 2mm; font-size: 8.1pt; line-height: 1.7; color: rgba(255,255,255,.84); }
-.gauge { margin-top: 4mm; background: rgba(255,255,255,.07); border: .3mm solid rgba(255,255,255,.16); border-radius: 1.6mm; padding: 3mm 3.4mm; }
-.gauge + .gauge { margin-top: 2.6mm; }
-.gauge dt { font-size: 7.6pt; color: rgba(255,255,255,.75); letter-spacing: .06em; }
-.gauge dd { display: flex; align-items: baseline; gap: 1.6mm; }
-.gauge dd .num { font-size: 25pt; font-weight: 700; line-height: 1.05; color: #fff; }
-.gauge dd small { font-size: 8pt; color: var(--orange); font-weight: 700; }
-.gauge svg { display: block; width: 100%; height: 5mm; margin-top: 1.4mm; }
-.safe-ttl { position: absolute; left: 0; right: 0; top: 168mm; }
-.safe-ttl .h3 { font-size: 13pt; font-weight: 900; }
-.safes { position: absolute; left: 0; right: 0; top: 178mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm 4mm; }
-.safe { display: grid; grid-template-columns: 10mm 1fr; gap: 3mm; align-items: start; padding: 3.4mm 3.6mm; border: .3mm solid var(--line); border-radius: 2mm; }
-.safe svg { width: 10mm; height: 10mm; }
-.safe h4 { font-size: 9.6pt; font-weight: 700; color: var(--navy); line-height: 1.4; }
-.safe p { margin-top: .8mm; font-size: 8.1pt; line-height: 1.65; color: var(--ink-2); }
-.warranty { position: absolute; left: 0; right: 0; bottom: 8mm; display: flex; align-items: center; gap: 5mm; background: var(--cream); border-radius: 2mm; padding: 4mm 5mm; }
-.warranty .seal { flex: none; width: 21mm; height: 21mm; border-radius: 50%; background: var(--orange-2); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1; }
-.warranty .seal span { font-size: 7pt; font-weight: 700; }
-.warranty .seal b { font-family: var(--num); font-size: 22pt; }
-.warranty .seal b small { font-family: var(--font); font-size: 9pt; }
-.warranty h3 { font-size: 10.4pt; font-weight: 700; color: var(--navy); }
-.warranty p { margin-top: 1mm; font-size: 8.2pt; line-height: 1.65; color: var(--ink-2); }
+.str { margin-top: 5mm; }
+.parts { margin-top: 3mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 6mm; }
+.parts li { display: grid; grid-template-columns: 5.4mm 1fr; gap: 2mm; padding: 1.5mm 0; border-bottom: .25mm solid var(--hair); font-size: 7.8pt; line-height: 1.55; color: var(--ink-2); }
+.parts li b { display: block; font-size: 8.4pt; color: var(--navy); }
+.parts .co { margin-top: .4mm; }
 
 /* =========================================================
-   P6 PRICE
+   P6 FEATURES
    ========================================================= */
-.plans { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
-.plan { border: .5mm solid var(--navy); border-radius: 2.4mm; overflow: hidden; display: flex; flex-direction: column; }
-.plan__hd { background: var(--navy); color: #fff; padding: 3.6mm 4.4mm 3.4mm; }
-.plan--rent { border-color: var(--orange-2); }
-.plan--rent .plan__hd { background: var(--orange-2); }
-.plan__hd span { display: inline-block; font-size: 7.6pt; font-weight: 700; letter-spacing: .1em; padding: .2mm 2mm; border: .3mm solid rgba(255,255,255,.7); border-radius: .8mm; }
-.plan__hd h3 { margin-top: 1.6mm; font-size: 14pt; font-weight: 900; letter-spacing: .06em; line-height: 1.3; }
-.plan__hd p { font-size: 8.1pt; line-height: 1.6; color: rgba(255,255,255,.9); margin-top: .8mm; }
-.plan__bd { padding: 4mm 4.4mm 4.4mm; flex: 1; display: flex; flex-direction: column; }
-.rows { font-size: 9.4pt; }
-.rows div { display: flex; align-items: baseline; gap: 2mm; padding: 1.6mm 0; border-bottom: .25mm dotted #b9c3cb; }
-.rows dt { color: var(--ink-2); }
-.rows dt sup { font-size: 6.4pt; color: var(--ink-3); }
-.rows dd { margin-left: auto; font-family: var(--num); font-size: 14pt; font-weight: 600; color: var(--ink); letter-spacing: .01em; }
-.rows dd small { font-family: var(--font); font-size: 8pt; font-weight: 500; margin-left: .4mm; }
-.total { margin-top: 3.4mm; text-align: right; }
-.total .lbl { font-size: 8.6pt; font-weight: 700; color: var(--navy); }
-.total .num { font-size: 34pt; font-weight: 700; line-height: 1; color: var(--navy); }
-.plan--rent .total .num { color: var(--orange-ink); }
-.total .num small { font-family: var(--font); font-size: 11pt; margin-left: .6mm; }
-.total .tax { display: block; font-size: 8pt; color: var(--ink-2); margin-top: .8mm; }
-.plan__for { margin-top: 2.6mm; padding: 2mm 3mm; background: var(--bg-light); border-radius: 1.2mm; font-size: 8.2pt; font-weight: 700; color: var(--navy); line-height: 1.5; }
-.plan__for::before { content: "こんな方に："; color: var(--orange-ink); }
-.plan__note { margin-top: auto; padding-top: 3.4mm; font-size: 8pt; line-height: 1.6; color: var(--ink); }
-.plan__note b { color: var(--navy); }
-.plus { text-align: center; font-family: var(--num); font-size: 18pt; font-weight: 700; color: var(--orange-ink); line-height: 1; margin: 1.6mm 0 0; }
-.price-note { margin-top: 3mm; }
-.cmp { margin-top: 6mm; width: 100%; border-collapse: collapse; font-size: 8.8pt; line-height: 1.55; }
-.cmp caption { text-align: left; font-size: 11pt; font-weight: 700; color: var(--navy); padding-bottom: 2.4mm; }
-.cmp th, .cmp td { border-bottom: .3mm solid var(--line); padding: 2.3mm 2.6mm; text-align: left; vertical-align: top; }
-.cmp thead th { background: var(--bg-light); font-size: 8.2pt; color: var(--navy); border-bottom: .5mm solid var(--navy); }
-.cmp tbody th { width: 36mm; color: var(--navy); font-weight: 700; }
-.cmp td { width: 37%; }
-.cta { margin-top: 7mm; display: grid; grid-template-columns: 1fr auto; gap: 5mm; align-items: center; border: .6mm solid var(--orange-2); border-radius: 2.4mm; padding: 5mm 5.4mm; background: var(--cream); }
-.cta__ttl { font-size: 11.6pt; font-weight: 900; color: var(--navy); line-height: 1.45; }
-.cta__txt { margin-top: 1.4mm; font-size: 8.3pt; line-height: 1.65; color: var(--ink-2); }
-.cta__tel { text-align: right; }
-.cta__tel span { display: inline-block; font-size: 7.4pt; font-weight: 700; background: var(--orange); color: var(--navy-3); padding: .3mm 1.8mm; border-radius: .8mm; }
-.cta__tel b { display: block; font-size: 25pt; font-weight: 700; color: var(--navy); line-height: 1.1; margin-top: .8mm; }
-.cta__tel small { display: block; font-size: 7pt; color: var(--ink-3); }
-.elec { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: auto 1fr; gap: 5mm; align-items: center; background: var(--bg-light); border-radius: 2mm; padding: 4.4mm 5mm; }
-.elec__big { display: flex; flex-direction: column; }
-.elec__big span { font-size: 8pt; font-weight: 700; color: var(--navy); }
-.elec__big b { font-family: var(--num); font-size: 26pt; font-weight: 700; color: var(--navy); line-height: 1.05; }
-.elec__big b small { font-family: var(--font); font-size: 9.5pt; margin-left: .4mm; }
-.elec p { font-size: 8.4pt; line-height: 1.7; color: var(--ink-2); }
+.fphoto { position: relative; height: 100mm; margin-top: 0; }
+.fphoto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.fphoto figcaption { position: absolute; left: 0; bottom: -5mm; }
+.feat-ttl { margin-top: 10mm; }
+.feats { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 7mm; }
+.feat { display: grid; grid-template-columns: 11mm 1fr; gap: 0 2mm; padding: 4.2mm 0 4.6mm; border-top: .25mm solid var(--hair); }
+.feat:nth-child(-n+2) { border-top: .5mm solid var(--navy); }
+.feat > .num { font-size: 20pt; font-weight: 700; color: var(--orange); line-height: 1; }
+.feat h3 { font-size: 10.2pt; font-weight: 700; color: var(--navy); line-height: 1.45; }
+.feat p { margin-top: 1mm; font-size: 8.4pt; line-height: 1.72; color: var(--ink-2); }
+.feat .spec { margin-top: 1.4mm; font-size: 7.6pt; font-weight: 700; color: var(--blue); }
 
 /* =========================================================
-   P7 SPEC & INSTALL
+   P7 MAINTENANCE
    ========================================================= */
-.spec { margin-top: 5mm; display: grid; grid-template-columns: 80mm 1fr; gap: 6mm; align-items: start; }
-.spec__fig svg { width: 100%; height: auto; display: block; }
-.spec table { width: 100%; border-collapse: collapse; font-size: 9.2pt; }
-.spec caption { text-align: left; font-size: 8pt; font-weight: 700; color: var(--ink-3); letter-spacing: .1em; padding-bottom: 1.6mm; }
-.spec th, .spec td { padding: 1.55mm 0; border-bottom: .3mm solid var(--line); text-align: left; vertical-align: baseline; }
-.spec tr:first-child th, .spec tr:first-child td { border-top: .5mm solid var(--navy); }
-.spec th { width: 23mm; color: var(--navy); font-weight: 700; font-size: 8.6pt; }
-.spec td .num { font-size: 12.5pt; font-weight: 600; }
-.cases { margin-top: 6.4mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
-.cases figure img { width: 100%; height: 34mm; object-fit: cover; border-radius: 1.6mm; }
-.cases figcaption { margin-top: 1.6mm; font-size: 7.8pt; line-height: 1.5; color: var(--ink-2); }
-.cases figcaption { margin-top: 2mm !important; }
-.cases .tag { display: inline-block; font-size: 7pt; font-weight: 700; color: #fff; background: var(--navy); padding: .2mm 1.8mm; border-radius: .8mm; }
-.cases figcaption b { display: block; margin-top: 1.2mm; font-size: 8.6pt; color: var(--navy); line-height: 1.45; }
-.cases .res { display: block; margin-top: 1.2mm; padding-left: 3.6mm; position: relative; }
-.cases .res::before { content: "→"; position: absolute; left: 0; color: var(--orange-ink); font-weight: 700; }
-.inst { position: absolute; left: 0; right: 0; bottom: 8mm; }
-.inst h3 { font-size: 11.6pt; font-weight: 900; color: var(--navy); }
-.inst ul { margin-top: 2.6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 6mm; font-size: 8.5pt; line-height: 1.66; }
-.inst li b { color: var(--navy); }
-.inst .caution { margin-top: 3.2mm; background: var(--cream); border-left: 1mm solid var(--orange-2); padding: 2.6mm 3.6mm; font-size: 8.3pt; line-height: 1.65; }
+.mt { margin-top: 5mm; table-layout: fixed; }
+.mt th, .mt td { padding-top: 2.4mm; padding-bottom: 2.4mm; }
+.mt col.c1 { width: 11mm; } .mt col.c2 { width: 36mm; }
+.duo { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+.daily { background: var(--tint); padding: 3.6mm 4mm; }
+.daily p { margin-top: 1.6mm; font-size: 8.2pt; line-height: 1.7; color: var(--ink-2); }
+.lamp { display: flex; gap: 3mm; margin-top: 2.4mm; }
+.lamp span { display: flex; align-items: center; gap: 1.6mm; font-size: 7.8pt; font-weight: 700; color: var(--navy); }
+.lamp i { width: 3.2mm; height: 3.2mm; border-radius: 50%; background: #2ecc71; display: inline-block; }
+.lamp i.blink { background: linear-gradient(90deg, #2ecc71 50%, #e0473a 50%); }
+.volt .tbl td .num { font-size: 13pt; color: var(--blue); }
+.safety { margin-top: 6mm; }
+.safety ul { margin-top: 2.6mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.safety li { border-top: .25mm solid var(--navy); padding-top: 1.8mm; font-size: 7.8pt; line-height: 1.6; color: var(--ink-2); }
+.safety li b { display: block; font-size: 8.6pt; color: var(--navy); margin-bottom: .6mm; }
+.warranty { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; border: .25mm solid var(--navy); padding: 3.6mm 4.4mm; }
+.warranty .yr { border-right: .25mm solid var(--hair); }
+.warranty .yr span { font-size: 7.6pt; font-weight: 700; color: var(--navy); }
+.warranty .yr b { display: block; font-family: var(--num); font-size: 30pt; line-height: 1; color: var(--navy); }
+.warranty .yr b small { font-family: var(--font); font-size: 10pt; }
+.warranty p { font-size: 7.9pt; line-height: 1.7; color: var(--ink-2); }
+.warranty p + p { margin-top: 1mm; }
 
 /* =========================================================
-   P8 BACK COVER
+   P8 INSTALLATION
    ========================================================= */
-.flow { margin-top: 6mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.4mm; position: relative; }
-.flow::before { content: ""; position: absolute; top: 4.4mm; left: 6%; right: 6%; height: .5mm; background: var(--line); }
-.flow li { position: relative; text-align: center; }
-.flow .no { margin: 0 auto; width: 9mm; height: 9mm; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--num); font-size: 14pt; font-weight: 700; position: relative; }
-.flow li:last-child .no { background: var(--orange-2); }
-.flow h3 { margin-top: 2.4mm; font-size: 9.2pt; font-weight: 700; color: var(--navy); line-height: 1.4; min-height: 2.8em; display: flex; align-items: center; justify-content: center; }
-.flow p { margin-top: 1.4mm; font-size: 8.4pt; line-height: 1.6; color: var(--ink-2); text-align: left; }
-.area { margin-top: 10mm; display: grid; grid-template-columns: 34mm 1fr; gap: 5mm; align-items: center; border: .4mm solid var(--line); border-radius: 2mm; padding: 4mm 5mm; }
-.area__badge { text-align: center; }
-.area__badge b { display: block; font-size: 17pt; font-weight: 900; color: var(--navy); letter-spacing: .08em; line-height: 1.2; }
-.area__badge span { font-size: 7.4pt; color: var(--ink-3); }
-.area dl { font-size: 8.6pt; line-height: 1.6; }
-.area dl div { display: grid; grid-template-columns: 30mm 1fr; gap: 3mm; padding: 1.2mm 0; }
-.area dl div + div { border-top: .3mm dotted #b9c3cb; }
+.inst3 { margin-top: 6mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.inst3 figure { border-top: .5mm solid var(--navy); padding-top: 2mm; }
+.inst3 svg { background: var(--tint-2); }
+.inst3 figcaption { margin-top: 2mm; font-size: 7.8pt; line-height: 1.6; color: var(--ink-2); }
+.inst3 figcaption b { display: block; font-size: 9.2pt; color: var(--navy); }
+.cond { margin-top: 6mm; }
+.cond .tbl { margin-top: 3mm; }
+.cond .tbl th { width: 34mm; }
+.space { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 80mm 1fr; gap: 7mm; align-items: end; }
+.space .h3 { margin-bottom: 2mm; }
+.space svg { width: 100%; }
+.space figcaption { margin-top: 1.4mm; }
+.work { display: grid; gap: 3mm; }
+.work div { background: var(--tint); padding: 3.4mm 3.8mm; }
+.work span { font-size: 7.6pt; font-weight: 700; color: var(--gray); letter-spacing: .06em; }
+.work b { display: block; font-size: 10pt; color: var(--navy); line-height: 1.45; margin-top: .6mm; }
+.work p { margin-top: 1mm; font-size: 7.6pt; line-height: 1.6; color: var(--ink-2); }
+
+/* =========================================================
+   P9 SPEC
+   ========================================================= */
+.specwrap { margin-top: 6mm; display: grid; grid-template-columns: 86mm 1fr; gap: 8mm; align-items: start; }
+.spec { font-size: 9pt; }
+.spec th, .spec td { padding: 2.9mm 2.4mm; }
+.spec th { width: 22mm; }
+.specphoto { background: var(--tint); height: 62mm; padding: 4mm; margin-bottom: 6mm; }
+.specphoto img { width: 100%; height: 100%; object-fit: contain; }
+.specfig .h3 { margin-bottom: 1.6mm; }
+.spec td .num { font-size: 12pt; }
+.spec td small { color: var(--gray); }
+.subs { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1.3fr 1fr; gap: 7mm; }
+.subs ul { margin-top: 2.4mm; display: grid; grid-template-columns: 1fr 1fr; gap: 0 4mm; }
+.subs li { padding: 1.3mm 0; border-bottom: .25mm solid var(--hair); font-size: 8.2pt; }
+.subs .one { grid-template-columns: 1fr; }
+
+/* =========================================================
+   P10 COST
+   ========================================================= */
+.plans { margin-top: 5mm; width: 100%; border-collapse: collapse; font-size: 8.4pt; line-height: 1.55; }
+.plans th, .plans td { padding: 2.2mm 3mm; border-bottom: .25mm solid var(--hair); vertical-align: top; text-align: left; }
+.plans thead th { border-top: .5mm solid var(--navy); vertical-align: bottom; }
+.plans thead th:first-child { border-top-color: transparent; }
+.plans thead th span { display: block; font-size: 7.4pt; color: var(--gray); letter-spacing: .08em; }
+.plans thead th b { font-size: 11.4pt; color: var(--navy); }
+.plans thead th.rent b { color: var(--orange); }
+.plans tbody th { width: 26mm; color: var(--navy); font-weight: 700; }
+.plans .big { font-family: var(--num); font-size: 19pt; font-weight: 700; color: var(--navy); line-height: 1.1; }
+.plans .rent .big, .plans td.rent .big { color: var(--orange); }
+.plans .big small { font-family: var(--font); font-size: 8.4pt; margin-left: .5mm; }
+.plans .tax { display: block; font-size: 7.6pt; color: var(--gray); }
+.costwrap { position: absolute; left: 0; right: 0; bottom: 0; }
+.costwrap figure { margin-top: 2mm; }
+.costleg { display: flex; gap: 4mm; margin-top: 1mm; font-size: 7.6pt; color: var(--ink-2); }
+.costleg i { display: inline-block; width: 7mm; height: 0; border-top: .7mm solid var(--blue); vertical-align: middle; margin-right: 1.2mm; }
+.costleg i.d { border-top: .7mm dashed var(--orange); }
+.costrow { margin-top: 4mm; display: grid; grid-template-columns: 1fr 50mm; gap: 6mm; align-items: start; }
+.ctbl th, .ctbl td { padding: 1.5mm 2mm; }
+.ctbl thead th { text-align: right; }
+.ctbl thead th:first-child { text-align: left; }
+.ctbl td { text-align: right; font-family: var(--num); font-size: 10pt; font-weight: 500; }
+.ctbl td.low { font-weight: 700; color: var(--navy); }
+.elec { border-top: .5mm solid var(--navy); padding-top: 2.4mm; }
+.elec span { display: block; font-size: 7.6pt; font-weight: 700; color: var(--gray); }
+.elec b { display: block; font-family: var(--num); font-size: 22pt; color: var(--navy); line-height: 1.1; }
+.elec b small { font-family: var(--font); font-size: 8.4pt; }
+.elec p { margin-top: 1.2mm; }
+
+/* =========================================================
+   P11 CASES & FLOW
+   ========================================================= */
+.cases { margin-top: 5mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.case img { width: 100%; height: 62mm; object-fit: cover; }
+.case h3 { margin-top: 2.4mm; font-size: 9.6pt; color: var(--navy); line-height: 1.45; }
+.case h3 span { display: block; font-family: var(--num); font-size: 7.6pt; font-weight: 600; letter-spacing: .2em; color: var(--orange); }
+.case dl { margin-top: 1.6mm; font-size: 7.8pt; line-height: 1.6; color: var(--ink-2); }
+.case dl div { display: grid; grid-template-columns: 8mm 1fr; padding: 1.1mm 0; border-top: .25mm solid var(--hair); }
+.case dt { font-weight: 700; color: var(--navy); }
+.flow { position: absolute; left: 0; right: 0; bottom: 0; }
+.ftbl { margin-top: 3mm; table-layout: fixed; font-size: 7.9pt; }
+.ftbl tbody th, .ftbl tbody td { padding-top: 2.4mm; padding-bottom: 2.4mm; }
+.ftbl col.c1 { width: 11mm; } .ftbl col.c2 { width: 31mm; } .ftbl col.c4 { width: 50mm; }
+.ftbl thead th { font-size: 7.2pt; }
+.ftbl td.st { font-family: var(--num); font-size: 13pt; font-weight: 700; color: var(--navy); line-height: 1.2; }
+.ftbl td.st.or { color: var(--orange); }
+.ftbl tbody th { font-size: 8.6pt; }
+.ftbl tbody th small { display: inline-block; margin-left: 1.4mm; padding: 0 1.2mm; background: var(--orange); color: #fff; font-size: 6.6pt; line-height: 1.6; vertical-align: .3mm; }
+.ftbl td:last-child { color: var(--ink-2); background: var(--tint-2); }
+.area { margin-top: 4mm; display: grid; grid-template-columns: 28mm 1fr 1fr; gap: 5mm; background: var(--tint); padding: 3mm 4mm; font-size: 7.9pt; line-height: 1.6; color: var(--ink-2); align-items: center; }
+.area > b { font-size: 11pt; color: var(--navy); letter-spacing: .1em; }
 .area dt { font-weight: 700; color: var(--navy); }
-.contact { bottom: calc(-1 * var(--b)); height: calc(140mm + var(--b)); background: var(--navy); color: #fff; padding: 14mm calc(var(--mo) + var(--b)) 0 calc(var(--mo) + var(--b)); }
-.contact__ttl { font-size: 17pt; font-weight: 900; letter-spacing: .06em; line-height: 1.4; }
-.contact__lead { max-width: 108mm; margin-top: 2mm; font-size: 9.2pt; color: rgba(255,255,255,.86); }
-.contact__lead b { color: var(--orange); }
-.know { margin-top: 2.6mm; }
-.know li { font-size: 9.6pt; font-weight: 700; line-height: 1.8; }
-.know li::before { content: "✓"; color: var(--orange); margin-right: 1.4mm; }
-.tel { margin-top: 6mm; display: flex; align-items: center; gap: 4mm; }
-.tel__fd { flex: none; width: 15mm; height: 9.5mm; border-radius: 1.2mm; background: var(--orange); color: var(--navy-3); display: grid; place-items: center; font-size: 7.4pt; font-weight: 900; line-height: 1.05; text-align: center; letter-spacing: 0; }
-.tel b { font-family: var(--num); font-size: 40pt; font-weight: 700; letter-spacing: .02em; line-height: 1; }
-.tel__hours { margin-top: 1.6mm; font-size: 8.6pt; color: rgba(255,255,255,.84); }
-.qrs { position: absolute; right: calc(var(--mo) + var(--b)); top: 34mm; display: flex; gap: 4mm; }
-.qrs figure { background: #fff; border-radius: 1.6mm; padding: 3.2mm 3.2mm 2.2mm; text-align: center; }
-.qrs .qr { width: 25mm; height: 25mm; }
-.qrs figcaption { margin-top: 1.4mm; font-size: 7pt; font-weight: 700; color: var(--navy); line-height: 1.3; }
-.mail { margin-top: 5mm; font-size: 9.4pt; }
-.mail span { display: inline-block; font-size: 7.6pt; font-weight: 700; border: .3mm solid rgba(255,255,255,.6); border-radius: .8mm; padding: 0 1.6mm; margin-right: 2mm; }
-.company { position: absolute; left: calc(var(--mo) + var(--b)); right: calc(var(--mo) + var(--b)); bottom: calc(14mm + var(--b)); border-top: .3mm solid rgba(255,255,255,.25); padding-top: 5mm; display: grid; grid-template-columns: 50mm 1fr 1fr; gap: 5mm; align-items: start; }
-.company__co { font-size: 13pt; font-weight: 900; letter-spacing: .14em; }
-.company__co::before { content: ""; display: inline-block; width: 3.6mm; height: 3.6mm; background: var(--orange); margin-right: 2.2mm; }
-.company__co + p { margin-top: 2mm; }
-.company h4 { font-size: 8.4pt; font-weight: 700; color: var(--orange); letter-spacing: .1em; }
-.company p { margin-top: 1mm; font-size: 8.2pt; line-height: 1.7; color: rgba(255,255,255,.9); }
+
+/* =========================================================
+   P12 BACK COVER
+   ========================================================= */
+.chk { position: absolute; left: var(--mo); right: var(--mi); top: 14mm; }
+.chk__head { display: flex; align-items: baseline; justify-content: space-between; border-bottom: .5mm solid var(--navy); padding-bottom: 2mm; }
+.chk__head h2 { font-size: 13pt; color: var(--navy); }
+.chk__head p { font-size: 7.6pt; color: var(--gray); }
+.chk table { width: 100%; border-collapse: collapse; font-size: 8.2pt; }
+.chk th, .chk td { padding: 1.75mm 2.2mm; border-bottom: .25mm solid var(--hair); text-align: left; vertical-align: top; }
+.chk th { width: 33mm; color: var(--navy); font-weight: 700; background: var(--tint-2); }
+.chk td span { display: inline-block; margin-right: 3.6mm; white-space: nowrap; }
+.chk td span::before { content: ""; display: inline-block; width: 2.6mm; height: 2.6mm; border: .25mm solid var(--navy); margin-right: 1.2mm; vertical-align: -.3mm; }
+.chk td .blank { display: inline-block; min-width: 26mm; height: 3.6mm; border-bottom: .25mm solid var(--ink-2); vertical-align: -.6mm; }
+.chk td .blank.w-m { min-width: 60mm; }
+.chk td .blank.w-l { min-width: 120mm; }
+.chk__note { margin-top: 2.4mm; font-size: 8pt; line-height: 1.6; color: var(--ink-2); }
+.chk__note b { color: var(--navy); }
+.ct { bottom: calc(-1 * var(--b)); height: calc(124mm + var(--b)); background: var(--navy); color: #fff; padding: 9mm calc(var(--mi) + var(--b)) 0 calc(var(--mo) + var(--b)); }
+.ct__ttl { font-size: 13pt; font-weight: 700; letter-spacing: .06em; }
+.ct__lead { margin-top: 1.4mm; font-size: 8.4pt; color: rgba(255,255,255,.82); }
+.ct__lead b { color: var(--orange-l); }
+.ct__row { margin-top: 4.6mm; display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: center; }
+.tel span { display: inline-block; font-size: 7.4pt; font-weight: 700; background: var(--orange-l); color: var(--navy); padding: .2mm 2mm; margin-bottom: 1mm; }
+.tel b { display: block; font-family: var(--num); font-size: 38pt; font-weight: 700; line-height: 1; letter-spacing: .02em; }
+.tel p { margin-top: 1.4mm; font-size: 8pt; color: rgba(255,255,255,.8); }
+.tel p + p { margin-top: .6mm; }
+.qrs { display: flex; gap: 3mm; }
+.qrs figure { width: 27mm; background: #fff; padding: 2.6mm 2.6mm 1.6mm; text-align: center; }
+.qrs .qr { width: 21.8mm; height: 21.8mm; }
+.qrs figcaption { margin-top: 1.2mm; font-size: 6.8pt; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.ct__co { position: absolute; left: calc(var(--mo) + var(--b)); right: calc(var(--mi) + var(--b)); bottom: calc(15mm + var(--b)); display: grid; grid-template-columns: 1fr 1fr 40mm; gap: 5mm; border-top: .25mm solid rgba(255,255,255,.3); padding-top: 4mm; }
+.ct__co h4 { font-size: 7.6pt; color: var(--orange-l); letter-spacing: .1em; }
+.ct__co p { margin-top: .6mm; font-size: 7.6pt; line-height: 1.65; color: rgba(255,255,255,.88); }
+.ct__co .co-name { font-size: 11pt; font-weight: 700; letter-spacing: .16em; color: #fff; margin: 0 0 1mm; }
+.dealer { border: .25mm solid rgba(255,255,255,.55); padding: 2mm; min-height: 22mm; }
+.dealer span { font-size: 6.8pt; color: rgba(255,255,255,.7); letter-spacing: .1em; }
+.ct__legal { position: absolute; left: calc(var(--mo) + var(--b)); right: calc(var(--mi) + var(--b)); bottom: calc(7mm + var(--b)); font-size: 6.4pt; line-height: 1.5; color: rgba(255,255,255,.55); }
 </style>
 </head>
 <body>
 
-<!-- ======================= P1 COVER ======================= -->
-<section class="page page--r cover">
+<!-- =================== P1 COVER =================== -->
+<section class="page page--r cv">
   <div class="trim">
-    <div class="fb cover__photo"><img src="{{IMG}}/assets/img/hero-photo.webp" alt=""></div>
-    <p class="cover__tag"><b>全国対応</b>飲食店舗向け 業務用油煙除去装置</p>
-
-    <div class="cover__main">
-      <h1 class="cover__catch">飲食店の油煙を、<span class="big">最大<span class="pct">91<small>%</small></span>カット。</span></h1>
-      <p class="cover__sub">近隣の苦情も、外壁の油汚れも。<br>設置から毎月のメンテナンスまで、まるごとお任せください。</p>
-      <img class="cover__logo" src="{{IMG}}/assets/img/logo.webp" alt="野田の消煙機">
-      <p class="cover__model"><span class="num">JL-8A</span>電気集塵方式／処理風量 3,000㎥/h</p>
+    <div class="fb cv__bg"></div>
+    <div class="fb cv__grid"></div>
+    <img class="cv__logo" src="{{IMG}}/assets/img/logo.webp" alt="野田の消煙機">
+    <div class="cv__cat"><p>業務用 電気集塵式 油煙除去装置</p><span>PRODUCT CATALOG 2026</span></div>
+    <div class="cv__copy">
+      <h1>排気を、<br>街に出す前に。</h1>
+      <p>飲食店の排気ダクトに組み込み、<br>油煙を電気の力で捕集する消煙機。</p>
     </div>
-    <img class="cover__product" src="{{IMG}}/v2/assets/img/jl8a-product.webp" alt="">
-
-    <ul class="points">
-      <li class="point"><i>POINT 01</i>油煙除去率<span class="num">91<small>%</small></span></li>
-      <li class="point"><i>POINT 02</i>毎月の<br>定期メンテナンス<br>で安心</li>
-      <li class="point"><i>POINT 03</i>購入・レンタル<br>選べる<br>料金プラン</li>
-    </ul>
-
-    <div class="fb cover__bar">
-      <p><b>重飲食対応</b>焼肉・焼き鳥・居酒屋など、煙が出やすい店舗に</p>
-      <p class="cover__co">株式会社野田</p>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= P2 PROBLEM ======================= -->
-<section class="page page--l problem">
-  <div class="trim">
-    <div class="body">
-      <p class="eyebrow"><span class="num">01</span>お困りごと</p>
-      <h2 class="h2">近隣クレーム・油煙汚れ・物件審査…<br>飲食店の“煙問題”を放置していませんか？</h2>
-      <p class="lead">煙や臭いの問題は、近隣トラブルだけでなく、物件契約・清掃コスト・営業継続にも影響します。</p>
-      {{MAP}}
-      <ol class="worries">
-        <li class="worry"><h3><span class="no">1</span>近隣から煙・臭いの<br>苦情が入っている</h3><p>「洗濯物に臭いがつく」「窓を開けられない」など、住民トラブルにつながりやすい問題です。</p></li>
-        <li class="worry"><h3><span class="no">2</span>排気口まわりの外壁・<br>ダクトが油で汚れている</h3><p>油煙がそのまま排出されると、外壁の黒ずみや清掃コストの増加につながります。</p></li>
-        <li class="worry"><h3><span class="no">3</span>焼肉・焼き鳥など<br>重飲食の出店を断られそう</h3><p>煙・臭い対策が不十分だと、物件オーナーや管理会社の許可が取りにくくなります。</p></li>
-        <li class="worry"><h3><span class="no">4</span>管理会社・ビルオーナーから<br>改善を求められている</h3><p>営業を続けるために、具体的な排煙対策を示す必要が出てきます。</p></li>
-      </ol>
-      <div class="bridge">
-        <p>その悩み、野田の消煙機でこう変わります。<small>4つのお悩みが導入後どうなるか、右のページでご紹介します。</small></p>
-        <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#f08c1c"/><path d="M15 22h14M23 15l7 7-7 7" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-    </div>
-    <p class="foot"><b>02</b>野田の消煙機 JL-8A</p>
-  </div>
-</section>
-
-<!-- ======================= P3 AFTER ======================= -->
-<section class="page page--r">
-  <div class="trim">
-    <div class="fb sol__band"></div>
-    <div class="body">
-      <div class="sol__head inv">
-        <p class="eyebrow"><span class="num">02</span>導入後のお店</p>
-        <h2 class="h2">野田の消煙機を付けると、<br>お店はこう変わります。</h2>
-        <p class="lead">排気ダクトから出る油煙を、外に出る前に最大91%カット。左ページの4つのお悩みは、それぞれこう変わります。</p>
-      </div>
-      <ol class="afters">
-        <li class="after"><p class="after__before"><span class="no">1</span><s>近隣から煙・臭いの苦情が入っている</s></p>
-          <div class="after__body"><h3>近所の目を気にせず、<br><em>営業に集中できる</em></h3><p>煙や臭いが外に出にくくなり、洗濯物や窓開けへの影響を抑えます。<b>導入店舗の99%がクレーム減少を実感</b>しています。</p></div></li>
-        <li class="after"><p class="after__before"><span class="no">2</span><s>外壁・ダクトが油で汚れている</s></p>
-          <div class="after__body"><h3>外壁やダクトがきれいなまま。<br><em>清掃の手間と費用も減る</em></h3><p>油煙がそのまま出ないので、黒ずみがつきにくくなります。<b>清掃が月1回から3ヶ月に1回</b>になった店舗もあります。</p></div></li>
-        <li class="after"><p class="after__before"><span class="no">3</span><s>重飲食の出店を断られそう</s></p>
-          <div class="after__body"><h3>焼肉・焼き鳥でも、<br><em>物件を選びやすくなる</em></h3><p>「この設備で煙を処理します」と具体的に示せるので、物件オーナーや管理会社の理解を得やすくなります。</p></div></li>
-        <li class="after"><p class="after__before"><span class="no">4</span><s>管理会社から改善を求められている</s></p>
-          <div class="after__body"><h3>対策を形で示して、<br><em>安心して営業を続けられる</em></h3><p>設置後も毎月点検し、性能を数値で確認してご報告します。施設側への説明材料としても使えます。</p></div></li>
-      </ol>
-      <div class="reasons-ttl"><h3 class="h3">野田の消煙機が選ばれる理由</h3></div>
-      <ul class="reasons">
-        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M13 30c0-6 5-7 5-12M20 30c0-6 5-7 5-12M27 30c0-6 5-7 5-12" fill="none" stroke="#c46a00" stroke-width="2.6" stroke-linecap="round"/><path d="M10 12l24 20" stroke="#15324a" stroke-width="3" stroke-linecap="round"/></svg><h4>油煙を最大91%カット</h4><p>電気の力で、細かな油煙まで集めます。</p></li>
-        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><rect x="11" y="13" width="22" height="20" rx="2" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M11 19h22M16 10v6M28 10v6" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16.5 26l3.5 3.5 7-7" fill="none" stroke="#c46a00" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><h4>毎月のメンテナンス付き</h4><p>点検・清掃は専門スタッフにお任せ。お店の手間はかかりません。</p></li>
-        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M11 27h22l-2 5H13z" fill="#15324a"/><path d="M13 24h18" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16 20c0-4 3-4 3-8M22 20c0-4 3-4 3-8M28 20c0-4 3-4 3-8" fill="none" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg><h4>重飲食店舗に対応</h4><p>焼肉・焼き鳥・炉端焼き・居酒屋などで導入されています。</p></li>
-        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><circle cx="22" cy="22" r="10" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M17.5 16.5l4.5 6 4.5-6M22 22.5v7M18 23.5h8M18 27h8" fill="none" stroke="#c46a00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h4>購入・レンタルを選べる</h4><p>初期費用を抑えて始められるプランもあります。</p></li>
+    <img class="cv__product" src="{{IMG}}/v2/assets/img/jl8a-product.webp" alt="">
+    <p class="cv__model"><small>MODEL</small>JL-8A</p>
+    <div class="fb cv__band">
+      <ul class="cv__specs">
+        <li><span>処理風量</span><b class="num">3,000<small>㎥/h</small></b></li>
+        <li><span>油煙除去率</span><b class="num">最大91<small>%※</small></b></li>
+        <li><span>消費電力</span><b class="num">300<small>W</small></b></li>
+        <li><span>電源</span><b class="num">AC100<small>V 単相</small></b></li>
       </ul>
-      <ul class="results">
-        <li class="result"><span class="num">99<small>%</small></span><p>導入店舗の99%が<br>クレーム減少を実感</p></li>
-        <li class="result"><span class="num">100<small>軒以上</small></span><p>全国100軒以上の<br>飲食店で導入実績</p></li>
-        <li class="result"><span class="num">20<small>年以上</small></span><p>飲食店換気の専門事業者<br>としての実績</p></li>
-      </ul>
-      <p class="results-cap">導入店舗の実績（当社調べ）</p>
+      <div class="cv__foot"><p>※自社調べ。煙の量や排気の条件によって変わります。</p><strong>株式会社野田</strong></div>
     </div>
-    <p class="foot"><b>03</b>野田の消煙機 JL-8A</p>
   </div>
 </section>
 
-<!-- ======================= P4 MECHANISM ======================= -->
+<!-- =================== P2 INTRODUCTION =================== -->
 <section class="page page--l">
   <div class="trim">
+    <header class="rh"><span class="rh__no">01</span><span class="rh__en">INTRODUCTION</span><span class="rh__ja">はじめに</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <p class="eyebrow"><span class="num">03</span>煙が消える仕組み</p>
-      <h2 class="h2">なぜ煙が消えるのか。<br>電気の力で、油煙を集めて取り除きます。</h2>
-      <p class="lead">野田の消煙機は「電気集塵方式」です。ダクトを流れる煙に電気を帯びさせ、極板に吸い寄せて集めます。目に見えないほど細かい油煙まで集められ、風の通りを妨げにくいのが特長です。</p>
-      <figure class="mech__fig">{{MECH}}</figure>
-      <ol class="steps3">
-        <li class="step3"><p class="part">プレフィルターネット</p><h3><span class="no">1</span>整える</h3><p>ダクトから入ってきた空気の流れを一定の速さに整えて、集塵部（セル）へ送ります。</p></li>
-        <li class="step3"><p class="part">高電圧部 12kV</p><h3><span class="no">2</span>帯電させる</h3><p>煙に含まれる油の粒や浮遊物が、高電圧部を通るときにプラスの電気を帯びます。</p></li>
-        <li class="step3"><p class="part">低電圧部 6kV</p><h3><span class="no">3</span>集める</h3><p>電気を帯びた粒はプラス極板に反発し、マイナス極板に吸い寄せられて集められます。</p></li>
-      </ol>
-      <div class="why">
-        <h3>電気集塵方式だから</h3>
+      <h2 class="ttl">煙の問題は、<br>排気口の先で起きている。</h2>
+      <p class="lead">焼き台やグリルから出た油煙は、フードに集められ、排気ダクトを通って店の外へ出ます。厨房の中がどれほど快適でも、排気口の先には隣の住まいや建物があります。煙や臭いへの苦情、外壁やダクトにこびりつく油、出店時に求められる排煙対策。いずれも、排気が街に出たあとに起きる問題です。</p>
+      <p class="lead" style="margin-top:2mm">野田の消煙機 JL-8A は、この排気ダクトの途中に設置して、油煙が外へ出る前に電気の力で捕集する装置です。設置から毎月の保守までを、当社が一貫して担います。</p>
+      <div class="ba">
+        <figure>{{STREET_B}}<figcaption><b>導入前</b>油煙がそのまま外へ出て、臭いと煙は近隣へ、油は排気口まわりの外壁やダクトに付着します。</figcaption></figure>
+        <figure>{{STREET_A}}<figcaption><b>導入後</b>排気ダクトの途中に JL-8A を設置。外へ出る前に油煙を捕集し、きれいになった空気を排気します。</figcaption></figure>
+      </div>
+      <div class="scene">
+        <h3 class="h3 h3--rule">こんなお店・現場で選ばれています</h3>
         <ul>
-          <li><b>細かな油煙まで集める</b>布や網で濾し取るのではなく電気で吸い寄せるため、目に見えないほど細かい粒子まで捕集できます。</li>
-          <li><b>風の通りを妨げにくい</b>目の細かいフィルターでふさがないので、排気の流れを保ったまま処理できます。</li>
-          <li><b>フィルターの買い足し不要</b>集塵部（セル）は引き出して洗い、繰り返し使えます。</li>
+          <li><b>住宅や建物が近い路面店</b>排気口の先に隣家の窓や上階のベランダがあり、煙や臭いが届きやすい。</li>
+          <li><b>ビル・商業施設のテナント</b>管理会社やオーナーから、排気への対策を求められている。</li>
+          <li><b>炭火・焼き台を使う業態</b>焼肉・焼き鳥・炉端焼き・居酒屋など、油煙の量が多い。</li>
         </ul>
       </div>
-      <div class="mech__bottom">
-        <div class="rate"><p class="rate__lbl">油煙除去率</p><p class="rate__num"><span class="num">最大91</span><small>%</small></p><p class="rate__cap">自社調べ。煙の量や排気の条件によって変わります。</p></div>
-        <div class="video">
-          <div class="qr">{{QR_YT}}</div>
-          <div><h3>稼働の様子を動画でご覧ください</h3><p>スマートフォンのカメラで読み取ると、YouTubeの稼働動画が開きます。</p></div>
-        </div>
-      </div>
+      <nav class="toc">
+        <h3 class="h3 h3--rule">このカタログの内容</h3>
+        <ol>
+          <li><span class="num">02</span>設置のしくみ<em>SYSTEM</em><i>3</i></li>
+          <li><span class="num">07</span>設置と設置条件<em>INSTALLATION</em><i>8</i></li>
+          <li><span class="num">03</span>集塵の原理<em>PRINCIPLE</em><i>4</i></li>
+          <li><span class="num">08</span>仕様・外形図<em>SPECIFICATIONS</em><i>9</i></li>
+          <li><span class="num">04</span>構造と各部の名称<em>STRUCTURE</em><i>5</i></li>
+          <li><span class="num">09</span>料金プランと費用の比較<em>COST</em><i>10</i></li>
+          <li><span class="num">05</span>6つの特長<em>FEATURES</em><i>6</i></li>
+          <li><span class="num">10</span>納入事例・導入の流れ<em>CASES</em><i>11</i></li>
+          <li><span class="num">06</span>保守と安全<em>MAINTENANCE</em><i>7</i></li>
+          <li><span class="num">—</span>導入前チェックシート<em>CHECK SHEET</em><i>12</i></li>
+        </ol>
+      </nav>
     </div>
-    <p class="foot"><b>04</b>野田の消煙機 JL-8A</p>
+    <footer class="fo"><b>02</b>野田の消煙機 JL-8A 製品カタログ</footer>
   </div>
 </section>
 
-<!-- ======================= P5 MAINTENANCE ======================= -->
+<!-- =================== P3 SYSTEM =================== -->
 <section class="page page--r">
   <div class="trim">
+    <header class="rh"><span class="rh__no">02</span><span class="rh__en">SYSTEM</span><span class="rh__ja">設置のしくみ</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <p class="eyebrow"><span class="num">04</span>メンテナンスと安心</p>
-      <h2 class="h2">お店の手間はかけません。<br>毎月の点検・清掃で、効果が続きます。</h2>
-      <p class="lead">電気集塵方式は、集めた油がたまりすぎると性能が落ちます。そこで、専門スタッフが1ヶ月ごとに訪問し、内部を洗浄して性能を確かめます。お店の方が内部を触ったり、フィルターを買い足したりする必要はありません。</p>
-      <div class="mt__grid">
-        <ol class="mt__list">
-          <li><h3>安全を確保してから作業</h3><p>電源と漏電ブレーカを切り、内部にたまった電気が抜けるまで約15分待ってから扉を開けます。</p></li>
-          <li><h3>セル・フィルターを取り外して漬け置き洗浄</h3><p>セル（集塵部）・プレフィルターネット・フィルターネットを取り外し、洗剤液に漬けて汚れを落とします。</p></li>
-          <li><h3>乾燥させて、部品を点検</h3><p>完全に乾かしてから元の位置へ。ガイシ（絶縁子）や絶縁ゴムを拭き上げ、傷・変形・スプリングの緩みを確認します。</p></li>
-          <li><h3>油受けの油を排出</h3><p>本体下部の油受けにたまった油を、排油口（ドレン）から抜き取ります。</p></li>
-          <li><h3>出力電圧を測って、性能を確認</h3><p>運転を再開し、内蔵の電圧メーターで出力電圧を確認。数値で性能を確かめてからご報告します。</p></li>
+      <h2 class="ttl">今ある排気ラインに、組み込むだけ。</h2>
+      <p class="lead">JL-8A は、厨房のフードから屋外の排気口までをつなぐ排気ダクトの途中に設置します。厨房の機器や調理の仕方はそのままに、ダクトを流れる油煙だけを取り除きます。</p>
+      <figure class="sys">{{SYSTEM}}</figure>
+      <ol class="legend5">
+        <li><b><span class="co">1</span>焼き台・フード</b>調理で出た油煙をフードで集め、排気ダクトへ送ります。</li>
+        <li><b><span class="co">2</span>チャンバーボックス</b>ダクトと本体を接続する箱。本体の前後に設けます。</li>
+        <li><b><span class="co">3</span>JL-8A</b>プレフィルターネットで流れを整え、セルで油煙を電気的に捕集します。</li>
+        <li><b><span class="co">4</span>排気ファン</b>排気の流れをつくる送風機。標準工事にFAN工事を含みます。</li>
+        <li><b><span class="co">5</span>排気口</b>油煙を取り除いた空気が、屋外へ排出されます。</li>
+      </ol>
+      <div class="sel">
+        <h3 class="h3 h3--rule">機種選定の前に確認すること</h3>
+        <ol>
+          <li><span>排気ファン</span><b>風量・型式</b><em>台数と処理能力の余裕</em></li>
+          <li><span>排気ダクト</span><b>経路・寸法</b><em>設置位置とチャンバーボックスの形</em></li>
+          <li><span>設置場所</span><b>広さ・床や天井の強度</b><em>床置き・天吊り・屋外の選択</em></li>
+          <li><span>電源</span><b>単相100V・アース</b><em>電源系統と漏電遮断器</em></li>
+          <li><span>業態・熱源</span><b>煙の量・営業時間</b><em>処理能力にどれだけ余裕を持たせるか</em></li>
         </ol>
-        <div class="volt">
-          <h3>「掃除して終わり」ではなく、数値で確認</h3>
-          <p>集塵性能の要となる出力電圧を、毎月のメンテナンスで実測します。</p>
-          <dl>
-            <div class="gauge"><dt>高電圧部（帯電させる）</dt><dd><span class="num">12kV</span><small>±2kV が正常値</small></dd>
-              <svg viewBox="0 0 200 14" aria-hidden="true"><rect x="0" y="5" width="200" height="4" rx="2" fill="rgba(255,255,255,.18)"/><rect x="66.7" y="3" width="66.6" height="8" rx="2" fill="#f39c12"/><path d="M100 0v14" stroke="#fff" stroke-width="2"/></svg></div>
-            <div class="gauge"><dt>低電圧部（集める）</dt><dd><span class="num">6kV</span><small>±2kV が正常値</small></dd>
-              <svg viewBox="0 0 200 14" aria-hidden="true"><rect x="0" y="5" width="200" height="4" rx="2" fill="rgba(255,255,255,.18)"/><rect x="33.3" y="3" width="66.7" height="8" rx="2" fill="#f39c12"/><path d="M50 0v14" stroke="#fff" stroke-width="2"/></svg></div>
-          </dl>
-        </div>
+        <p class="note" style="margin-top:1.8mm">いずれも無料の現地調査で当社が確認します。12ページのチェックシートに、わかる範囲でご記入いただくとスムーズです。</p>
       </div>
-      <div class="safe-ttl"><h3 class="h3">毎日安心して使える設計</h3></div>
-      <ul class="safes">
-        <li class="safe">
-          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="5" width="22" height="30" rx="2" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M29 9l6 3v20l-6 3" fill="none" stroke="#15324a" stroke-width="2.4" stroke-linejoin="round"/><path d="M18 14v6" stroke="#c46a00" stroke-width="2.6" stroke-linecap="round"/><path d="M13.5 16.5a6.5 6.5 0 109 0" fill="none" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <div><h4>扉を開けると自動で電源オフ</h4><p>運転中に扉を開けると安全装置が働き、自動的に電源が切れます。</p></div></li>
-        <li class="safe">
-          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="6" width="24" height="28" rx="3" fill="none" stroke="#15324a" stroke-width="2.4"/><rect x="15" y="12" width="10" height="16" rx="2" fill="none" stroke="#15324a" stroke-width="2.2"/><rect x="15" y="12" width="10" height="7" rx="1.5" fill="#c46a00"/></svg>
-          <div><h4>漏電ブレーカとヒューズで保護</h4><p>漏電や過負荷などの異常な電流が流れたときは、電源を遮断します。</p></div></li>
-        <li class="safe">
-          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="18" r="9" fill="none" stroke="#15324a" stroke-width="2.4"/><circle cx="20" cy="18" r="4.5" fill="#2ecc71"/><path d="M15 31h10M17 35h6" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M6 10l3 2M34 10l-3 2M20 3v3" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <div><h4>運転ランプで状態がわかる</h4><p>稼働中は緑色に点灯。異常があると緑と赤の点滅でお知らせします。</p></div></li>
-        <li class="safe">
-          <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="17" width="22" height="17" rx="2.5" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M14 17v-4a6 6 0 0112 0v4" fill="none" stroke="#15324a" stroke-width="2.4"/><circle cx="20" cy="25" r="2.4" fill="#c46a00"/><path d="M20 27v3" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <div><h4>鍵付きの扉</h4><p>高電圧部は施錠できる扉の中。不用意に内部へ触れられない構造です。</p></div></li>
-      </ul>
-      <div class="warranty">
-        <div class="seal"><span>保証期間</span><b>1<small>年</small></b></div>
-        <div><h3>お買い上げ日から1年間の保証つき</h3><p>保証期間内に正常な使い方で故障した場合は、無償で修理します（天災・誤った使い方・消耗品の劣化などによる故障は有償となります）。</p></div>
+      <div class="points">
+        <h3 class="h3 h3--rule">設計・施工のポイント</h3>
+        <table class="tbl">
+          <tr><th>処理風量</th><td><span class="num">3,000</span> ㎥/h（1台あたり）。排気量や煙の量に応じて、台数と配置を選定します。</td></tr>
+          <tr><th>ダクト風速</th><td>本体手前のダクトで <span class="num">4〜6</span> m/s。試運転時に風速計で測定して調整します。</td></tr>
+          <tr><th>接続方法</th><td>ダクトとはチャンバーボックスを介して接続します。シロッコファンの吐き出し口には直接設置しません。</td></tr>
+          <tr><th>吸込・排気の向き</th><td>ダクトの取り回しに合わせて、排気方向を現場で変更できます。</td></tr>
+          <tr><th>煙の多い業態</th><td>焼肉・焼き鳥など煙が高濃度で量も多い場合は、処理能力に余裕を持たせて選定します。</td></tr>
+          <tr><th>使用できない場所</th><td>工場や廃棄物処理場など粉塵の多い場所、ガソリン・シンナーなど可燃物の近く。</td></tr>
+        </table>
       </div>
     </div>
-    <p class="foot"><b>05</b>野田の消煙機 JL-8A</p>
+    <footer class="fo"><b>03</b>野田の消煙機 JL-8A 製品カタログ</footer>
   </div>
 </section>
 
-<!-- ======================= P6 PRICE ======================= -->
+<!-- =================== P4 PRINCIPLE =================== -->
 <section class="page page--l">
   <div class="trim">
+    <header class="rh"><span class="rh__no">03</span><span class="rh__en">PRINCIPLE</span><span class="rh__ja">集塵の原理</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <p class="eyebrow"><span class="num">05</span>料金プラン</p>
-      <h2 class="h2">初期費用を抑えるか、月々を抑えるか。<br>お店に合わせて選べる2つのプラン</h2>
-      <p class="lead">まとめて支払ってランニングコストを抑える「購入」と、初期費用を抑えて毎月定額で使う「レンタル」。どちらも毎月の定期メンテナンスで性能を保ちます。</p>
-      <div class="plans">
-        <div class="plan">
-          <div class="plan__hd"><span>購入</span><h3>イニシャルコスト重視プラン</h3><p>初期費用を一括でお支払いいただき、ランニングコストを抑えるプラン</p></div>
-          <div class="plan__bd">
-            <dl class="rows">
-              <div><dt>標準工事費<sup>※1</sup></dt><dd>300,000<small>円</small></dd></div>
-              <div><dt>本体価格</dt><dd>880,000<small>円</small></dd></div>
-            </dl>
-            <p class="total"><span class="lbl">初期費用 計</span><br><span class="num">1,180,000<small>円</small></span><span class="tax">（税込 1,298,000円）</span></p>
-            <p class="plan__note"><b>別途、定期メンテナンス費用</b>が月額25,000円（税込27,500円）かかります。</p>
-            <p class="plan__for">長く使う予定で、月々の負担を抑えたいお店に</p>
-          </div>
-        </div>
-        <div class="plan plan--rent">
-          <div class="plan__hd"><span>レンタル</span><h3>月額定額プラン</h3><p>機械をレンタル契約でご利用いただける、月額コミコミのプラン</p></div>
-          <div class="plan__bd">
-            <dl class="rows">
-              <div><dt>契約金</dt><dd>200,000<small>円</small></dd></div>
-            </dl>
-            <p class="plus">＋</p>
-            <p class="total"><span class="lbl">月額</span><br><span class="num">44,500<small>円</small></span><span class="tax">（税込 48,950円）</span></p>
-            <p class="plan__note">月額に<b>標準工事費<sup>※1</sup>・機械レンタル・毎月の定期メンテナンス費用</b>が含まれます。</p>
-            <p class="plan__for">開業時など、初期費用を抑えて始めたいお店に</p>
-          </div>
-        </div>
+      <h2 class="ttl">粒子に電気を帯びさせ、<br>極板に引き寄せて集める。</h2>
+      <p class="lead">JL-8A は電気集塵方式です。油煙の粒子にプラスの電気を帯びさせる「高電圧部」と、帯電した粒子を極板に集める「低電圧部」を分けた2段構成。この2つを1つのセルに一体化しています。</p>
+      <figure class="prn">{{PRINCIPLE}}</figure>
+      <ol class="steps">
+        <li><h3><span class="co">1</span>整える<small>プレフィルターネット</small></h3><p>ダクトから流れ込んだ空気を一定の速さに整え、セルへ送ります。</p></li>
+        <li><h3><span class="co">2</span>帯電させる<small>高電圧部 12kV</small></h3><p>高電圧部を通る油脂成分や浮遊粒子が、プラスの電荷を帯びます。</p></li>
+        <li><h3><span class="co">3</span>集める<small>低電圧部 6kV</small></h3><p>帯電した粒子はプラス極板に反発し、マイナス極板に捕集されます。たまった油は下部の油受けから排出します。</p></li>
+      </ol>
+      <div class="oil">
+        <h3 class="h3 h3--rule">集めた油のゆくえ</h3>
+        <ol>
+          <li><b>極板に付着</b>帯電した油煙の粒子が、セルのマイナス極板に集まります。</li>
+          <li><b>油受けにたまる</b>集まった油は、本体下部の油受けにたまります。</li>
+          <li><b>排油口から排出</b>毎月のメンテナンスで、排油口（ドレン）から排出します。</li>
+          <li><b>セルを洗浄</b>セルを取り外して漬け置き洗浄し、捕集する力を取り戻します。</li>
+        </ol>
       </div>
-      <p class="note price-note">※1 標準工事費の内訳：FAN工事・ダクト工事・チャンバーBOX工事等（1階床置きの場合）。設置場所や店舗の状況により、現地調査のうえお見積りします。</p>
-      <div class="cta">
-        <div><p class="cta__ttl">お店の場合の費用は、無料の現地調査でお見積りします</p><p class="cta__txt">設置場所やダクトの状況によって工事内容が変わります。現地を確認したうえで、正確な金額をお出しします。</p></div>
-        <p class="cta__tel"><span>通話料無料</span><b class="num">0120-77-3408</b><small>受付 9:00〜17:00（土・日・祝 定休）</small></p>
-      </div>
-      <div class="elec">
-        <p class="elec__big"><span>電気代の目安</span><b>月1,500<small>円程度</small></b></p>
-        <p>消費電力は300W。1日6〜7時間・月25日の営業でお使いの場合の目安です（電力単価31円/kWhで計算。ご契約内容や稼働時間により変わります）。</p>
+      <div class="vs">
+        <div>
+          <h3 class="h3 h3--rule">ろ過式（フィルター）との違い</h3>
+          <table class="tbl">
+            <thead><tr><th></th><th>電気集塵方式（JL-8A）</th><th>一般的なろ過式</th></tr></thead>
+            <tbody>
+              <tr><th>捕らえ方</th><td>電気の力で粒子を引き寄せる</td><td>布や網の目で濾し取る</td></tr>
+              <tr><th>細かい粒子</th><td>目に見えないほど細かい粒子も捕集</td><td>網の目より細かい粒子は通り抜けやすい</td></tr>
+              <tr><th>風の通り</th><td>風路をふさがず、抵抗が増えにくい</td><td>目詰まりが進むと抵抗が増えやすい</td></tr>
+              <tr><th>消耗品</th><td>セルを洗浄して繰り返し使用</td><td>フィルターの定期交換が必要</td></tr>
+            </tbody>
+          </table>
+          <p class="note" style="margin-top:1.4mm">ろ過式の欄は一般的な傾向です。製品によって異なります。</p>
+        </div>
+        <div class="rate"><span>油煙除去率</span><b>最大91<small>%</small></b><p class="note">自社調べ。煙の量や排気の条件によって変わります。</p></div>
       </div>
     </div>
-    <p class="foot"><b>06</b>野田の消煙機 JL-8A</p>
+    <footer class="fo"><b>04</b>野田の消煙機 JL-8A 製品カタログ</footer>
   </div>
 </section>
 
-<!-- ======================= P7 SPEC & INSTALL ======================= -->
+<!-- =================== P5 STRUCTURE =================== -->
 <section class="page page--r">
   <div class="trim">
+    <header class="rh"><span class="rh__no">04</span><span class="rh__en">STRUCTURE</span><span class="rh__ja">構造と各部の名称</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <p class="eyebrow"><span class="num">06</span>導入事例と設置</p>
-      <h2 class="h2">今のお店に、1〜2日の工事で<br>後から設置できます。</h2>
-      <div class="spec">
-        <figure class="spec__fig">{{DIM}}</figure>
-        <table>
-          <caption>主な仕様</caption>
-          <tr><th>型番</th><td><span class="num">JL-8A</span></td></tr>
-          <tr><th>方式</th><td>電気集塵方式（高電圧部12kV・低電圧部6kV）</td></tr>
+      <h2 class="ttl">セルを引き出して洗える、<br>メンテナンスを前提にした構造。</h2>
+      <p class="lead">本体は、電気回路部とセルユニット部に分かれています。正面の扉は2つ。漏電ブレーカや電圧メーターがある「電気回路扉」と、セルやフィルターを出し入れする「セルユニット扉」です。</p>
+      <figure class="str">{{STRUCTURE}}<figcaption class="cap">構造を説明するための模式図です。吸込・排気の向きによって、扉の開く向き、セルの配置、スイッチ・ランプの位置などが異なります。番号は取扱説明書と共通です。</figcaption></figure>
+      <ol class="parts">
+        <li><span class="co">1</span><span><b>排油口（ドレン）</b>本体下部の油受けにたまった油を排出</span></li>
+        <li><span class="co">8</span><span><b>セル給電用電極（高電圧側 12kV）</b>セルの高電圧部に12kVを供給</span></li>
+        <li><span class="co">2</span><span><b>運転ランプ（緑色）</b>稼働中に点灯。異常時は緑と赤の点滅でお知らせ</span></li>
+        <li><span class="co">9</span><span><b>セル受電スプリング（低電圧側）</b>低電圧側の電極から電力を受ける</span></li>
+        <li><span class="co">3</span><span><b>基板</b>電子回路</span></li>
+        <li><span class="co">10</span><span><b>セル受電スプリング（高電圧側）</b>高電圧側の電極から電力を受ける</span></li>
+        <li><span class="co">4</span><span><b>漏電ブレーカ</b>漏電や過負荷のとき電源を遮断。基板には回路遮断ヒューズを搭載</span></li>
+        <li><span class="co">11</span><span><b>高電圧給電端子</b>セルに高電圧を供給する端子</span></li>
+        <li><span class="co">5</span><span><b>セル（高電圧部＋低電圧部一体型）</b>粒子を帯電させ、極板に集めるユニット</span></li>
+        <li><span class="co">12</span><span><b>低電圧給電端子</b>セルに低電圧を供給する端子</span></li>
+        <li><span class="co">6</span><span><b>プレフィルターネット</b>流入した空気を一定の速さに整え、セルへ送る</span></li>
+        <li><span class="co">13</span><span><b>電圧メーター</b>上段に高電圧側の電圧、下段に出力電流を表示</span></li>
+        <li><span class="co">7</span><span><b>セル給電用電極（低電圧側 6kV）</b>セルの低電圧部に6kVを供給</span></li>
+      </ol>
+    </div>
+    <footer class="fo"><b>05</b>野田の消煙機 JL-8A 製品カタログ</footer>
+  </div>
+</section>
+
+<!-- =================== P6 FEATURES =================== -->
+<section class="page page--l">
+  <div class="trim">
+    <header class="rh"><span class="rh__no">05</span><span class="rh__en">FEATURES</span><span class="rh__ja">6つの特長</span><span class="rh__model">JL-8A</span></header>
+    <div class="body">
+      <figure class="fphoto"><img src="{{IMG}}/v2/assets/img/install-outdoor.webp" alt=""><figcaption class="cap">屋外の架台に設置した例</figcaption></figure>
+      <h2 class="ttl feat-ttl">毎日使う設備だから、<br>性能・手入れ・安全まで考えた設計。</h2>
+      <ol class="feats">
+        <li class="feat"><span class="num">01</span><div><h3>細かな油煙まで捕集</h3><p>電気の力で粒子を引き寄せるため、目に見えないほど細かい油煙まで捕集します。</p><p class="spec">油煙除去率 最大91%（自社調べ）</p></div></li>
+        <li class="feat"><span class="num">02</span><div><h3>洗って繰り返し使えるセル</h3><p>高電圧部と低電圧部が一体のセルを引き出して洗浄します。使い捨てフィルターの買い足しは不要です。</p><p class="spec">劣化した消耗部品のみ交換</p></div></li>
+        <li class="feat"><span class="num">03</span><div><h3>性能を数値で確かめられる</h3><p>電圧メーターを内蔵。メンテナンスのたびに出力電圧を測り、性能が保たれているかを確認します。</p><p class="spec">正常値 12kV±2kV／6kV±2kV</p></div></li>
+        <li class="feat"><span class="num">04</span><div><h3>安全装置を標準装備</h3><p>運転中に扉を開けると自動で電源が切れる安全装置、漏電ブレーカ、回路遮断ヒューズを備えています。</p><p class="spec">扉は施錠式</p></div></li>
+        <li class="feat"><span class="num">05</span><div><h3>現場に合わせて設置できる</h3><p>吸込・排気の向きは現場で変更でき、屋内の床置き、天井吊り、屋外設置に対応します。</p><p class="spec">屋外は防雨カバー（別売）</p></div></li>
+        <li class="feat"><span class="num">06</span><div><h3>単相100V・消費電力300W</h3><p>単相100Vで動き、消費電力は300W。電気代の目安は月1,500円程度です。</p><p class="spec">1日6〜7時間・月25日・31円/kWhで試算</p></div></li>
+      </ol>
+    </div>
+    <footer class="fo"><b>06</b>野田の消煙機 JL-8A 製品カタログ</footer>
+  </div>
+</section>
+
+<!-- =================== P7 MAINTENANCE =================== -->
+<section class="page page--r">
+  <div class="trim">
+    <header class="rh"><span class="rh__no">06</span><span class="rh__en">MAINTENANCE</span><span class="rh__ja">保守と安全</span><span class="rh__model">JL-8A</span></header>
+    <div class="body">
+      <h2 class="ttl">毎月の定期メンテナンスで、<br>捕集性能を保ちます。</h2>
+      <p class="lead">電気集塵方式は、集めた油がたまりすぎると能力が落ち、故障の原因にもなります。そのため JL-8A は1ヶ月ごとのメンテナンスを前提にしています。当社（九州・中国地方以外は提携業者）の専門スタッフが毎月伺い、次の作業を行います。</p>
+      <table class="tbl mt">
+        <colgroup><col class="c1"><col class="c2"><col></colgroup>
+        <thead><tr><th class="n">No.</th><th>作業</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td class="n">1</td><th>安全の確保</th><td>電源スイッチと漏電ブレーカを切り、内部の電気が抜けるまで約15分待ちます。</td></tr>
+          <tr><td class="n">2</td><th>部品の取り外し</th><td>セル、プレフィルターネット、フィルターネットを取り外します。</td></tr>
+          <tr><td class="n">3</td><th>漬け置き洗浄・乾燥</th><td>洗剤液に漬け置きし、上下・左右・前後の順に洗浄。完全に乾燥させます。</td></tr>
+          <tr><td class="n">4</td><th>絶縁部の清掃・点検</th><td>ガイシ（絶縁子）と絶縁ゴムを拭き上げ、傷や変形、受電スプリングの緩みを確認します。</td></tr>
+          <tr><td class="n">5</td><th>排油</th><td>油受けにたまった油を、排油口（ドレン）から排出します。</td></tr>
+          <tr><td class="n">6</td><th>復旧・電圧測定</th><td>部品を戻して運転を再開し、電圧メーターで出力電圧が正常値内にあることを確認します。</td></tr>
+        </tbody>
+      </table>
+      <div class="duo">
+        <div class="daily">
+          <h3 class="h3">お店で行う日常点検</h3>
+          <p>運転ランプが緑色に点灯していれば正常です。内部に触れる作業はありません。</p>
+          <div class="lamp"><span><i></i>緑の点灯：正常</span><span><i class="blink"></i>緑と赤の点滅：要点検</span></div>
+          <p>点滅しているときや「パチパチ」という放電音が続くときは、電源を切って当社までご連絡ください。</p>
+        </div>
+        <div class="volt">
+          <h3 class="h3">出力電圧の正常値</h3>
+          <table class="tbl" style="margin-top:2.4mm">
+            <tr><th>高電圧部</th><td><span class="num">12kV</span>（±2kV）</td></tr>
+            <tr><th>低電圧部</th><td><span class="num">6kV</span>（±2kV）</td></tr>
+          </table>
+          <p class="note" style="margin-top:1.6mm">設置時とメンテナンスのたびに測定します。汚れの付着などにより、電圧は多少変動します。</p>
+        </div>
+      </div>
+      <div class="safety">
+        <h3 class="h3 h3--rule">安全のための設計</h3>
+        <ul>
+          <li><b>扉を開けると電源オフ</b>運転中に扉を開けると安全装置が働き、自動で電源が切れます。</li>
+          <li><b>漏電ブレーカ</b>漏電や過負荷などの異常な電流を検知して遮断します。</li>
+          <li><b>回路遮断ヒューズ</b>基板に搭載し、電子回路を保護します。</li>
+          <li><b>施錠できる扉</b>高電圧部に不用意に触れられないよう、鍵で管理します。</li>
+        </ul>
+      </div>
+      <div class="warranty">
+        <div class="yr"><span>保証期間</span><b>1<small>年</small></b><span>お買い上げ日から</span></div>
+        <div>
+          <p>保証期間内に、正常な使用状態で故障した場合は無償で修理します。</p>
+          <p class="note">輸送・移動・落下による損傷、天災や異常電圧による故障、誤った使用や改造、消耗品の劣化、点検・メンテナンスの不足、経年劣化などによる故障は、保証期間内でも有償修理となります。</p>
+        </div>
+      </div>
+    </div>
+    <footer class="fo"><b>07</b>野田の消煙機 JL-8A 製品カタログ</footer>
+  </div>
+</section>
+
+<!-- =================== P8 INSTALLATION =================== -->
+<section class="page page--l">
+  <div class="trim">
+    <header class="rh"><span class="rh__no">07</span><span class="rh__en">INSTALLATION</span><span class="rh__ja">設置と設置条件</span><span class="rh__model">JL-8A</span></header>
+    <div class="body">
+      <h2 class="ttl">床置き、天吊り、屋外。<br>店舗の条件に合わせて設置します。</h2>
+      <div class="inst3">
+        <figure>{{INST_FLOOR}}<figcaption><b>床置き</b>厨房裏や機械室などの床に設置。本体の前後にチャンバーボックスを設けます。</figcaption></figure>
+        <figure>{{INST_CEIL}}<figcaption><b>天吊り</b>固定金具に加えて耐荷重金具を使用し、専門業者が取り付けます。扉の周りと下側に作業スペースを確保します。</figcaption></figure>
+        <figure>{{INST_OUT}}<figcaption><b>屋外</b>架台に設置し、防雨カバー（別売）を取り付けます。油漏れ・虫や雨水の侵入に配慮して施工します。</figcaption></figure>
+      </div>
+      <div class="cond">
+        <h3 class="h3 h3--rule">設置条件</h3>
+        <table class="tbl">
+          <tr><th>電源</th><td>単相 AC100V 50/60Hz。接地（アース）接続が必要です。</td></tr>
+          <tr><th>電源系統</th><td>排気ファンと連動、または単独の系統とし、漏電遮断器を設置します。</td></tr>
+          <tr><th>電気工事</th><td>電気工事士の資格を持つ者が施工します。</td></tr>
+          <tr><th>メンテナンススペース</th><td>正面（セルユニット扉）から <span class="num">0.7</span> m 以上。扉を全開にして作業できる広さが必要です。</td></tr>
+          <tr><th>設置姿勢</th><td>水平に設置します（傾きがあると油受けから油が漏れる原因になります）。</td></tr>
+          <tr><th>使用環境</th><td>温度 <span class="num">0〜50</span> ℃、湿度 <span class="num">80</span> %以下。</td></tr>
+          <tr><th>ダクト接続</th><td>チャンバーボックスを介して接続。ダクト風速は <span class="num">4〜6</span> m/s。</td></tr>
+        </table>
+      </div>
+      <div class="space">
+        <figure>
+          <h3 class="h3">設置スペースの目安</h3>
+          {{FOOTPRINT}}
+          <figcaption class="cap">床置きの場合の例です。吸込・排気の向きは現場に合わせて変更できるため、扉の位置やチャンバーボックスの配置は変わります。</figcaption>
+        </figure>
+        <div class="work">
+          <div><span>工事期間</span><b>通常1〜2日</b><p>設置場所や店舗の状況により、日数をいただく場合があります。</p></div>
+          <div><span>標準工事の内容</span><b>FAN工事・ダクト工事・チャンバーBOX工事等</b><p>1階床置きの場合。現地調査のうえお見積りします。</p></div>
+          <div><span>既存店舗への後付け</span><b>大がかりな改修は不要</b><p>今お使いの排気ダクトに、チャンバーボックスを介して接続します。</p></div>
+        </div>
+      </div>
+    </div>
+    <footer class="fo"><b>08</b>野田の消煙機 JL-8A 製品カタログ</footer>
+  </div>
+</section>
+
+<!-- =================== P9 SPECIFICATIONS =================== -->
+<section class="page page--r">
+  <div class="trim">
+    <header class="rh"><span class="rh__no">08</span><span class="rh__en">SPECIFICATIONS</span><span class="rh__ja">仕様・外形図</span><span class="rh__model">JL-8A</span></header>
+    <div class="body">
+      <h2 class="ttl">JL-8A 仕様</h2>
+      <div class="specwrap">
+        <table class="tbl spec">
+          <tr><th>形名</th><td><span class="num">JL-8A</span></td></tr>
+          <tr><th>方式</th><td>電気集塵方式<br><small>高電圧部12kV・低電圧部6kV 一体型セル</small></td></tr>
           <tr><th>処理風量</th><td><span class="num">3,000</span> ㎥/h</td></tr>
-          <tr><th>外形寸法</th><td><span class="num">750</span>(W) × <span class="num">840</span>(D) × <span class="num">680</span>(H) mm</td></tr>
+          <tr><th>外形寸法</th><td><span class="num">750</span>(W)×<span class="num">840</span>(D)×<span class="num">680</span>(H) mm</td></tr>
           <tr><th>重量</th><td><span class="num">100</span> kg</td></tr>
           <tr><th>電源</th><td>単相 AC100V　50/60Hz</td></tr>
           <tr><th>消費電力</th><td><span class="num">300</span> W</td></tr>
           <tr><th>静圧</th><td><span class="num">98</span> Pa（10mmAq）</td></tr>
+          <tr><th>出力電圧</th><td>高電圧側 12kV±2kV<br>低電圧側 6kV±2kV</td></tr>
           <tr><th>使用環境</th><td>温度 0〜50℃／湿度 80%以下</td></tr>
+          <tr><th>安全装置</th><td>扉開放時の電源遮断、漏電ブレーカ、回路遮断ヒューズ</td></tr>
+          <tr><th>保証</th><td>お買い上げ日から1年間</td></tr>
         </table>
+        <div class="specfig">
+          <figure class="specphoto"><img src="{{IMG}}/v2/assets/img/jl8a-product.webp" alt=""></figure>
+          <figure><h3 class="h3">外形図</h3>{{ORTHO}}<figcaption class="cap">外形の概略図です。吸込・排気の向きにより、扉や吸排気口の位置は異なります。</figcaption></figure>
+        </div>
       </div>
-      <div class="cases">
-        <figure><img src="{{IMG}}/v2/assets/img/install-ceiling.webp" alt="" style="object-position:50% 40%"><figcaption><span class="tag">焼肉店</span><b>住宅地に近く、煙や臭いへの不安があった</b><span class="res">近隣への煙・臭い対策を行い、安心して営業しやすい排煙環境に。</span></figcaption></figure>
-        <figure><img src="{{IMG}}/v2/assets/img/install-outdoor.webp" alt=""><figcaption><span class="tag">居酒屋</span><b>商業施設内で、煙対策が必要だった</b><span class="res">排煙対策を具体的に示せるようになり、営業継続の安心材料に。</span></figcaption></figure>
-        <figure><img src="{{IMG}}/v2/assets/img/install-yakitori-night.webp" alt="" style="object-position:50% 55%"><figcaption><span class="tag">焼き鳥店</span><b>管理会社から排煙の改善を求められていた</b><span class="res">施設側にも説明しやすく、煙や臭いへの不安を抑えた対策に。</span></figcaption></figure>
-      </div>
-      <div class="inst">
-        <h3>設置について</h3>
-        <ul class="dots">
-          <li><b>今のダクトに後付け。</b>チャンバーボックスを介して接続するので、大がかりな改修は不要です。</li>
-          <li><b>置き場所はご提案します。</b>屋内・屋外・天井吊りなど、店舗に合わせて配置します。</li>
-          <li><b>正面に0.7m以上の作業スペース</b>が必要です（毎月のメンテナンスで扉を開けるため）。</li>
-          <li><b>運転音はほとんどありません。</b>屋外に置く場合は防雨カバー（別売）を付けます。</li>
-        </ul>
-        <p class="caution"><b>「うちの店に置けるか」は、無料の現地調査で確認します。</b>煙が特に多い焼肉・焼き鳥店では、処理能力に余裕を持たせた台数・配置をご提案します。</p>
+      <div class="subs">
+        <div><h3 class="h3 h3--rule">消耗品</h3>
+          <ul><li>セル給電用電極／セル受電スプリング</li><li>高圧線ケーブル</li><li>電極</li><li>セル</li><li>ガイシ（絶縁子）</li><li>電源ユニット</li><li>Oリング</li></ul>
+          <p class="note" style="margin-top:1.6mm">長期間の使用で劣化した部品は、点検の結果に応じて交換をご提案します。</p></div>
+        <div><h3 class="h3 h3--rule">別売品</h3>
+          <ul class="one"><li>防雨カバー（屋外設置用）</li></ul>
+          <p class="note" style="margin-top:1.6mm">仕様は改良のため、予告なく変更することがあります。</p></div>
       </div>
     </div>
-    <p class="foot"><b>07</b>野田の消煙機 JL-8A</p>
+    <footer class="fo"><b>09</b>野田の消煙機 JL-8A 製品カタログ</footer>
   </div>
 </section>
 
-<!-- ======================= P8 BACK COVER ======================= -->
+<!-- =================== P10 COST =================== -->
 <section class="page page--l">
   <div class="trim">
+    <header class="rh"><span class="rh__no">09</span><span class="rh__en">COST</span><span class="rh__ja">料金プランと費用の比較</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <p class="eyebrow"><span class="num">07</span>ご利用の流れ</p>
-      <h2 class="h2">ご相談から稼働後のメンテナンスまで、<br>窓口ひとつで対応します。</h2>
-      <ol class="flow">
-        <li><span class="no">1</span><h3>ご相談</h3><p>お電話・フォーム・LINEから。設置できるか、費用はどのくらいか、まずはお聞かせください。</p></li>
-        <li><span class="no">2</span><h3>現地調査</h3><p>ご都合に合わせて伺い、排気設備や設置スペースを専門スタッフが確認します。</p></li>
-        <li><span class="no">3</span><h3>プランニング・<br>お見積り</h3><p>店舗の状況とご要望に合わせてプランをご提案し、正式なお見積りをお出しします。</p></li>
-        <li><span class="no">4</span><h3>ご契約・<br>設置工事</h3><p>施工日を決めて着工します。工事は通常1〜2日で、進み具合は随時ご報告します。</p></li>
-        <li><span class="no">5</span><h3>稼働開始・<br>毎月のメンテナンス</h3><p>使い方をご説明して稼働開始。その後は毎月訪問して点検・清掃を行います。</p></li>
-      </ol>
-      <div class="area">
-        <p class="area__badge"><b>全国対応</b><span>全国の飲食店から<br>ご相談を受け付けています</span></p>
-        <dl>
-          <div><dt>九州・中国地方</dt><dd>当社スタッフが、設置工事と毎月のメンテナンスを担当します。</dd></div>
-          <div><dt>その他の地域</dt><dd>当社の提携業者が、設置工事と毎月のメンテナンスを担当します。進め方はお見積りの際にご案内します。</dd></div>
-        </dl>
+      <h2 class="ttl">購入か、レンタルか。<br>使う期間で比べて選べます。</h2>
+      <table class="plans">
+        <thead><tr><th></th>
+          <th><span>購入</span><b>イニシャルコスト重視プラン</b></th>
+          <th class="rent"><span>レンタル</span><b>月額定額プラン</b></th></tr></thead>
+        <tbody>
+          <tr><th>はじめの費用</th>
+            <td><span class="big">1,180,000<small>円</small></span><span class="tax">税込 1,298,000円（標準工事費※ 300,000円＋本体 880,000円）</span></td>
+            <td class="rent"><span class="big">200,000<small>円</small></span><span class="tax">税込 220,000円（契約金）</span></td></tr>
+          <tr><th>毎月の費用</th>
+            <td><span class="big">25,000<small>円</small></span><span class="tax">税込 27,500円（定期メンテナンス費用）</span></td>
+            <td class="rent"><span class="big">44,500<small>円</small></span><span class="tax">税込 48,950円</span></td></tr>
+          <tr><th>月額に含まれるもの</th><td>毎月の定期メンテナンス</td><td>標準工事費※・機械レンタル・毎月の定期メンテナンス</td></tr>
+          <tr><th>向いているお店</th><td>長く使う予定で、毎月の負担を抑えたい</td><td>開業時など、はじめの費用を抑えたい</td></tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:1.6mm">※標準工事費の内訳：FAN工事・ダクト工事・チャンバーBOX工事等（1階床置きの場合）。設置場所や店舗の状況により、現地調査のうえお見積りします。</p>
+      <div class="costwrap">
+        <h3 class="h3 h3--rule">導入からの累計費用（税込）</h3>
+        <figure>{{COST}}
+          <div class="costleg"><span><i></i>購入</span><span><i class="d"></i>レンタル</span></div>
+        </figure>
+        <div class="costrow">
+          <div>
+            <table class="tbl ctbl">{{COSTROWS}}</table>
+            <p class="note" style="margin-top:1.6mm">太字は少ない方。標準工事の場合の試算で、電気代（両プラン共通）は含みません。レンタルの契約期間・条件は別途ご案内します。</p>
+          </div>
+          <div class="elec">
+            <span>電気代の目安</span><b>月1,500<small>円程度</small></b>
+            <p class="note">消費電力300W × 1日6〜7時間 × 月25日、電力単価31円/kWhで試算。ご契約内容や稼働時間により変わります。</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="fb contact">
-      <h2 class="contact__ttl">煙のお悩み、まずはご相談ください</h2>
-      <p class="contact__lead">製品のご紹介・<b>現地調査は無料</b>です。現地調査で、次の3つがわかります。</p>
-      <ul class="know"><li>お店に設置できるか</li><li>必要な台数と置き場所</li><li>工事費を含めた正確な費用</li></ul>
-      <div class="tel"><span class="tel__fd">通話料<br>無料</span><b>0120-77-3408</b></div>
-      <p class="tel__hours">受付時間 9:00〜17:00（土・日・祝 定休）</p>
-      <p class="mail"><span>メール</span>info@noda-duct.com</p>
-      <div class="qrs">
-        <figure><div class="qr">{{QR_LP}}</div><figcaption>Webサイト<br>お問い合わせ</figcaption></figure>
-        <figure><div class="qr">{{QR_LINE}}</div><figcaption>LINEで<br>相談する</figcaption></figure>
+    <footer class="fo"><b>10</b>野田の消煙機 JL-8A 製品カタログ</footer>
+  </div>
+</section>
+
+<!-- =================== P11 CASES & FLOW =================== -->
+<section class="page page--r">
+  <div class="trim">
+    <header class="rh"><span class="rh__no">10</span><span class="rh__en">CASES</span><span class="rh__ja">納入事例・導入の流れ</span><span class="rh__model">JL-8A</span></header>
+    <div class="body">
+      <h2 class="ttl">焼肉店・居酒屋・焼き鳥店での納入事例</h2>
+      <div class="cases">
+        <article class="case"><img src="{{IMG}}/v2/assets/img/install-ceiling.webp" alt="" style="object-position:50% 42%">
+          <h3><span>CASE 01 ／ 焼肉店</span>住宅地に近い店舗の煙・臭い対策</h3>
+          <dl><div><dt>課題</dt><dd>近隣に新築住宅が増え、苦情が出る前に対策したかった。</dd></div>
+              <div><dt>対応</dt><dd>店内の排気系統を整理し、JL-8A を導入。</dd></div>
+              <div><dt>結果</dt><dd>近隣への煙・臭いを抑え、安心して営業できる排煙環境に。</dd></div></dl></article>
+        <article class="case"><img src="{{IMG}}/v2/assets/img/install-outdoor.webp" alt="">
+          <h3><span>CASE 02 ／ 居酒屋</span>商業施設内の炭火調理の排煙</h3>
+          <dl><div><dt>課題</dt><dd>炭火の煙が多く、施設内や周辺店舗への影響が心配だった。</dd></div>
+              <div><dt>対応</dt><dd>特殊なフード形状に合わせ、排気設備と組み合わせて設置。</dd></div>
+              <div><dt>結果</dt><dd>排煙対策を具体的に示せるようになり、営業継続の安心材料に。</dd></div></dl></article>
+        <article class="case"><img src="{{IMG}}/v2/assets/img/install-yakitori-night.webp" alt="" style="object-position:50% 55%">
+          <h3><span>CASE 03 ／ 焼き鳥店</span>管理会社からの改善要請への対応</h3>
+          <dl><div><dt>課題</dt><dd>焼き台の油煙や臭いについて、管理会社に苦情が寄せられていた。</dd></div>
+              <div><dt>対応</dt><dd>厨房の排気環境に合わせて設置し、油煙の排出を軽減。</dd></div>
+              <div><dt>結果</dt><dd>施設側にも説明しやすい排煙対策になった。</dd></div></dl></article>
       </div>
-      <div class="company">
-        <div><p class="company__co">株式会社野田</p><p>飲食店換気の専門事業者</p></div>
-        <div><h4>本社</h4><p>〒812-0854<br>福岡県福岡市博多区東月隈3-5-4<br>TEL 092-504-5502　FAX 092-504-5518</p></div>
-        <div><h4>広島出張所</h4><p>〒731-0113<br>広島県広島市安佐南区西原1-8-16-405</p></div>
+      <div class="flow">
+        <h3 class="h3 h3--rule">導入の流れ</h3>
+        <table class="tbl ftbl">
+          <colgroup><col class="c1"><col class="c2"><col><col class="c4"></colgroup>
+          <thead><tr><th>STEP</th><th></th><th>当社が行うこと</th><th>お客様にお願いすること</th></tr></thead>
+          <tbody>
+            <tr><td class="st">01</td><th>お問い合わせ</th><td>電話・メール・LINEでご相談をお受けし、お店の状況とお困りごとを伺います。</td><td>チェックシート（12ページ）と、排気口・ダクト・フードの写真</td></tr>
+            <tr><td class="st">02</td><th>現地調査<small>無料</small></th><td>排気ファン、ダクトの経路と寸法、設置場所、電源を確認します（3ページの項目）。</td><td>厨房・屋上・天井裏など、確認する場所への立ち入り</td></tr>
+            <tr><td class="st">03</td><th>ご提案・お見積り</th><td>台数・設置方法・工事内容と、購入かレンタルかのプランをご提案します。</td><td>テナントの場合は、ビルの管理会社・オーナーへのご確認</td></tr>
+            <tr><td class="st">04</td><th>ご契約・設置工事</th><td>工事は通常1〜2日。試運転でダクト風速（4〜6m/s）と出力電圧を確認します。</td><td>工事日程の調整</td></tr>
+            <tr><td class="st or">05</td><th>稼働・毎月の保守</th><td>使い方と日常点検をご説明して稼働開始。以後、毎月メンテナンスに伺います。</td><td>運転ランプの確認（日常点検）</td></tr>
+          </tbody>
+        </table>
+        <div class="area"><b>全国対応</b>
+          <dl><dt>九州・中国地方</dt><dd>当社スタッフが設置工事と毎月のメンテナンスを担当します。</dd></dl>
+          <dl><dt>その他の地域</dt><dd>当社の提携業者が設置工事と毎月のメンテナンスを担当します。</dd></dl></div>
       </div>
+    </div>
+    <footer class="fo"><b>11</b>野田の消煙機 JL-8A 製品カタログ</footer>
+  </div>
+</section>
+
+<!-- =================== P12 BACK COVER =================== -->
+<section class="page page--l">
+  <div class="trim">
+    <div class="chk">
+      <div class="chk__head"><h2>導入前チェックシート</h2><p>わかる範囲でご記入ください</p></div>
+      <table>
+        <tr><th>店名・ご担当者</th><td><i class="blank w-l"></i></td></tr>
+        <tr><th>ご連絡先</th><td>TEL <i class="blank"></i>　メール <i class="blank w-m"></i></td></tr>
+        <tr><th>店舗の所在地</th><td><i class="blank w-l"></i></td></tr>
+        <tr><th>建物</th><td><span>路面店</span><span>ビル内テナント</span><span>商業施設</span><span>その他（<i class="blank"></i>）</span></td></tr>
+        <tr><th>業態</th><td><span>焼肉</span><span>焼き鳥</span><span>炉端焼き</span><span>居酒屋</span><span>その他（<i class="blank"></i>）</span></td></tr>
+        <tr><th>主な熱源</th><td><span>炭火</span><span>ガス</span><span>電気</span></td></tr>
+        <tr><th>営業時間・定休日</th><td><i class="blank"></i> 時 〜 <i class="blank" style="min-width:12mm"></i> 時　／　定休日 <i class="blank"></i></td></tr>
+        <tr><th>排気ファン</th><td><span>あり（型式・風量：<i class="blank"></i>）</span><span>なし・不明</span></td></tr>
+        <tr><th>排気口の位置</th><td><span>外壁</span><span>屋上</span><span>その他（<i class="blank"></i>）</span></td></tr>
+        <tr><th>設置できそうな場所</th><td><span>屋内</span><span>屋外</span><span>天井付近</span><span>わからない</span></td></tr>
+        <tr><th>単相100V電源</th><td><span>近くにある</span><span>ない・不明</span></td></tr>
+        <tr><th>お困りごと</th><td><span>近隣からの苦情</span><span>外壁・ダクトの汚れ</span><span>管理会社からの要望</span><br><span>出店・物件の条件</span><span>その他（<i class="blank"></i>）</span></td></tr>
+        <tr><th>ご希望のプラン</th><td><span>購入</span><span>レンタル</span><span>未定・相談したい</span></td></tr>
+        <tr><th>導入の時期</th><td><span>なるべく早く</span><span>新規出店（予定：<i class="blank"></i>）</span><span>未定</span></td></tr>
+      </table>
+      <p class="chk__note"><b>このシートと、排気口・ダクト・厨房フードの写真をLINEかメールで送っていただくと、</b>現地調査やお見積りがスムーズに進みます。</p>
+    </div>
+    <div class="fb ct">
+      <h2 class="ct__ttl">お問い合わせ・現地調査のご依頼</h2>
+      <p class="ct__lead">製品のご紹介と<b>現地調査は無料</b>です。設置できるかどうかだけのご相談もお受けします。</p>
+      <div class="ct__row">
+        <div class="tel"><span>通話料無料</span><b>0120-77-3408</b><p>受付時間 9:00〜17:00（土・日・祝 定休）</p><p>メール　info@noda-duct.com</p></div>
+        <div class="qrs">
+          <figure><div class="qr">{{QR_LP}}</div><figcaption>Webサイト</figcaption></figure>
+          <figure><div class="qr">{{QR_LINE}}</div><figcaption>LINEで相談</figcaption></figure>
+          <figure><div class="qr">{{QR_YT}}</div><figcaption>稼働動画</figcaption></figure>
+        </div>
+      </div>
+      <div class="ct__co">
+        <div><p class="co-name">株式会社野田</p><h4>本社</h4><p>〒812-0854 福岡県福岡市博多区東月隈3-5-4<br>TEL 092-504-5502　FAX 092-504-5518</p></div>
+        <div><h4 style="margin-top:6.4mm">広島出張所</h4><p>〒731-0113<br>広島県広島市安佐南区西原1-8-16-405</p></div>
+        <div class="dealer"><span>取扱店</span></div>
+      </div>
+      <p class="ct__legal">このカタログの記載内容は2026年10月現在のものです。仕様・価格は改良などのため予告なく変更することがあります。掲載写真には旧型機を含みます。ご使用の前に取扱説明書をよくお読みのうえ、正しくお使いください。</p>
     </div>
   </div>
 </section>
