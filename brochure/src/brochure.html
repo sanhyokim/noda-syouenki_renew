@@ -325,18 +325,26 @@ b, strong { font-weight: 700; }
 .chk__note { margin-top: 2.4mm; font-size: 8pt; line-height: 1.6; color: var(--ink-2); }
 .chk__note b { color: var(--navy); }
 .ct { bottom: calc(-1 * var(--b)); height: calc(124mm + var(--b)); background: var(--navy); color: #fff; padding: 9mm calc(var(--mi) + var(--b)) 0 calc(var(--mo) + var(--b)); }
+.ct__grid { display: grid; grid-template-columns: 1fr 50mm; gap: 0 7mm; }
 .ct__ttl { font-size: 13pt; font-weight: 700; letter-spacing: .06em; }
 .ct__lead { margin-top: 1.4mm; font-size: 8.4pt; color: rgba(255,255,255,.82); }
 .ct__lead b { color: var(--orange-l); }
-.ct__row { margin-top: 4.6mm; display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: center; }
+.ct__row { margin-top: 5mm; display: grid; grid-template-columns: 1fr auto; gap: 6mm; align-items: start; }
 .tel span { display: inline-block; font-size: 7.4pt; font-weight: 700; background: var(--orange-l); color: var(--navy); padding: .2mm 2mm; margin-bottom: 1mm; }
 .tel b { display: block; font-family: var(--num); font-size: 38pt; font-weight: 700; line-height: 1; letter-spacing: .02em; }
 .tel p { margin-top: 1.4mm; font-size: 8pt; color: rgba(255,255,255,.8); }
-.tel p + p { margin-top: .6mm; }
-.qrs { display: flex; gap: 3mm; }
-.qrs figure { width: 27mm; background: #fff; padding: 2.6mm 2.6mm 1.6mm; text-align: center; }
-.qrs .qr { width: 21.8mm; height: 21.8mm; }
-.qrs figcaption { margin-top: 1.2mm; font-size: 6.8pt; font-weight: 700; color: var(--navy); line-height: 1.3; }
+.tel .mail { margin-top: 3.4mm; padding-top: 2.6mm; border-top: .25mm solid rgba(255,255,255,.25); font-size: 10.5pt; font-weight: 500; color: #fff; letter-spacing: .04em; }
+.tel .mail em { font-style: normal; display: inline-block; font-size: 7.4pt; font-weight: 700; border: .25mm solid rgba(255,255,255,.6); padding: 0 1.6mm; margin-right: 2.4mm; vertical-align: .4mm; letter-spacing: .1em; }
+.qline { width: 29mm; background: #fff; padding: 2.8mm 2.8mm 2mm; text-align: center; }
+.qline .qr { width: 23.4mm; height: 23.4mm; }
+.qline figcaption { margin-top: 1.4mm; font-size: 6.6pt; color: var(--ink-2); line-height: 1.35; }
+.qline figcaption b { display: block; font-size: 8pt; color: var(--navy); }
+.ct__info { border-left: .25mm solid rgba(255,255,255,.3); padding-left: 6mm; }
+.ct__info h3 { font-size: 8.4pt; font-weight: 700; letter-spacing: .1em; color: rgba(255,255,255,.75); }
+.ct__info figure { display: flex; align-items: center; gap: 3mm; margin-top: 3mm; }
+.ct__info .qr { flex: none; width: 19mm; height: 19mm; background: #fff; padding: 2mm; }
+.ct__info figcaption { font-size: 6.8pt; line-height: 1.45; color: rgba(255,255,255,.75); }
+.ct__info figcaption b { display: block; font-size: 8.6pt; color: #fff; margin-bottom: .4mm; }
 .ct__co { position: absolute; left: calc(var(--mo) + var(--b)); right: calc(var(--mi) + var(--b)); bottom: calc(15mm + var(--b)); display: grid; grid-template-columns: 1fr 1fr 40mm; gap: 5mm; border-top: .25mm solid rgba(255,255,255,.3); padding-top: 4mm; }
 .ct__co h4 { font-size: 7.6pt; color: var(--orange-l); letter-spacing: .1em; }
 .ct__co p { margin-top: .6mm; font-size: 7.6pt; line-height: 1.65; color: rgba(255,255,255,.88); }
@@ -793,14 +801,20 @@ b, strong { font-weight: 700; }
       <p class="chk__note"><b>このシートと、排気口・ダクト・厨房フードの写真をLINEかメールで送っていただくと、</b>現地調査やお見積りがスムーズに進みます。</p>
     </div>
     <div class="fb ct">
-      <h2 class="ct__ttl">お問い合わせ・現地調査のご依頼</h2>
-      <p class="ct__lead">製品のご紹介と<b>現地調査は無料</b>です。設置できるかどうかだけのご相談もお受けします。</p>
-      <div class="ct__row">
-        <div class="tel"><span>通話料無料</span><b>0120-77-3408</b><p>受付時間 9:00〜17:00（土・日・祝 定休）</p><p>メール　info@noda-duct.com</p></div>
-        <div class="qrs">
-          <figure><div class="qr">{{QR_LP}}</div><figcaption>Webサイト</figcaption></figure>
-          <figure><div class="qr">{{QR_LINE}}</div><figcaption>LINEで相談</figcaption></figure>
-          <figure><div class="qr">{{QR_YT}}</div><figcaption>稼働動画</figcaption></figure>
+      <div class="ct__grid">
+        <div class="ct__main">
+          <h2 class="ct__ttl">お問い合わせ・現地調査のご依頼</h2>
+          <p class="ct__lead">製品のご紹介と<b>現地調査は無料</b>です。設置できるかどうかだけのご相談もお受けします。</p>
+          <div class="ct__row">
+            <div class="tel"><span>お電話　通話料無料</span><b>0120-77-3408</b><p>受付時間 9:00〜17:00（土・日・祝 定休）</p>
+              <p class="mail"><em>メール</em>info@noda-duct.com</p></div>
+            <figure class="qline"><div class="qr">{{QR_LINE}}</div><figcaption><b>LINEで相談</b>写真も送れます</figcaption></figure>
+          </div>
+        </div>
+        <div class="ct__info">
+          <h3>製品をもっと知る</h3>
+          <figure><div class="qr">{{QR_LP}}</div><figcaption><b>Webサイト</b>導入事例と<br>よくあるご質問</figcaption></figure>
+          <figure><div class="qr">{{QR_YT}}</div><figcaption><b>稼働動画</b>動いている様子を<br>動画で見る</figcaption></figure>
         </div>
       </div>
       <div class="ct__co">
