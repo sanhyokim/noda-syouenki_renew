@@ -95,8 +95,8 @@ img { display: block; max-width: 100%; }
 .cover__catch .big { display: block; font-size: 33pt; margin-top: 1mm; letter-spacing: .02em; }
 .cover__catch .pct { font-family: var(--num); font-weight: 700; font-size: 64pt; line-height: .9; color: var(--blue-ink); letter-spacing: 0; vertical-align: -2mm; margin: 0 .6mm; }
 .cover__catch .pct small { font-size: 36pt; }
-.cover__sub { margin-top: 4mm; font-size: 10.6pt; font-weight: 700; color: var(--ink-2); letter-spacing: .06em; }
-.cover__logo { margin-top: 7mm; width: 96mm; }
+.cover__sub { margin-top: 4mm; font-size: 10.6pt; line-height: 1.6; font-weight: 700; color: var(--ink-2); letter-spacing: .06em; }
+.cover__logo { margin-top: 5mm; width: 92mm; }
 .cover__model { margin-top: 2.5mm; font-size: 8.6pt; font-weight: 500; color: var(--ink-3); letter-spacing: .1em; }
 .cover__model .num { font-size: 12pt; font-weight: 600; color: var(--navy); margin-right: 1.5mm; }
 .cover__product { position: absolute; right: 8mm; top: 196mm; width: 92mm; filter: drop-shadow(0 4mm 5mm rgba(21,50,74,.22)); }
@@ -141,26 +141,29 @@ img { display: block; max-width: 100%; }
 .bridge svg { flex: none; width: 11mm; height: 11mm; }
 
 /* =========================================================
-   P3 SOLUTION
+   P3 AFTER (benefits)
    ========================================================= */
-.sol__band { top: calc(-1 * var(--b)); height: calc(136mm + var(--b)); background: var(--navy); }
-.sol__band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120mm 80mm at 85% 10%, rgba(52,152,219,.25), transparent 70%); }
+.sol__band { top: calc(-1 * var(--b)); height: calc(176mm + var(--b)); background: var(--navy); }
+.sol__band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(120mm 80mm at 85% 8%, rgba(52,152,219,.25), transparent 70%); }
 .sol__head { position: relative; }
-.feats { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm; position: relative; }
-.feat { background: #fff; border-radius: 2mm; padding: 4.2mm 4.6mm 4.4mm; display: grid; grid-template-columns: 11mm 1fr; gap: 0 3.4mm; align-items: start; }
-.feat svg { width: 11mm; height: 11mm; grid-row: span 2; }
-.feat h3 { font-size: 11pt; font-weight: 700; color: var(--navy); line-height: 1.4; }
-.feat h3 em { font-style: normal; font-family: var(--num); font-size: 1.45em; color: var(--orange-ink); letter-spacing: 0; line-height: 1; }
-.feat p { margin-top: 1.2mm; font-size: 8.5pt; line-height: 1.7; color: var(--ink-2); }
-.merits-ttl { position: absolute; left: 0; right: 0; top: 129mm; }
-.merits-ttl .h2 { font-size: 15pt; margin-top: 2.6mm; }
-.merits { position: absolute; left: 0; right: 0; top: 152mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.6mm; }
-.merit { border: .3mm solid var(--line); border-radius: 2mm; overflow: hidden; background: #fff; }
-.merit img { width: 100%; height: 26mm; object-fit: contain; background: #dceaf6; padding: 1.5mm 0 0; }
-.merit div { padding: 3.4mm 3.6mm 4mm; }
-.merit h3 { font-size: 10pt; line-height: 1.45; color: var(--navy); font-weight: 700; }
-.merit ul { margin-top: 2mm; font-size: 8.3pt; line-height: 1.65; color: var(--ink-2); }
-.merit li + li { margin-top: .8mm; }
+.afters { margin-top: 7mm; display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; position: relative; }
+.after { background: #fff; border-radius: 2mm; overflow: hidden; display: flex; flex-direction: column; }
+.after__before { display: flex; align-items: center; gap: 2mm; background: #e9edf0; color: var(--ink-3); font-size: 7.9pt; line-height: 1.4; padding: 2.2mm 4mm; }
+.after__before .no { flex: none; width: 4.8mm; height: 4.8mm; border-radius: 50%; background: #9aa6b1; color: #fff; display: grid; place-items: center; font-family: var(--num); font-size: 9pt; font-weight: 700; }
+.after__before s { text-decoration: none; }
+.after__body { padding: 3.4mm 4.4mm 4.2mm; position: relative; flex: 1; }
+.after__body::before { content: ""; position: absolute; left: 6.2mm; top: -1.6mm; border: 1.6mm solid transparent; border-top-color: #e9edf0; border-bottom: 0; }
+.after h3 { font-size: 12pt; line-height: 1.42; font-weight: 900; color: var(--navy); }
+.after h3 em { font-style: normal; color: var(--orange-ink); }
+.after p { margin-top: 1.6mm; font-size: 8.5pt; line-height: 1.7; color: var(--ink-2); }
+.after p b { color: var(--navy); }
+.reasons-ttl { position: absolute; left: 0; right: 0; top: 172mm; }
+.reasons-ttl .h3 { font-size: 12pt; font-weight: 900; }
+.reasons { position: absolute; left: 0; right: 0; top: 182mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.reason { border-top: .6mm solid var(--orange-2); padding-top: 2.4mm; }
+.reason svg { width: 9mm; height: 9mm; display: block; }
+.reason h4 { margin-top: 1.4mm; font-size: 9.4pt; line-height: 1.4; font-weight: 700; color: var(--navy); }
+.reason p { margin-top: .8mm; font-size: 8.2pt; line-height: 1.6; color: var(--ink-2); }
 .results { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: repeat(3, 1fr); border-top: .5mm solid var(--navy); border-bottom: .3mm solid var(--line); }
 .result { padding: 3.4mm 2mm 3mm; text-align: center; }
 .result + .result { border-left: .3mm solid var(--line); }
@@ -261,6 +264,8 @@ img { display: block; max-width: 100%; }
 .plan--rent .total .num { color: var(--orange-ink); }
 .total .num small { font-family: var(--font); font-size: 11pt; margin-left: .6mm; }
 .total .tax { display: block; font-size: 8pt; color: var(--ink-2); margin-top: .8mm; }
+.plan__for { margin-top: 2.6mm; padding: 2mm 3mm; background: var(--bg-light); border-radius: 1.2mm; font-size: 8.2pt; font-weight: 700; color: var(--navy); line-height: 1.5; }
+.plan__for::before { content: "こんな方に："; color: var(--orange-ink); }
 .plan__note { margin-top: auto; padding-top: 3.4mm; font-size: 8pt; line-height: 1.6; color: var(--ink); }
 .plan__note b { color: var(--navy); }
 .plus { text-align: center; font-family: var(--num); font-size: 18pt; font-weight: 700; color: var(--orange-ink); line-height: 1; margin: 1.6mm 0 0; }
@@ -271,6 +276,13 @@ img { display: block; max-width: 100%; }
 .cmp thead th { background: var(--bg-light); font-size: 8.2pt; color: var(--navy); border-bottom: .5mm solid var(--navy); }
 .cmp tbody th { width: 36mm; color: var(--navy); font-weight: 700; }
 .cmp td { width: 37%; }
+.cta { margin-top: 7mm; display: grid; grid-template-columns: 1fr auto; gap: 5mm; align-items: center; border: .6mm solid var(--orange-2); border-radius: 2.4mm; padding: 5mm 5.4mm; background: var(--cream); }
+.cta__ttl { font-size: 11.6pt; font-weight: 900; color: var(--navy); line-height: 1.45; }
+.cta__txt { margin-top: 1.4mm; font-size: 8.3pt; line-height: 1.65; color: var(--ink-2); }
+.cta__tel { text-align: right; }
+.cta__tel span { display: inline-block; font-size: 7.4pt; font-weight: 700; background: var(--orange); color: var(--navy-3); padding: .3mm 1.8mm; border-radius: .8mm; }
+.cta__tel b { display: block; font-size: 25pt; font-weight: 700; color: var(--navy); line-height: 1.1; margin-top: .8mm; }
+.cta__tel small { display: block; font-size: 7pt; color: var(--ink-3); }
 .elec { position: absolute; left: 0; right: 0; bottom: 8mm; display: grid; grid-template-columns: auto 1fr; gap: 5mm; align-items: center; background: var(--bg-light); border-radius: 2mm; padding: 4.4mm 5mm; }
 .elec__big { display: flex; flex-direction: column; }
 .elec__big span { font-size: 8pt; font-weight: 700; color: var(--navy); }
@@ -281,7 +293,7 @@ img { display: block; max-width: 100%; }
 /* =========================================================
    P7 SPEC & INSTALL
    ========================================================= */
-.spec { margin-top: 6mm; display: grid; grid-template-columns: 80mm 1fr; gap: 6mm; align-items: start; }
+.spec { margin-top: 5mm; display: grid; grid-template-columns: 80mm 1fr; gap: 6mm; align-items: start; }
 .spec__fig svg { width: 100%; height: auto; display: block; }
 .spec table { width: 100%; border-collapse: collapse; font-size: 9.2pt; }
 .spec caption { text-align: left; font-size: 8pt; font-weight: 700; color: var(--ink-3); letter-spacing: .1em; padding-bottom: 1.6mm; }
@@ -290,10 +302,14 @@ img { display: block; max-width: 100%; }
 .spec th { width: 23mm; color: var(--navy); font-weight: 700; font-size: 8.6pt; }
 .spec td .num { font-size: 12.5pt; font-weight: 600; }
 .cases { margin-top: 6.4mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
-.cases figure img { width: 100%; height: 38mm; object-fit: cover; border-radius: 1.6mm; }
+.cases figure img { width: 100%; height: 34mm; object-fit: cover; border-radius: 1.6mm; }
 .cases figcaption { margin-top: 1.6mm; font-size: 7.8pt; line-height: 1.5; color: var(--ink-2); }
-.cases figcaption b { color: var(--navy); margin-right: 1.4mm; }
-.inst { margin-top: 6mm; }
+.cases figcaption { margin-top: 2mm !important; }
+.cases .tag { display: inline-block; font-size: 7pt; font-weight: 700; color: #fff; background: var(--navy); padding: .2mm 1.8mm; border-radius: .8mm; }
+.cases figcaption b { display: block; margin-top: 1.2mm; font-size: 8.6pt; color: var(--navy); line-height: 1.45; }
+.cases .res { display: block; margin-top: 1.2mm; padding-left: 3.6mm; position: relative; }
+.cases .res::before { content: "→"; position: absolute; left: 0; color: var(--orange-ink); font-weight: 700; }
+.inst { position: absolute; left: 0; right: 0; bottom: 8mm; }
 .inst h3 { font-size: 11.6pt; font-weight: 900; color: var(--navy); }
 .inst ul { margin-top: 2.6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 6mm; font-size: 8.5pt; line-height: 1.66; }
 .inst li b { color: var(--navy); }
@@ -321,7 +337,10 @@ img { display: block; max-width: 100%; }
 .contact__ttl { font-size: 17pt; font-weight: 900; letter-spacing: .06em; line-height: 1.4; }
 .contact__lead { max-width: 108mm; margin-top: 2mm; font-size: 9.2pt; color: rgba(255,255,255,.86); }
 .contact__lead b { color: var(--orange); }
-.tel { margin-top: 8mm; display: flex; align-items: center; gap: 4mm; }
+.know { margin-top: 2.6mm; }
+.know li { font-size: 9.6pt; font-weight: 700; line-height: 1.8; }
+.know li::before { content: "✓"; color: var(--orange); margin-right: 1.4mm; }
+.tel { margin-top: 6mm; display: flex; align-items: center; gap: 4mm; }
 .tel__fd { flex: none; width: 15mm; height: 9.5mm; border-radius: 1.2mm; background: var(--orange); color: var(--navy-3); display: grid; place-items: center; font-size: 7.4pt; font-weight: 900; line-height: 1.05; text-align: center; letter-spacing: 0; }
 .tel b { font-family: var(--num); font-size: 40pt; font-weight: 700; letter-spacing: .02em; line-height: 1; }
 .tel__hours { margin-top: 1.6mm; font-size: 8.6pt; color: rgba(255,255,255,.84); }
@@ -349,7 +368,7 @@ img { display: block; max-width: 100%; }
 
     <div class="cover__main">
       <h1 class="cover__catch">飲食店の油煙を、<span class="big">最大<span class="pct">91<small>%</small></span>カット。</span></h1>
-      <p class="cover__sub">店舗の煙問題を、設置から毎月のメンテナンスまで丸ごと対応。</p>
+      <p class="cover__sub">近隣の苦情も、外壁の油汚れも。<br>設置から毎月のメンテナンスまで、まるごとお任せください。</p>
       <img class="cover__logo" src="{{IMG}}/assets/img/logo.webp" alt="野田の消煙機">
       <p class="cover__model"><span class="num">JL-8A</span>電気集塵方式／処理風量 3,000㎥/h</p>
     </div>
@@ -383,7 +402,7 @@ img { display: block; max-width: 100%; }
         <li class="worry"><h3><span class="no">4</span>管理会社・ビルオーナーから<br>改善を求められている</h3><p>営業を続けるために、具体的な排煙対策を示す必要が出てきます。</p></li>
       </ol>
       <div class="bridge">
-        <p>その悩み、野田の消煙機でまとめて対策できます。<small>排気ダクトに取り付けて、外に出る前の油煙を電気の力で集めます。</small></p>
+        <p>その悩み、野田の消煙機でこう変わります。<small>4つのお悩みが導入後どうなるか、右のページでご紹介します。</small></p>
         <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#f08c1c"/><path d="M15 22h14M23 15l7 7-7 7" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
@@ -391,43 +410,37 @@ img { display: block; max-width: 100%; }
   </div>
 </section>
 
-<!-- ======================= P3 SOLUTION ======================= -->
+<!-- ======================= P3 AFTER ======================= -->
 <section class="page page--r">
   <div class="trim">
     <div class="fb sol__band"></div>
     <div class="body">
       <div class="sol__head inv">
-        <p class="eyebrow"><span class="num">02</span>野田の消煙機でできること</p>
-        <h2 class="h2">煙・臭い・油汚れの悩みは、<br>野田の消煙機でまとめて対策できます。</h2>
-        <p class="lead">油煙を最大91%カットする除去性能に加え、設置後の毎月のメンテナンスまで対応。焼肉店・焼き鳥店・炉端焼きなど、煙が出やすい重飲食店舗の排煙対策をサポートします。</p>
+        <p class="eyebrow"><span class="num">02</span>導入後のお店</p>
+        <h2 class="h2">野田の消煙機を付けると、<br>お店はこう変わります。</h2>
+        <p class="lead">排気ダクトから出る油煙を、外に出る前に最大91%カット。左ページの4つのお悩みは、それぞれこう変わります。</p>
       </div>
-      <ul class="feats">
-        <li class="feat">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M13 30c0-6 5-7 5-12M20 30c0-6 5-7 5-12M27 30c0-6 5-7 5-12" fill="none" stroke="#c46a00" stroke-width="2.6" stroke-linecap="round"/><path d="M10 12l24 20" stroke="#15324a" stroke-width="3" stroke-linecap="round"/></svg>
-          <h3>油煙 最大<em>91%</em>カット</h3><p>厨房から出る油煙をしっかり集め、煙・臭い・外壁汚れの発生を抑えます。</p></li>
-        <li class="feat">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><rect x="11" y="13" width="22" height="20" rx="2" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M11 19h22M16 10v6M28 10v6" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16.5 26l3.5 3.5 7-7" fill="none" stroke="#c46a00" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>毎月メンテナンス対応</h3><p>設置して終わりではなく、毎月訪問して点検・清掃・メンテナンスを行います。</p></li>
-        <li class="feat">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M11 27h22l-2 5H13z" fill="#15324a"/><path d="M13 24h18" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16 20c0-4 3-4 3-8M22 20c0-4 3-4 3-8M28 20c0-4 3-4 3-8" fill="none" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <h3>重飲食店舗に対応</h3><p>焼肉・焼き鳥・居酒屋など、煙が出やすい業態の排煙対策に対応します。</p></li>
-        <li class="feat">
-          <svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><circle cx="22" cy="22" r="10" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M22 15v14M18.5 18.5h5a2.5 2.5 0 010 5h-3a2.5 2.5 0 000 5h5" fill="none" stroke="#c46a00" stroke-width="2.2" stroke-linecap="round"/></svg>
-          <h3>購入・レンタル対応</h3><p>初期費用を抑えたい店舗にも導入しやすい、2つの料金プランをご用意しています。</p></li>
-      </ul>
-      <div class="merits-ttl">
-        <p class="eyebrow"><span class="num">+</span>導入メリット</p>
-        <h2 class="h2">煙対策だけで終わらない、店舗運営を守る3つのメリット</h2>
-      </div>
-      <ul class="merits">
-        <li class="merit"><img src="{{IMG}}/assets/img/merit-1.webp" alt=""><div><h3>近隣クレームを<br>未然に防ぐ</h3><ul class="dots"><li>煙や臭いによる苦情を軽減</li><li>洗濯物・窓開けへの影響を抑制</li><li>近隣と良好な関係を保てる</li></ul></div></li>
-        <li class="merit"><img src="{{IMG}}/assets/img/merit-2.webp" alt=""><div><h3>外壁・ダクトの<br>油汚れを抑える</h3><ul class="dots"><li>外壁の油汚れや黒ずみを軽減</li><li>清掃・補修コストを抑える</li><li>建物の美観と資産価値を守る</li></ul></div></li>
-        <li class="merit"><img src="{{IMG}}/assets/img/merit-3.webp" alt=""><div><h3>店舗・物件の<br>活用価値を高める</h3><ul class="dots"><li>重飲食の出店を検討しやすく</li><li>管理会社への説明材料になる</li><li>店舗のイメージアップにも</li></ul></div></li>
+      <ol class="afters">
+        <li class="after"><p class="after__before"><span class="no">1</span><s>近隣から煙・臭いの苦情が入っている</s></p>
+          <div class="after__body"><h3>近所の目を気にせず、<br><em>営業に集中できる</em></h3><p>煙や臭いが外に出にくくなり、洗濯物や窓開けへの影響を抑えます。<b>導入店舗の99%がクレーム減少を実感</b>しています。</p></div></li>
+        <li class="after"><p class="after__before"><span class="no">2</span><s>外壁・ダクトが油で汚れている</s></p>
+          <div class="after__body"><h3>外壁やダクトがきれいなまま。<br><em>清掃の手間と費用も減る</em></h3><p>油煙がそのまま出ないので、黒ずみがつきにくくなります。<b>清掃が月1回から3ヶ月に1回</b>になった店舗もあります。</p></div></li>
+        <li class="after"><p class="after__before"><span class="no">3</span><s>重飲食の出店を断られそう</s></p>
+          <div class="after__body"><h3>焼肉・焼き鳥でも、<br><em>物件を選びやすくなる</em></h3><p>「この設備で煙を処理します」と具体的に示せるので、物件オーナーや管理会社の理解を得やすくなります。</p></div></li>
+        <li class="after"><p class="after__before"><span class="no">4</span><s>管理会社から改善を求められている</s></p>
+          <div class="after__body"><h3>対策を形で示して、<br><em>安心して営業を続けられる</em></h3><p>設置後も毎月点検し、性能を数値で確認してご報告します。施設側への説明材料としても使えます。</p></div></li>
+      </ol>
+      <div class="reasons-ttl"><h3 class="h3">野田の消煙機が選ばれる理由</h3></div>
+      <ul class="reasons">
+        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M13 30c0-6 5-7 5-12M20 30c0-6 5-7 5-12M27 30c0-6 5-7 5-12" fill="none" stroke="#c46a00" stroke-width="2.6" stroke-linecap="round"/><path d="M10 12l24 20" stroke="#15324a" stroke-width="3" stroke-linecap="round"/></svg><h4>油煙を最大91%カット</h4><p>電気の力で、細かな油煙まで集めます。</p></li>
+        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><rect x="11" y="13" width="22" height="20" rx="2" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M11 19h22M16 10v6M28 10v6" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16.5 26l3.5 3.5 7-7" fill="none" stroke="#c46a00" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><h4>毎月のメンテナンス付き</h4><p>点検・清掃は専門スタッフにお任せ。お店の手間はかかりません。</p></li>
+        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><path d="M11 27h22l-2 5H13z" fill="#15324a"/><path d="M13 24h18" stroke="#15324a" stroke-width="2.4" stroke-linecap="round"/><path d="M16 20c0-4 3-4 3-8M22 20c0-4 3-4 3-8M28 20c0-4 3-4 3-8" fill="none" stroke="#c46a00" stroke-width="2.4" stroke-linecap="round"/></svg><h4>重飲食店舗に対応</h4><p>焼肉・焼き鳥・炉端焼き・居酒屋などで導入されています。</p></li>
+        <li class="reason"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21" fill="#fff7ed"/><circle cx="22" cy="22" r="10" fill="none" stroke="#15324a" stroke-width="2.4"/><path d="M17.5 16.5l4.5 6 4.5-6M22 22.5v7M18 23.5h8M18 27h8" fill="none" stroke="#c46a00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h4>購入・レンタルを選べる</h4><p>初期費用を抑えて始められるプランもあります。</p></li>
       </ul>
       <ul class="results">
         <li class="result"><span class="num">99<small>%</small></span><p>導入店舗の99%が<br>クレーム減少を実感</p></li>
         <li class="result"><span class="num">100<small>軒以上</small></span><p>全国100軒以上の<br>飲食店で導入実績</p></li>
-        <li class="result"><span class="num">3<small>ヶ月に1回</small></span><p>壁やダクトの清掃頻度が<br>月1回から3ヶ月に1回に</p></li>
+        <li class="result"><span class="num">20<small>年以上</small></span><p>飲食店換気の専門事業者<br>としての実績</p></li>
       </ul>
       <p class="results-cap">導入店舗の実績（当社調べ）</p>
     </div>
@@ -439,8 +452,8 @@ img { display: block; max-width: 100%; }
 <section class="page page--l">
   <div class="trim">
     <div class="body">
-      <p class="eyebrow"><span class="num">03</span>仕組み</p>
-      <h2 class="h2">電気の力で、油煙を集めて取り除きます。</h2>
+      <p class="eyebrow"><span class="num">03</span>煙が消える仕組み</p>
+      <h2 class="h2">なぜ煙が消えるのか。<br>電気の力で、油煙を集めて取り除きます。</h2>
       <p class="lead">野田の消煙機は「電気集塵方式」です。ダクトを流れる煙に電気を帯びさせ、極板に吸い寄せて集めます。目に見えないほど細かい油煙まで集められ、風の通りを妨げにくいのが特長です。</p>
       <figure class="mech__fig">{{MECH}}</figure>
       <ol class="steps3">
@@ -473,8 +486,8 @@ img { display: block; max-width: 100%; }
   <div class="trim">
     <div class="body">
       <p class="eyebrow"><span class="num">04</span>メンテナンスと安心</p>
-      <h2 class="h2">設置して終わりにしない。<br>毎月の点検・清掃で性能を保ちます。</h2>
-      <p class="lead">電気集塵方式は、集めた油がたまりすぎると性能が落ちます。そこで、専門スタッフが1ヶ月ごとに訪問し、内部を洗浄して性能を確かめます。お店の方が内部を触る必要はありません。</p>
+      <h2 class="h2">お店の手間はかけません。<br>毎月の点検・清掃で、効果が続きます。</h2>
+      <p class="lead">電気集塵方式は、集めた油がたまりすぎると性能が落ちます。そこで、専門スタッフが1ヶ月ごとに訪問し、内部を洗浄して性能を確かめます。お店の方が内部を触ったり、フィルターを買い足したりする必要はありません。</p>
       <div class="mt__grid">
         <ol class="mt__list">
           <li><h3>安全を確保してから作業</h3><p>電源と漏電ブレーカを切り、内部にたまった電気が抜けるまで約15分待ってから扉を開けます。</p></li>
@@ -523,7 +536,7 @@ img { display: block; max-width: 100%; }
   <div class="trim">
     <div class="body">
       <p class="eyebrow"><span class="num">05</span>料金プラン</p>
-      <h2 class="h2">お店に合わせて選べる、2つのプラン</h2>
+      <h2 class="h2">初期費用を抑えるか、月々を抑えるか。<br>お店に合わせて選べる2つのプラン</h2>
       <p class="lead">まとめて支払ってランニングコストを抑える「購入」と、初期費用を抑えて毎月定額で使う「レンタル」。どちらも毎月の定期メンテナンスで性能を保ちます。</p>
       <div class="plans">
         <div class="plan">
@@ -535,6 +548,7 @@ img { display: block; max-width: 100%; }
             </dl>
             <p class="total"><span class="lbl">初期費用 計</span><br><span class="num">1,180,000<small>円</small></span><span class="tax">（税込 1,298,000円）</span></p>
             <p class="plan__note"><b>別途、定期メンテナンス費用</b>が月額25,000円（税込27,500円）かかります。</p>
+            <p class="plan__for">長く使う予定で、月々の負担を抑えたいお店に</p>
           </div>
         </div>
         <div class="plan plan--rent">
@@ -546,20 +560,15 @@ img { display: block; max-width: 100%; }
             <p class="plus">＋</p>
             <p class="total"><span class="lbl">月額</span><br><span class="num">44,500<small>円</small></span><span class="tax">（税込 48,950円）</span></p>
             <p class="plan__note">月額に<b>標準工事費<sup>※1</sup>・機械レンタル・毎月の定期メンテナンス費用</b>が含まれます。</p>
+            <p class="plan__for">開業時など、初期費用を抑えて始めたいお店に</p>
           </div>
         </div>
       </div>
       <p class="note price-note">※1 標準工事費の内訳：FAN工事・ダクト工事・チャンバーBOX工事等（1階床置きの場合）。設置場所や店舗の状況により、現地調査のうえお見積りします。</p>
-      <table class="cmp">
-        <caption>2つのプランの違い</caption>
-        <thead><tr><th></th><th>購入（イニシャルコスト重視）</th><th>レンタル（月額定額）</th></tr></thead>
-        <tbody>
-          <tr><th>はじめに</th><td>1,180,000円（税込1,298,000円）</td><td>契約金 200,000円</td></tr>
-          <tr><th>毎月</th><td>定期メンテナンス 25,000円<br>（税込27,500円）</td><td>44,500円（税込48,950円）</td></tr>
-          <tr><th>毎月のメンテナンス</th><td>別途お支払い</td><td>月額に含まれる</td></tr>
-          <tr><th>こんな方に</th><td>長く使う予定で、月々の負担を抑えたい</td><td>開業時など、初期費用を抑えて導入したい</td></tr>
-        </tbody>
-      </table>
+      <div class="cta">
+        <div><p class="cta__ttl">お店の場合の費用は、無料の現地調査でお見積りします</p><p class="cta__txt">設置場所やダクトの状況によって工事内容が変わります。現地を確認したうえで、正確な金額をお出しします。</p></div>
+        <p class="cta__tel"><span>通話料無料</span><b class="num">0120-77-3408</b><small>受付 9:00〜17:00（土・日・祝 定休）</small></p>
+      </div>
       <div class="elec">
         <p class="elec__big"><span>電気代の目安</span><b>月1,500<small>円程度</small></b></p>
         <p>消費電力は300W。1日6〜7時間・月25日の営業でお使いの場合の目安です（電力単価31円/kWhで計算。ご契約内容や稼働時間により変わります）。</p>
@@ -573,8 +582,8 @@ img { display: block; max-width: 100%; }
 <section class="page page--r">
   <div class="trim">
     <div class="body">
-      <p class="eyebrow"><span class="num">06</span>製品仕様と設置</p>
-      <h2 class="h2">畳1枚に収まる大きさで、<br>既存の店舗にも後から設置できます。</h2>
+      <p class="eyebrow"><span class="num">06</span>導入事例と設置</p>
+      <h2 class="h2">今のお店に、1〜2日の工事で<br>後から設置できます。</h2>
       <div class="spec">
         <figure class="spec__fig">{{DIM}}</figure>
         <table>
@@ -591,21 +600,19 @@ img { display: block; max-width: 100%; }
         </table>
       </div>
       <div class="cases">
-        <figure><img src="{{IMG}}/v2/assets/img/install-outdoor.webp" alt=""><figcaption><b>設置例1</b>屋外の架台に設置</figcaption></figure>
-        <figure><img src="{{IMG}}/v2/assets/img/install-ceiling.webp" alt="" style="object-position:50% 40%"><figcaption><b>設置例2</b>壁ぎわの高い位置に設置</figcaption></figure>
-        <figure><img src="{{IMG}}/v2/assets/img/install-yakitori-night.webp" alt="" style="object-position:50% 55%"><figcaption><b>設置例3</b>排気ファンと組み合わせて設置</figcaption></figure>
+        <figure><img src="{{IMG}}/v2/assets/img/install-ceiling.webp" alt="" style="object-position:50% 40%"><figcaption><span class="tag">焼肉店</span><b>住宅地に近く、煙や臭いへの不安があった</b><span class="res">近隣への煙・臭い対策を行い、安心して営業しやすい排煙環境に。</span></figcaption></figure>
+        <figure><img src="{{IMG}}/v2/assets/img/install-outdoor.webp" alt=""><figcaption><span class="tag">居酒屋</span><b>商業施設内で、煙対策が必要だった</b><span class="res">排煙対策を具体的に示せるようになり、営業継続の安心材料に。</span></figcaption></figure>
+        <figure><img src="{{IMG}}/v2/assets/img/install-yakitori-night.webp" alt="" style="object-position:50% 55%"><figcaption><span class="tag">焼き鳥店</span><b>管理会社から排煙の改善を求められていた</b><span class="res">施設側にも説明しやすく、煙や臭いへの不安を抑えた対策に。</span></figcaption></figure>
       </div>
       <div class="inst">
         <h3>設置について</h3>
         <ul class="dots">
-          <li><b>工事は通常1〜2日。</b>今お使いの排気ダクトに、チャンバーボックスを介して接続します。</li>
-          <li><b>設置場所は現地調査でご提案。</b>屋内・屋外・天井吊りなど、店舗に合わせて配置します。</li>
+          <li><b>今のダクトに後付け。</b>チャンバーボックスを介して接続するので、大がかりな改修は不要です。</li>
+          <li><b>置き場所はご提案します。</b>屋内・屋外・天井吊りなど、店舗に合わせて配置します。</li>
           <li><b>正面に0.7m以上の作業スペース</b>が必要です（毎月のメンテナンスで扉を開けるため）。</li>
-          <li><b>電源は単相100V。</b>アース接続と漏電遮断器の設置を行います（電気工事士が施工）。</li>
-          <li><b>屋外設置にも対応。</b>防雨カバー（別売）を取り付け、雨水や虫の侵入を防ぎます。</li>
-          <li><b>運転音はほとんどありません。</b>電源を入れた直後に小さな放電音がすることがあります。</li>
+          <li><b>運転音はほとんどありません。</b>屋外に置く場合は防雨カバー（別売）を付けます。</li>
         </ul>
-        <p class="caution">焼肉・焼き鳥など煙が特に多い業態では、処理能力に余裕を持たせた台数・配置をご提案します。お店の排気量に合うかどうかは、現地調査でしっかり確認します。</p>
+        <p class="caution"><b>「うちの店に置けるか」は、無料の現地調査で確認します。</b>煙が特に多い焼肉・焼き鳥店では、処理能力に余裕を持たせた台数・配置をご提案します。</p>
       </div>
     </div>
     <p class="foot"><b>07</b>野田の消煙機 JL-8A</p>
@@ -617,7 +624,7 @@ img { display: block; max-width: 100%; }
   <div class="trim">
     <div class="body">
       <p class="eyebrow"><span class="num">07</span>ご利用の流れ</p>
-      <h2 class="h2">ご相談から稼働後のメンテナンスまで、<br>一貫して対応します。</h2>
+      <h2 class="h2">ご相談から稼働後のメンテナンスまで、<br>窓口ひとつで対応します。</h2>
       <ol class="flow">
         <li><span class="no">1</span><h3>ご相談</h3><p>お電話・フォーム・LINEから。設置できるか、費用はどのくらいか、まずはお聞かせください。</p></li>
         <li><span class="no">2</span><h3>現地調査</h3><p>ご都合に合わせて伺い、排気設備や設置スペースを専門スタッフが確認します。</p></li>
@@ -634,8 +641,9 @@ img { display: block; max-width: 100%; }
       </div>
     </div>
     <div class="fb contact">
-      <h2 class="contact__ttl">まずはお気軽にご相談ください</h2>
-      <p class="contact__lead">製品のご紹介・<b>現地調査は無料</b>です。設置できるかどうかだけのご相談も歓迎します。</p>
+      <h2 class="contact__ttl">煙のお悩み、まずはご相談ください</h2>
+      <p class="contact__lead">製品のご紹介・<b>現地調査は無料</b>です。現地調査で、次の3つがわかります。</p>
+      <ul class="know"><li>お店に設置できるか</li><li>必要な台数と置き場所</li><li>工事費を含めた正確な費用</li></ul>
       <div class="tel"><span class="tel__fd">通話料<br>無料</span><b>0120-77-3408</b></div>
       <p class="tel__hours">受付時間 9:00〜17:00（土・日・祝 定休）</p>
       <p class="mail"><span>メール</span>info@noda-duct.com</p>
@@ -644,7 +652,7 @@ img { display: block; max-width: 100%; }
         <figure><div class="qr">{{QR_LINE}}</div><figcaption>LINEで<br>相談する</figcaption></figure>
       </div>
       <div class="company">
-        <div><p class="company__co">株式会社野田</p><p>飲食店換気の専門事業者として<br>20年以上の実績</p></div>
+        <div><p class="company__co">株式会社野田</p><p>飲食店換気の専門事業者</p></div>
         <div><h4>本社</h4><p>〒812-0854<br>福岡県福岡市博多区東月隈3-5-4<br>TEL 092-504-5502　FAX 092-504-5518</p></div>
         <div><h4>広島出張所</h4><p>〒731-0113<br>広島県広島市安佐南区西原1-8-16-405</p></div>
       </div>
