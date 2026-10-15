@@ -263,7 +263,6 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
   .map__owner-head { transform-origin: 50% 100%; animation: map-sigh 5.2s ease-in-out infinite; }
   .map__sweat { animation: map-sweat 2.6s ease-in infinite; }
   .map__letter { transform-origin: 50% 0; animation: map-tremble 2.4s ease-in-out infinite; }
-  .map__callout { animation: map-float 3.6s ease-in-out infinite alternate; }
   .map__lantern { transform-origin: 50% 0; animation: map-swing 3.2s ease-in-out infinite alternate; }
   .map__plant { transform-origin: 50% 100%; animation: map-swing 4.2s ease-in-out infinite alternate; }
   .map__drip { animation: map-drip 3s ease-in infinite; }
@@ -292,7 +291,6 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 @keyframes map-sigh { 0%, 38% { transform: rotate(0); } 50%, 72% { transform: rotate(-6deg) translateY(1px); } 84%, 100% { transform: rotate(0); } }
 @keyframes map-sweat { 0%, 25% { opacity: 0; transform: translate(0, -2px); } 38% { opacity: 1; transform: translate(0, 0); } 78% { opacity: 1; transform: translate(1px, 8px); } 92%, 100% { opacity: 0; transform: translate(1px, 12px); } }
 @keyframes map-tremble { 0%, 52%, 100% { transform: rotate(0); } 56% { transform: rotate(-1.6deg); } 60% { transform: rotate(1.4deg); } 64% { transform: rotate(-1.2deg); } 68% { transform: rotate(.8deg); } 72% { transform: rotate(0); } }
-@keyframes map-float { from { transform: translateY(0); } to { transform: translateY(-5px); } }
 @keyframes map-swing { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
 @keyframes map-drip { 0% { opacity: 0; transform: translateY(-3px); } 12% { opacity: 1; } 70% { opacity: 1; transform: translateY(11px); } 100% { opacity: 0; transform: translateY(16px); } }
 @keyframes map-cloud { from { transform: translateX(0); } to { transform: translateX(26px); } }
