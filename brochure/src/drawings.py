@@ -127,13 +127,20 @@ def street_svg(after):
 # ---------------------------------------------------------------- system
 def system_svg():
     """Kitchen on the left; the duct leaves through the outer wall right after
-    the hood, and everything downstream (chamber, JL-8A, fan, outlet) sits
-    outside the wall."""
+    the hood, drops to the ground where the chamber boxes, JL-8A and fan
+    stand, then rises again and turns sideways to blow out."""
     import math
     rnd = random.Random(5)
     o = []
     floor, ceil = 312, 30
     wx, ww = 214, 18                      # outer wall, right behind the hood
+    dy = 96                               # duct height through the wall
+    uy = floor - 54                       # centre line of the ground-standing units
+    drop, c1 = 292, 340                   # where the duct comes down; first chamber
+    ux = c1 + 40                          # JL-8A body
+    c2 = ux + 200                         # second chamber
+    fx, fr = c2 + 120, 44                 # fan
+    rx, ox = fx + 120, 890                # riser; outlet
     o.append(f'<path d="M0 {floor}H1000" stroke="{NAVY}" stroke-width="1.4"/>')
     o.append(f'<rect x="{wx}" y="{ceil}" width="{ww}" height="{floor - ceil + 10}" fill="{TINT}" stroke="{NAVY}" stroke-width="1.4"/>')
     o.append(txt(wx + ww / 2, floor + 26, "外壁", 12, GRAY, 500, "middle"))
@@ -147,54 +154,62 @@ def system_svg():
         x = 70 + rnd.random() * 80
         y = 204 + rnd.random() * 44
         o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{1.6 + rnd.random() * 2.4:.1f}" fill="{AMBER}" opacity=".7"/>')
-    # duct: hood -> up -> right, through the wall
-    dy, c1 = 96, 352
-    o.append(f'<path d="M110 162V{dy}H{c1}" fill="none" stroke="{NAVY}" stroke-width="22" stroke-linejoin="miter"/>'
-             f'<path d="M110 162V{dy}H{c1}" fill="none" stroke="#fff" stroke-width="19" stroke-linejoin="miter"/>')
-    for i in range(26):
-        t = rnd.random()
-        if t < .35:
-            x, y = 110 + rnd.gauss(0, 3), 160 - t / .35 * 60
-        else:
-            x, y = 110 + (t - .35) / .65 * (c1 - 116), dy + rnd.gauss(0, 3)
+    # duct: hood -> up -> through the wall -> down to the units on the ground
+    d1 = f"M110 162V{dy}H{drop}V{uy}H{c1}"
+    o.append(f'<path d="{d1}" fill="none" stroke="{NAVY}" stroke-width="22" stroke-linejoin="miter"/>'
+             f'<path d="{d1}" fill="none" stroke="#fff" stroke-width="19" stroke-linejoin="miter"/>')
+    segs = [((110, 160), (110, dy)), ((110, dy), (drop, dy)), ((drop, dy), (drop, uy)), ((drop, uy), (c1 - 6, uy))]
+    lens = [abs(b[0] - a[0]) + abs(b[1] - a[1]) for a, b in segs]
+    for i in range(30):
+        t = rnd.random() * sum(lens)
+        for (p0, p1), l in zip(segs, lens):
+            if t <= l:
+                f = t / l
+                x, y = p0[0] + (p1[0] - p0[0]) * f, p0[1] + (p1[1] - p0[1]) * f
+                break
+            t -= l
+        x += rnd.gauss(0, 3) if p0[0] == p1[0] else 0
+        y += rnd.gauss(0, 3) if p0[1] == p1[1] else 0
         o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{1.6 + rnd.random() * 1.6:.1f}" fill="{AMBER}" opacity=".85"/>')
     # air-speed measuring point (duct just before the unit)
-    mx = 330
-    o.append(f'<path d="M{mx} {dy + 12}V{dy + 40}" stroke="{BLUE}" stroke-width="1.2" stroke-dasharray="3 3"/>'
-             f'<circle cx="{mx}" cy="{dy + 46}" r="6" fill="#fff" stroke="{BLUE}" stroke-width="1.4"/>'
-             + txt(mx - 10, dy + 50, "風速 4〜6m/s", 12, BLUE, 700, "end"))
-    # chamber boxes + unit
-    ux = c1 + 40
-    o.append(f'<rect x="{c1}" y="{dy - 34}" width="40" height="68" fill="{TINT}" stroke="{NAVY}" stroke-width="1.4"/>')
-    o.append(f'<rect x="{ux}" y="{dy - 46}" width="200" height="92" fill="#fff" stroke="{BLUE}" stroke-width="2.6"/>')
-    o.append(mesh(ux + 10, dy - 36, 12, 72, 6))
+    mx = (drop + 11 + c1) / 2
+    o.append(f'<path d="M{mx} {uy - 12}V{uy - 94}" stroke="{BLUE}" stroke-width="1.2" stroke-dasharray="3 3"/>'
+             f'<circle cx="{mx}" cy="{uy - 100}" r="6" fill="#fff" stroke="{BLUE}" stroke-width="1.4"/>'
+             + txt(mx + 10, uy - 96, "風速 4〜6m/s", 12, BLUE, 700, "start"))
+    # chamber boxes + unit, standing on the ground
+    o.append(f'<rect x="{c1}" y="{uy - 34}" width="40" height="68" fill="{TINT}" stroke="{NAVY}" stroke-width="1.4"/>')
+    for fxo in (ux + 14, ux + 176):
+        o.append(f'<rect x="{fxo}" y="{uy + 46}" width="10" height="{floor - uy - 46}" fill="{NAVY}"/>')
+    o.append(f'<rect x="{ux}" y="{uy - 46}" width="200" height="92" fill="#fff" stroke="{BLUE}" stroke-width="2.6"/>')
+    o.append(mesh(ux + 10, uy - 36, 12, 72, 6))
     for i in range(5):
-        o.append(f'<path d="M{ux + 38 + i * 12} {dy - 36}V{dy + 36}" stroke="{BLUE}" stroke-width="1.1"/>')
+        o.append(f'<path d="M{ux + 38 + i * 12} {uy - 36}V{uy + 36}" stroke="{BLUE}" stroke-width="1.1"/>')
     for i in range(7):
-        o.append(f'<path d="M{ux + 110} {dy - 33 + i * 11}H{ux + 188}" stroke="{BLUE if i % 2 else LINE}" stroke-width="{1.6 if i % 2 else 1}"/>')
-    o.append(txt(ux + 100, dy + 66, "JL-8A", 18, BLUE, 700, "middle", N))
-    c2 = ux + 200
-    o.append(f'<rect x="{c2}" y="{dy - 34}" width="40" height="68" fill="{TINT}" stroke="{NAVY}" stroke-width="1.4"/>')
-    # duct -> fan -> outlet
-    fx, fr, ox = c2 + 132, 44, 880
-    o.append(f'<path d="M{c2 + 40} {dy}H{fx - fr}" stroke="{NAVY}" stroke-width="22"/><path d="M{c2 + 40} {dy}H{fx - fr}" stroke="#fff" stroke-width="19"/>')
-    o.append(f'<circle cx="{fx}" cy="{dy}" r="{fr}" fill="#fff" stroke="{NAVY}" stroke-width="1.4"/>'
-             f'<circle cx="{fx}" cy="{dy}" r="16" fill="none" stroke="{NAVY}" stroke-width="1.2"/>')
+        o.append(f'<path d="M{ux + 110} {uy - 33 + i * 11}H{ux + 188}" stroke="{BLUE if i % 2 else LINE}" stroke-width="{1.6 if i % 2 else 1}"/>')
+    o.append(txt(ux + 100, uy - 56, "JL-8A", 18, BLUE, 700, "middle", N))
+    o.append(f'<rect x="{c2}" y="{uy - 34}" width="40" height="68" fill="{TINT}" stroke="{NAVY}" stroke-width="1.4"/>')
+    # duct -> fan (on a base) -> riser -> sideways outlet
+    o.append(f'<path d="M{c2 + 40} {uy}H{fx - fr}" stroke="{NAVY}" stroke-width="22"/><path d="M{c2 + 40} {uy}H{fx - fr}" stroke="#fff" stroke-width="19"/>')
+    o.append(f'<path d="M{fx - 28} {floor}L{fx - 16} {uy + fr - 2}H{fx + 16}L{fx + 28} {floor}" fill="{TINT}" stroke="{NAVY}" stroke-width="1.4"/>')
+    o.append(f'<circle cx="{fx}" cy="{uy}" r="{fr}" fill="#fff" stroke="{NAVY}" stroke-width="1.4"/>'
+             f'<circle cx="{fx}" cy="{uy}" r="16" fill="none" stroke="{NAVY}" stroke-width="1.2"/>')
     for k in range(10):
         a = k * math.pi / 5
-        x1, y1 = fx + 18 * math.cos(a), dy + 18 * math.sin(a)
-        x2, y2 = fx + 38 * math.cos(a + .5), dy + 38 * math.sin(a + .5)
+        x1, y1 = fx + 18 * math.cos(a), uy + 18 * math.sin(a)
+        x2, y2 = fx + 38 * math.cos(a + .5), uy + 38 * math.sin(a + .5)
         o.append(f'<path d="M{x1:.1f} {y1:.1f}L{x2:.1f} {y2:.1f}" stroke="{NAVY}" stroke-width="1.1"/>')
-    o.append(f'<path d="M{fx + fr} {dy}H{ox}" stroke="{NAVY}" stroke-width="22"/><path d="M{fx + fr} {dy}H{ox}" stroke="#fff" stroke-width="19"/>')
+    d2 = f"M{fx + fr} {uy}H{rx}V{dy}H{ox}"
+    o.append(f'<path d="{d2}" fill="none" stroke="{NAVY}" stroke-width="22" stroke-linejoin="miter"/>'
+             f'<path d="{d2}" fill="none" stroke="#fff" stroke-width="19" stroke-linejoin="miter"/>')
     o.append(f'<path d="M{ox} {dy - 11}V{dy + 11}" stroke="{NAVY}" stroke-width="1.4"/>')
     for i, d in enumerate((-12, 0, 12)):
         o.append(f'<path d="M{ox + 10} {dy + d}h{50 - i * 8}" stroke="{BLUE}" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>')
     # flow arrows
     o.append(arrow(140, dy, 186, dy, NAVY, 1.6))
-    o.append(arrow(c2 + 48, dy, c2 + 84, dy, NAVY, 1.6))
-    o.append(arrow(fx + fr + 32, dy, fx + fr + 78, dy, NAVY, 1.6))
+    o.append(arrow(drop, dy + 40, drop, dy + 86, NAVY, 1.6))
+    o.append(arrow(rx, uy - 40, rx, uy - 100, NAVY, 1.6))
     # callouts (numbers match the legend under the drawing)
-    for n, (x, y) in enumerate([(22, 236), (c1 + 20, dy + 54), (ux + 100, dy - 64), (fx, dy + 64), (ox + 82, dy + 34)], 1):
+    for n, (x, y) in enumerate([(22, 236), (c1 + 20, uy - 54), (ux + 100, uy - 86), (fx, uy - 64), (ox + 82, dy + 34)], 1):
         o.append(callout(x, y, n, 12))
     o.append(txt(30, floor + 26, "厨房", 12, GRAY, 500))
     return svg(1000, 350, o, "システム構成図")
