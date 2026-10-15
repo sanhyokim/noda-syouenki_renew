@@ -1,0 +1,432 @@
+<!--
+  野田の消煙機 JL-8A「仕組み」セクション（Elementor の HTML ウィジェット用）
+  このファイルの中身をすべて、HTML ウィジェットにそのまま貼り付けてください。
+  画像は使っていません。CSS と JavaScript はこのセクションの中だけに効きます。
+
+  ・固定ヘッダーの高さは自動で読み取ります。ずれる場合は <section> に
+    data-offset="70" のようにヘッダーの高さ（px）を書いてください。
+  ・スクロールに合わせた固定表示ができないページでは、自動再生に切り替わります。
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Barlow+Condensed:wght@600;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<style>
+.nesp {
+  --n-ink: #15181a; --n-ink-2: #444c51; --n-ink-3: #657076;
+  --n-rule: #d5dadc; --n-rule-2: #c3cacd; --n-yellow: #f4b800; --n-night: #0e1216;
+  --n-head: "Zen Kaku Gothic New", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", YuGothic, Meiryo, sans-serif;
+  --n-body: "BIZ UDPGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", YuGothic, Meiryo, sans-serif;
+  --n-num: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", var(--n-head);
+  --n-gutter: clamp(20px, 4vw, 48px);
+  --n-ease: cubic-bezier(.2, .7, .1, 1);
+  --nesp-top: 0px;
+  container: nesp / inline-size;
+  position: relative; display: block; width: 100%; margin: 0; padding: clamp(72px, 8vw, 120px) 0 clamp(56px, 6vw, 96px);
+  background: #fff; color: var(--n-ink); text-align: left;
+  font-family: var(--n-body); font-size: 17px; font-weight: 400; line-height: 1.9; letter-spacing: .03em;
+  line-break: strict; overflow-wrap: anywhere; -webkit-text-size-adjust: 100%;
+}
+.nesp *, .nesp *::before, .nesp *::after { box-sizing: border-box; }
+.nesp .nesp-wrap { width: 100%; max-width: calc(1200px + var(--n-gutter) * 2); margin: 0 auto; padding: 0 var(--n-gutter); }
+.nesp .nesp-nb { display: inline-block; }
+.nesp .nesp-num { font-family: var(--n-num); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+
+/* heading */
+.nesp .nesp-hd { max-width: 880px; margin: 0; }
+.nesp .nesp-tag { display: flex; align-items: center; gap: 12px; margin: 0 0 18px; padding: 0; font-family: var(--n-body); font-size: 15px; font-weight: 700; line-height: 1.5; letter-spacing: .08em; color: var(--n-ink); }
+.nesp .nesp-tile { display: inline-grid; place-items: center; flex: none; width: 38px; height: 38px; box-shadow: inset 0 0 0 2px var(--n-ink); background: #fff; font-family: var(--n-head); font-weight: 900; font-size: 22px; line-height: 1; letter-spacing: 0; }
+.nesp .nesp-ttl { margin: 0 0 20px; padding: 0; font-family: var(--n-head); font-feature-settings: "palt"; font-size: clamp(30px, 3.7vw, 52px); font-weight: 900; line-height: 1.38; letter-spacing: .02em; color: var(--n-ink); text-transform: none; word-break: keep-all; word-break: auto-phrase; text-wrap: balance; }
+.nesp .nesp-lead { margin: 0; padding: 0; max-width: 40em; font-size: 17.5px; line-height: 1.9; color: var(--n-ink-2); }
+
+/* pinned stage */
+.nesp .nesp-pin { position: relative; height: 280vh; margin: 0; }
+.nesp .nesp-sticky { position: sticky; top: var(--nesp-top); height: calc(100vh - var(--nesp-top)); height: calc(100svh - var(--nesp-top)); display: flex; align-items: center; overflow: hidden; }
+.nesp .nesp-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(32px, 4vw, 64px); align-items: center; }
+.nesp .nesp-steps { list-style: none; margin: 0; padding: 0; }
+.nesp .nesp-step { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; margin: 0; padding: 20px 0; border-top: 1px solid var(--n-rule); list-style: none; opacity: .38; transition: opacity .45s var(--n-ease); }
+.nesp .nesp-step::before, .nesp .nesp-step::marker { content: none; }
+.nesp .nesp-step:last-child { border-bottom: 1px solid var(--n-rule); }
+.nesp .nesp-step.is-active { opacity: 1; }
+.nesp .nesp-no { display: grid; place-items: center; width: 52px; height: 52px; box-shadow: inset 0 0 0 2px var(--n-ink); font-size: 32px; font-weight: 700; line-height: 1; color: var(--n-ink); transition: background-color .3s; }
+.nesp .nesp-step.is-active .nesp-no { background: var(--n-yellow); box-shadow: none; }
+.nesp .nesp-part { margin: 0; padding: 0; font-size: 14px; font-weight: 700; line-height: 1.6; color: var(--n-ink-2); }
+.nesp .nesp-h3 { margin: 2px 0 6px; padding: 0; font-family: var(--n-head); font-feature-settings: "palt"; font-size: 26px; font-weight: 900; line-height: 1.35; letter-spacing: .02em; color: var(--n-ink); text-transform: none; }
+.nesp .nesp-txt { margin: 0; padding: 0; font-size: 16px; line-height: 1.8; color: var(--n-ink-2); }
+
+/* the cell unit window */
+.nesp .nesp-esp { margin: 0; min-width: 0; }
+.nesp .nesp-win {
+  position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: calc(100vh - var(--nesp-top) - 140px);
+  border-radius: 10px; overflow: hidden;
+  background-color: var(--n-night);   /* stays dark even while Elementor's lazy-load hides background images */
+  background-image: radial-gradient(120% 90% at 50% 42%, #19212a 0%, var(--n-night) 72%);
+  box-shadow: 0 0 0 10px #dfe3e5, 0 0 0 11px var(--n-rule-2), 0 30px 50px -26px rgba(10, 20, 30, .5);
+}
+.nesp .nesp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; max-width: none; }
+.nesp .nesp-lbl {
+  position: absolute; transform: translate(-50%, -100%);
+  font-family: var(--n-body); font-size: 13.5px; font-weight: 700; line-height: 1.3; letter-spacing: .03em; white-space: nowrap; text-align: center;
+  color: rgba(255, 255, 255, .5); padding: 3px 8px; border-radius: 3px;
+  transition: color .3s, background-color .3s;
+}
+.nesp .nesp-lbl.is-active { color: #fff; }
+.nesp .nesp-lbl--hv.is-active { color: var(--n-ink); background: var(--n-yellow); }
+.nesp .nesp-lbl--in, .nesp .nesp-lbl--out { transform: none; color: rgba(255, 255, 255, .82); text-align: left; padding: 0; }
+.nesp .nesp-lbl--out { transform: translateX(-100%); text-align: right; }
+.nesp .nesp-lbl small { display: block; font-size: 12px; font-weight: 400; color: rgba(255, 255, 255, .62); }
+.nesp .nesp-lbl b { font-weight: 700; }
+.nesp .nesp-meter { position: absolute; right: 24px; top: 18px; text-align: right; color: #fff; line-height: 1; }
+.nesp .nesp-meter > span { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 700; color: rgba(255, 255, 255, .72); }
+.nesp .nesp-meter b { display: block; font-size: 56px; font-weight: 700; line-height: 1; color: #fff; }
+.nesp .nesp-meter i { display: block; width: 150px; height: 4px; margin: 8px 0 0 auto; background: rgba(255, 255, 255, .16); }
+.nesp .nesp-meter i span { display: block; width: 0; height: 100%; background: var(--n-yellow); }
+.nesp .nesp-cap { margin: 24px 0 0; padding: 0; font-size: 13px; line-height: 1.8; color: var(--n-ink-3); }
+
+/* tablet & phone: the window on top, one step at a time underneath */
+@container nesp (max-width: 899px) {
+  .nesp .nesp-pin { height: 300vh; }
+  .nesp .nesp-sticky { align-items: flex-start; padding-top: 16px; }
+  .nesp .nesp-grid { grid-template-columns: 1fr; gap: 18px; }
+  .nesp .nesp-esp { order: -1; }
+  .nesp .nesp-win { aspect-ratio: auto; height: min(48vh, 420px); max-height: none; box-shadow: 0 0 0 6px #dfe3e5, 0 0 0 7px var(--n-rule-2); }
+  .nesp .nesp-cap { margin-top: 14px; font-size: 12px; }
+  .nesp .nesp-steps { position: relative; min-height: 210px; }
+  .nesp .nesp-step { position: absolute; inset: 0 0 auto; padding: 4px 0 0; border: 0; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s var(--n-ease); }
+  .nesp .nesp-step:last-child { border: 0; }
+  .nesp .nesp-step.is-active { opacity: 1; transform: none; }
+}
+@container nesp (max-width: 720px) {
+  .nesp .nesp-ttl { font-size: 28px; line-height: 1.45; }
+  .nesp .nesp-lead { font-size: 16px; }
+  .nesp .nesp-lbl { font-size: 12px; padding: 2px 6px; white-space: normal; width: 5.6em; }
+  .nesp .nesp-lbl b { display: block; }
+  .nesp .nesp-lbl--in, .nesp .nesp-lbl--out { width: auto; white-space: nowrap; }
+  .nesp .nesp-lbl small { font-size: 11px; }
+  .nesp .nesp-lbl--pf { width: auto; white-space: nowrap; transform: translate(-14px, -100%); }
+  .nesp .nesp-lbl--pf::after { content: ""; position: absolute; left: 14px; top: 100%; height: 36px; border-left: 1px dashed rgba(255, 255, 255, .4); }
+  .nesp .nesp-meter { right: 14px; top: 12px; }
+  .nesp .nesp-meter b { font-size: 40px; }
+  .nesp .nesp-meter i { width: 96px; }
+  .nesp .nesp-step { grid-template-columns: 44px minmax(0, 1fr); gap: 14px; }
+  .nesp .nesp-no { width: 44px; height: 44px; font-size: 27px; }
+  .nesp .nesp-h3 { font-size: 22px; }
+  .nesp .nesp-txt { font-size: 15px; }
+}
+
+/* pages where sticky positioning can't work: play the three steps on a loop instead */
+.nesp.is-auto .nesp-pin { height: auto; }
+.nesp.is-auto .nesp-sticky { position: relative; top: auto; height: auto; padding-top: clamp(32px, 4vw, 56px); }
+.nesp.is-auto .nesp-win { max-height: none; }
+</style>
+
+<section class="nesp" data-nesp aria-labelledby="nesp-ttl">
+  <div class="nesp-wrap">
+    <header class="nesp-hd">
+      <p class="nesp-tag"><span class="nesp-tile" aria-hidden="true">電</span>仕組み</p>
+      <h2 class="nesp-ttl" id="nesp-ttl"><span class="nesp-nb">電気の力で、</span><span class="nesp-nb">油煙を集めて</span><span class="nesp-nb">取り除きます。</span></h2>
+      <p class="nesp-lead">野田の消煙機は「電気集塵方式」です。ダクトを流れる煙に電気を帯びさせ、極板に吸い寄せて集めます。目に見えないほど細かい油煙まで集められ、風の通りを妨げにくいのが特長です。</p>
+    </header>
+  </div>
+  <div class="nesp-pin">
+    <div class="nesp-sticky">
+      <div class="nesp-wrap nesp-grid">
+        <ol class="nesp-steps">
+          <li class="nesp-step">
+            <span class="nesp-no nesp-num">1</span>
+            <div>
+              <p class="nesp-part">プレフィルターネット</p>
+              <h3 class="nesp-h3">整える</h3>
+              <p class="nesp-txt">ダクトから入ってきた空気の流れを一定の速さに整えて、集塵部（セル）へ送ります。</p>
+            </div>
+          </li>
+          <li class="nesp-step">
+            <span class="nesp-no nesp-num">2</span>
+            <div>
+              <p class="nesp-part">高電圧部 12kV</p>
+              <h3 class="nesp-h3">帯電させる</h3>
+              <p class="nesp-txt">煙に含まれる油の粒や浮遊物が、高電圧部を通るときにプラスの電気を帯びます。</p>
+            </div>
+          </li>
+          <li class="nesp-step">
+            <span class="nesp-no nesp-num">3</span>
+            <div>
+              <p class="nesp-part">低電圧部 6kV</p>
+              <h3 class="nesp-h3">集める</h3>
+              <p class="nesp-txt">電気を帯びた粒はプラス極板に反発し、マイナス極板に吸い寄せられて集められます。</p>
+            </div>
+          </li>
+        </ol>
+        <div class="nesp-esp">
+          <div class="nesp-win">
+            <canvas class="nesp-canvas" aria-hidden="true"></canvas>
+            <div aria-hidden="true">
+              <span class="nesp-lbl nesp-lbl--in">入口<small>油煙</small></span>
+              <span class="nesp-lbl nesp-lbl--pf" data-step-lbl="0">プレフィルター</span>
+              <span class="nesp-lbl nesp-lbl--hv" data-step-lbl="1">高電圧部 <b>12kV</b></span>
+              <span class="nesp-lbl" data-step-lbl="2">低電圧部 <b>6kV</b></span>
+              <span class="nesp-lbl nesp-lbl--out">出口<small>きれいな空気</small></span>
+            </div>
+            <div class="nesp-meter" aria-hidden="true">
+              <span>集塵率</span>
+              <b class="nesp-num"><span data-nesp-rate>0</span>%</b>
+              <i><span data-nesp-bar></span></i>
+            </div>
+          </div>
+          <p class="nesp-cap">セルユニット内部の様子をわかりやすく表したイメージです。集塵率は最大値（91%）を示しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* 野田の消煙機 — electrostatic precipitator simulation for Elementor (no dependencies) */
+(() => {
+  'use strict';
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const init = (root) => {
+    root.setAttribute('data-nesp-ready', '');
+    const q = (s) => root.querySelector(s);
+    const qa = (s) => Array.from(root.querySelectorAll(s));
+    const pin = q('.nesp-pin'), sticky = q('.nesp-sticky'), canvas = q('.nesp-canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    const steps = qa('.nesp-step'), lbls = qa('.nesp-lbl'), stepLbls = qa('[data-step-lbl]');
+    const rateEl = q('[data-nesp-rate]'), barEl = q('[data-nesp-bar]');
+    const narrow = () => root.clientWidth < 900;
+    const phone = () => root.clientWidth <= 720;
+    let W = 0, H = 0, R = null, parts = [], deposits = [], step = -1, phaseK = 0, rateShown = 0;
+    let visible = false, last = performance.now(), top = -1, topAt = 0, auto = false, autoT = 0, missed = 0;
+
+    /* height of the site's fixed header (and the WP admin bar), read from what covers the top of the screen */
+    const fixedTop = () => {
+      if (root.dataset.offset) return Math.max(0, parseInt(root.dataset.offset, 10) || 0);
+      let y = 1;
+      for (let i = 0; i < 4; i++) {
+        let bottom = 0;
+        for (const el of document.elementsFromPoint(window.innerWidth / 2, y)) {
+          if (root.contains(el)) continue;
+          for (let n = el; n && n !== document.body && n !== document.documentElement; n = n.parentElement) {
+            const cs = getComputedStyle(n);
+            if (cs.position === 'fixed' || cs.position === 'sticky') {
+              const r = n.getBoundingClientRect();
+              if (r.top <= y && r.bottom > y && r.height < window.innerHeight * .3) bottom = Math.max(bottom, r.bottom);
+              break;
+            }
+          }
+        }
+        if (!bottom) break;
+        y = bottom + 1;
+      }
+      return Math.round(y - 1);
+    };
+    const setTop = (v) => { if (v !== top) { top = v; root.style.setProperty('--nesp-top', v + 'px'); } };
+
+    /* a scrolling or clipping ancestor stops position: sticky from working */
+    const stickyBlocked = () => {
+      const de = getComputedStyle(document.documentElement);
+      const htmlVisible = de.overflowX === 'visible' && de.overflowY === 'visible';
+      for (let n = sticky.parentElement; n && n !== document.documentElement; n = n.parentElement) {
+        if (n === document.body && htmlVisible) continue;   // body's overflow goes to the viewport
+        const cs = getComputedStyle(n);
+        if (/hidden|auto|scroll/.test(cs.overflowX + ' ' + cs.overflowY)) return true;
+      }
+      return false;
+    };
+    const setAuto = () => { auto = true; autoT = 0; root.classList.add('is-auto'); };
+
+    const layout = () => {
+      const r = canvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height;
+      if (!W || !H) return;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      R = narrow()
+        ? { x0: W * .07, x1: W * .93, y0: H * .37, y1: H * .73 }
+        : { x0: W * .13, x1: W * .88, y0: H * .33, y1: H * .74 };
+      const w = R.x1 - R.x0;
+      R.f = R.x0 + w * .1;                            // pre-filter
+      R.i0 = R.x0 + w * .19; R.i1 = R.x0 + w * .39;   // ioniser (12kV)
+      R.c0 = R.x0 + w * .46; R.c1 = R.x0 + w * .92;   // collector (6kV)
+      R.plates = [];
+      const n = narrow() ? 6 : 8;
+      for (let i = 0; i <= n; i++) R.plates.push(lerp(R.y0, R.y1, i / n));
+      const place = (el, x, y) => { el.style.left = x + 'px'; el.style.top = y + 'px'; };
+      const lt = R.y0 - 22;
+      place(lbls[0], narrow() ? 12 : 22, R.y1 + 26);
+      place(lbls[4], W - (narrow() ? 12 : 22), R.y1 + 26);
+      place(lbls[1], R.f, phone() ? lt - 34 : lt);   // staggered up on phones (leader line in CSS)
+      place(lbls[2], (R.i0 + R.i1) / 2, lt);
+      place(lbls[3], (R.c0 + R.c1) / 2, lt);
+      parts = Array.from({ length: narrow() ? 170 : 340 }, () => spawn(true));
+      deposits = [];
+    };
+    const spawn = (anywhere) => ({
+      x: anywhere ? lerp(-10, R.x1, Math.random()) : -10 - Math.random() * 40,
+      y: lerp(R.y0 - 30, R.y1 + 30, Math.random()),
+      vx: 40 + Math.random() * 30, vy: (Math.random() - .5) * 30,
+      r: .8 + Math.random() * 2.1, q: 0, seed: Math.random() * 100,
+      lucky: Math.random() < .09   // ~9% escape (max 91% capture)
+    });
+    const nearestNeg = (y) => {   // negative plates are odd indices
+      let best = null, bd = 1e9;
+      R.plates.forEach((py, i) => { if (i % 2 === 1) { const d = Math.abs(py - y); if (d < bd) { bd = d; best = py; } } });
+      return best;
+    };
+
+    const setProgress = (k) => {
+      const s = k < .3 ? 0 : k < .6 ? 1 : 2;
+      phaseK = s === 2 ? (k - .6) / .4 : 0;
+      if (s !== step) {
+        step = s;
+        steps.forEach((el, i) => el.classList.toggle('is-active', i === s));
+        stepLbls.forEach(el => el.classList.toggle('is-active', +el.dataset.stepLbl <= s));
+        if (s < 2) deposits = [];
+      }
+    };
+    /* 0 when the stage docks under the header, 1 when it lets go */
+    const progress = () => {
+      const total = pin.offsetHeight - sticky.offsetHeight;
+      return total > 0 ? clamp((top - pin.getBoundingClientRect().top) / total) : 0;
+    };
+
+    const draw = (dt, now) => {
+      ctx.clearRect(0, 0, W, H);
+      const ionOn = step >= 1, colOn = step >= 2;
+      const t = now / 1000;
+
+      // housing
+      ctx.save();
+      ctx.strokeStyle = 'rgba(243,242,238,.18)'; ctx.lineWidth = 1;
+      ctx.strokeRect(R.x0, R.y0 - 14, R.x1 - R.x0, R.y1 - R.y0 + 28);
+      // pre-filter mesh
+      ctx.strokeStyle = 'rgba(243,242,238,.45)';
+      ctx.setLineDash([2, 4]);
+      for (let k = -1; k <= 1; k++) { ctx.beginPath(); ctx.moveTo(R.f + k * 4, R.y0 - 14); ctx.lineTo(R.f + k * 4, R.y1 + 14); ctx.stroke(); }
+      ctx.setLineDash([]);
+      // ioniser wires
+      const wires = narrow() ? 4 : 6;
+      for (let i = 0; i < wires; i++) {
+        const x = lerp(R.i0, R.i1, (i + .5) / wires);
+        ctx.strokeStyle = ionOn ? 'rgba(111,139,255,.9)' : 'rgba(243,242,238,.18)';
+        ctx.beginPath(); ctx.moveTo(x, R.y0 - 14); ctx.lineTo(x, R.y1 + 14); ctx.stroke();
+        if (ionOn) {
+          const g = ctx.createLinearGradient(x - 14, 0, x + 14, 0);
+          const a = .16 + .1 * Math.sin(t * 9 + i * 1.7);
+          g.addColorStop(0, 'rgba(58,92,255,0)'); g.addColorStop(.5, `rgba(111,139,255,${a})`); g.addColorStop(1, 'rgba(58,92,255,0)');
+          ctx.fillStyle = g; ctx.fillRect(x - 14, R.y0 - 14, 28, R.y1 - R.y0 + 28);
+        }
+      }
+      // collector plates
+      R.plates.forEach((py, i) => {
+        const neg = i % 2 === 1;
+        ctx.strokeStyle = colOn ? (neg ? 'rgba(111,139,255,.95)' : 'rgba(243,242,238,.55)') : 'rgba(243,242,238,.18)';
+        ctx.lineWidth = neg && colOn ? 2 : 1;
+        ctx.beginPath(); ctx.moveTo(R.c0, py); ctx.lineTo(R.c1, py); ctx.stroke();
+      });
+      ctx.lineWidth = 1;
+      ctx.restore();
+
+      // deposits on plates (captured oil mist)
+      ctx.fillStyle = 'rgba(214,170,96,.8)';
+      for (const d of deposits) { ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.283); ctx.fill(); }
+
+      // particles
+      ctx.globalCompositeOperation = 'lighter';
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        const inside = p.x > R.f;
+        const turb = inside ? .15 : 1;   // turbulent before the filter, laminar after
+        p.vy += (Math.sin(t * 1.3 + p.seed + p.x * .02) * 60 * turb - p.vy * (inside ? 3 : .6)) * dt;
+        p.vx += ((inside ? 120 : 70) - p.vx) * dt * 2;
+        if (inside) {   // funnel into the duct band
+          if (p.y < R.y0 + 2) p.vy += (R.y0 + 6 - p.y) * 6 * dt;
+          if (p.y > R.y1 - 2) p.vy -= (p.y - R.y1 + 6) * 6 * dt;
+        }
+        if (ionOn && p.x > R.i0 && p.x < R.i1 && !p.lucky) p.q = Math.min(1, p.q + dt * 3.2);   // charging
+        if (colOn && p.q > .2 && p.x > R.c0 && p.x < R.c1) {   // collection
+          const ty = nearestNeg(p.y);
+          p.vy += Math.sign(ty - p.y) * 900 * p.q * dt;
+          if (Math.abs(ty - p.y) < 2.2) {
+            deposits.push({ x: p.x, y: ty + (Math.random() - .5) * 2, r: Math.max(.6, p.r * .7) });
+            if (deposits.length > 900) deposits.splice(0, deposits.length - 900);
+            parts[i] = spawn(false); continue;
+          }
+        }
+        p.x += p.vx * dt; p.y += p.vy * dt;
+        if (p.x > W + 20 || (narrow() && p.x > R.x1 + 30)) { parts[i] = spawn(false); continue; }
+        if (p.q > .05) {
+          ctx.fillStyle = `rgba(111,139,255,${.35 + .55 * p.q})`;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r + 2.5 * p.q, 0, 6.283); ctx.fill();
+          ctx.fillStyle = `rgba(220,228,255,${.8 * p.q})`;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * .6, 0, 6.283); ctx.fill();
+        } else {
+          ctx.fillStyle = `rgba(206,168,120,${p.x > R.x1 ? .22 : .5})`;
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 1.6, 0, 6.283); ctx.fill();
+        }
+      }
+      ctx.globalCompositeOperation = 'source-over';
+
+      // clean-air streaks at the outlet once collecting
+      if (colOn) {
+        ctx.strokeStyle = 'rgba(243,242,238,.16)';
+        for (let i = 0; i < 6; i++) {
+          const y = lerp(R.y0 + 8, R.y1 - 8, i / 5);
+          const off = (t * 120 + i * 37) % 60;
+          ctx.beginPath(); ctx.moveTo(R.x1 + off - 10, y); ctx.lineTo(R.x1 + off + 20, y); ctx.stroke();
+        }
+      }
+
+      // capture-rate meter
+      const target = step >= 2 ? 91 * clamp(phaseK * 1.6) : 0;
+      rateShown = lerp(rateShown, target, .06);
+      rateEl.textContent = Math.round(rateShown);
+      barEl.style.width = rateShown + '%';
+    };
+
+    const frame = (now) => {
+      requestAnimationFrame(frame);
+      const real = Math.min(.04, (now - last) / 1000); last = now;
+      if (!visible || !R) return;
+      if (auto) {
+        // 3s filter → 3s charging → 8s collecting, on a loop
+        autoT = (autoT + real) % 14;
+        setProgress(autoT < 3 ? autoT / 3 * .3 : autoT < 6 ? .3 + (autoT - 3) / 3 * .3 : .6 + Math.min(1, (autoT - 6) / 5) * .4);
+      } else {
+        if (now - topAt > 400) { topAt = now; setTop(fixedTop()); }
+        const k = progress();
+        setProgress(k);
+        // if the stage scrolls away instead of sticking, fall back to the loop
+        if (k > .08 && k < .92) {
+          missed = Math.abs(sticky.getBoundingClientRect().top - top) > 6 ? missed + 1 : 0;
+          if (missed > 20) setAuto();
+        }
+      }
+      draw(real * (reduced ? .3 : 1), now);   // slower when the OS asks for less motion
+    };
+
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; }, { rootMargin: '50px' }).observe(canvas);
+    let rt;
+    new ResizeObserver(() => {
+      clearTimeout(rt);
+      rt = setTimeout(() => {
+        const r = canvas.getBoundingClientRect();
+        if (Math.abs(r.width - W) > 1 || Math.abs(r.height - H) > 1) layout();
+      }, 120);
+    }).observe(canvas);
+    setTop(fixedTop());
+    if (stickyBlocked()) setAuto();
+    layout();
+    setProgress(0);
+    requestAnimationFrame(frame);
+  };
+
+  const start = () => document.querySelectorAll('[data-nesp]:not([data-nesp-ready])').forEach(init);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
+})();
+</script>

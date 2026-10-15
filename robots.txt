@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /v2/
+Disallow: /wordpress/
+Disallow: /docs/
+Disallow: /tools/
+
+Sitemap: https://shoenki.duct-noda.com/sitemap.xml
