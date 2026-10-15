@@ -97,23 +97,15 @@ def street_svg(after):
         o.append(f'<rect x="212" y="{oy - 10}" width="8" height="20" fill="{NAVY}"/>')
         # grease stain on the wall below the outlet
         o.append(f'<path d="M203 {oy + 10}c-3 10 3 18-2 28h-4c3-10-2-18 1-28z" fill="#5a4a3a" opacity=".35"/>')
-        # oil smoke: soft puffs that rise, widen and thin out toward the apartment windows
-        o.append('<defs><radialGradient id="smk"><stop offset="0" stop-color="#8c8174" stop-opacity=".5"/>'
-                 '<stop offset=".55" stop-color="#9a9084" stop-opacity=".22"/>'
-                 '<stop offset="1" stop-color="#a69d92" stop-opacity="0"/></radialGradient>'
-                 '<radialGradient id="smk2"><stop offset="0" stop-color="#6f604f" stop-opacity=".7"/>'
-                 '<stop offset="1" stop-color="#8a7a68" stop-opacity="0"/></radialGradient></defs>')
-        puffs = []
-        for i in range(70):
-            t = (i / 69) ** .9
-            x = 224 + t * 166 + rnd.gauss(0, 4 + t * 12)
-            y = oy - 150 * t ** .75 + rnd.gauss(0, 3 + t * 10)
-            r = 9 + t * 36 * (.7 + rnd.random() * .5)
-            puffs.append((r, x, y, .95 - t * .6))
-        for r, x, y, a in sorted(puffs, reverse=True):
-            o.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{r * 1.15:.1f}" ry="{r:.1f}" fill="url(#smk)" opacity="{a:.2f}"/>')
-        for i in range(6):   # denser core right at the outlet
-            o.append(f'<circle cx="{226 + i * 7:.1f}" cy="{oy - 2 - i * 5:.1f}" r="{7 + i * 2.2:.1f}" fill="url(#smk2)"/>')
+        # oil smoke as particles (same language as the principle drawing), rising from the
+        # outlet and spreading toward the apartment windows
+        for i in range(190):
+            t = rnd.random() ** 1.1
+            spread = 4 + t * 30
+            x = 224 + t * 166 + rnd.gauss(0, spread * .8)
+            y = oy - 150 * t ** .75 + rnd.gauss(0, spread * .6)
+            r = 2 + t * 3.6 * rnd.random()
+            o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="{AMBER}" opacity="{(.8 - t * .42):.2f}"/>')
         o.append(txt(18, 30, "BEFORE", 18, GRAY, 600, font=N, extra='letter-spacing="3"'))
     else:
         # JL-8A outdoors on a low stand right against the shop wall; an exhaust duct rises
