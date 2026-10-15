@@ -241,8 +241,8 @@ b, strong { font-weight: 700; }
 .spec { font-size: 9pt; }
 .spec th, .spec td { padding: 2.9mm 2.4mm; }
 .spec th { width: 22mm; }
-.specphoto { background: var(--tint); height: 62mm; padding: 4mm; margin-bottom: 6mm; }
-.specphoto img { width: 100%; height: 100%; object-fit: contain; }
+.specphoto { background: var(--tint); height: 62mm; margin-bottom: 6mm; overflow: hidden; }
+.specphoto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
 .specfig .h3 { margin-bottom: 1.6mm; }
 .spec td .num { font-size: 12pt; }
 .spec td small { color: var(--gray); }
@@ -672,7 +672,7 @@ b, strong { font-weight: 700; }
           <tr><th>保証</th><td>お買い上げ日から1年間</td></tr>
         </table>
         <div class="specfig">
-          <figure class="specphoto"><img src="{{IMG}}/v2/assets/img/jl8a-product.webp" alt=""></figure>
+          <figure class="specphoto"><img src="{{IMG}}/brochure/img/jl8a-spec.jpg" alt=""></figure>
           <figure><h3 class="h3">外形図</h3>{{ORTHO}}<figcaption class="cap">外形の概略図です。吸込・排気の向きにより、扉や吸排気口の位置は異なります。</figcaption></figure>
         </div>
       </div>
