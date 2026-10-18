@@ -15,7 +15,7 @@
 const DOWNLOAD_URL = 'https://app.box.com/s/eawb01x5wcymzpkbrh3q88s841yr297o';   // 資料PDF（販売のみ版）のURL。Box の共有リンク（2026年10月18日にご提供）
 const NOTIFY_TO    = 'info@noda-duct.com,koroyasu@duct-noda.com,azuma@duct-noda.com,nagamizu@duct-noda.com';  // 通知を受け取るアドレス（カンマ区切り）
 const REPLY_TO     = 'info@noda-duct.com';            // お客様が自動返信メールに返信したときの宛先
-const FROM_EMAIL   = 'no-reply@shoenki.duct-noda.com'; // 送信元。迷惑メールに入る場合は、今の WordPress のフォームが使っている送信元アドレスに合わせてください
+const FROM_EMAIL   = 'info@duct-noda.com';             // 送信元。今の WordPress のフォームと同じアドレス（2026年10月18日にご提供）
 const FROM_NAME    = '野田の消煙機（株式会社野田）';
 const SITE_URL     = 'https://shoenki.duct-noda.com/';
 // ================

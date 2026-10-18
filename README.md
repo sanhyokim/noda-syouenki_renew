@@ -134,7 +134,7 @@ npx serve .
 
 **事前準備（今のサイトはそのまま）**
 
-1. **フォームは設定なしで使えます**（下の「フォームの送信先」）。今の WordPress のフォームの送信元アドレスがわかれば、`form/send.php` の `FROM_EMAIL` をそれに合わせておくと、今と同じように迷惑メールに入りにくくなります。
+1. **フォームは設定なしで使えます**（下の「フォームの送信先」）。送信元は今の WordPress のフォームと同じ info@duct-noda.com にしてあります。
 2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` `form/` です。`v2/` `wordpress/` `docs/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
 3. **広告の成果の数え方を確認する**：今の資料請求は、送信後にサンキューページ（`/transmission/`）へ移ります。新しいLPは同じページで完了画面を出し、`generate_lead` イベントを送ります。Google 広告などで「サンキューページの表示＝成果」と設定している場合は、タグマネージャー（GTM-W7PSRQTX）の条件をこのイベントに変えてください。変えないと、差し替え後に成果が数えられなくなります。
 4. **試しに置いて確かめる（おすすめ）**：公開フォルダの中に `_new` フォルダを作って 2. のファイルを入れ、`https://shoenki.duct-noda.com/_new/` で表示と、フォームのメール（自動返信と通知）が届くかを確かめます。表示されれば `.htaccess` もこのサーバーで動いています（動かない場合もエラーになるのはそのフォルダだけで、今のサイトには影響しません）。確認できたらフォルダごと削除します。
@@ -169,7 +169,7 @@ Cloudflare Pages・Netlify などに移す場合は `.htaccess` の代わりに 
 1. 担当者への通知メール（件名は「【野田の消煙機LP】資料請求がありました［福岡県］○○ 様」の形で、本文にも消煙機のLPのどのフォームから来たかを書きます。返信するとお客様に届きます）
 2. お客様への自動返信メール（資料請求は Box のダウンロードリンク、お問い合わせは受付確認と「資料はお送りしていません」の案内）
 
-設定はファイル先頭にまとめてあり、すべて設定済みです。通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件、お客様からの返信先（`REPLY_TO`）は info@noda-duct.com、資料のURL（`DOWNLOAD_URL`）は Box の共有リンクです。送信元（`FROM_EMAIL`）は `no-reply@shoenki.duct-noda.com` にしています。差し替え後のテストで迷惑メールに入る場合は、今の WordPress のフォームが使っている送信元アドレスに合わせてください。
+設定はファイル先頭にまとめてあり、すべて設定済みです。通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件、お客様からの返信先（`REPLY_TO`）は info@noda-duct.com、資料のURL（`DOWNLOAD_URL`）は Box の共有リンクです。送信元（`FROM_EMAIL`）は、今の WordPress のフォームと同じ info@duct-noda.com です（2026年10月18日にご提供）。
 
 いたずら対策として、ほかのサイトからの送信は受け付けず、同じ接続元からの送信は10分間に5件までにしています。`data-endpoint` を空にすると「プレビュー」として完了画面だけを表示し、実際には送信しません（チェック用のプレビューはこの状態です）。
 
