@@ -134,10 +134,10 @@ npx serve .
 
 **事前準備（今のサイトはそのまま）**
 
-1. **フォームの送信先を設定する**（下の「フォームの送信先」）。発行されたURLを `index.html` と `contact/index.html` の `data-endpoint` に入れます。
-2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` です。`v2/` `wordpress/` `docs/` `tools/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
+1. **フォームは設定なしで使えます**（下の「フォームの送信先」）。今の WordPress のフォームの送信元アドレスがわかれば、`form/send.php` の `FROM_EMAIL` をそれに合わせておくと、今と同じように迷惑メールに入りにくくなります。
+2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` `form/` です。`v2/` `wordpress/` `docs/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
 3. **広告の成果の数え方を確認する**：今の資料請求は、送信後にサンキューページ（`/transmission/`）へ移ります。新しいLPは同じページで完了画面を出し、`generate_lead` イベントを送ります。Google 広告などで「サンキューページの表示＝成果」と設定している場合は、タグマネージャー（GTM-W7PSRQTX）の条件をこのイベントに変えてください。変えないと、差し替え後に成果が数えられなくなります。
-4. **試しに置いて確かめる（おすすめ）**：公開フォルダの中に `_new` フォルダを作って 2. のファイルを入れ、`https://shoenki.duct-noda.com/_new/` で表示とフォームの送信を確かめます。表示されれば `.htaccess` もこのサーバーで動いています（動かない場合もエラーになるのはそのフォルダだけで、今のサイトには影響しません）。確認できたらフォルダごと削除します。
+4. **試しに置いて確かめる（おすすめ）**：公開フォルダの中に `_new` フォルダを作って 2. のファイルを入れ、`https://shoenki.duct-noda.com/_new/` で表示と、フォームのメール（自動返信と通知）が届くかを確かめます。表示されれば `.htaccess` もこのサーバーで動いています（動かない場合もエラーになるのはそのフォルダだけで、今のサイトには影響しません）。確認できたらフォルダごと削除します。
 
 **差し替え（今のサイトが新しいLPに変わります。日時はご判断ください）**
 
@@ -146,7 +146,7 @@ npx serve .
 7. **新しいファイルをアップロードする**：2. のファイルを公開フォルダに入れます。`.htaccess` は WordPress のものと置き換わります。
 8. **すぐに確認する**
    - トップ・会社概要・プライバシーポリシー・お問い合わせが表示される。`http://` で開くと `https://` に変わる
-   - 資料請求とお問い合わせを1件ずつ送り、自動返信・通知メール・スプレッドシートを確かめる
+   - 資料請求とお問い合わせを1件ずつ送り、自動返信と通知メールが届くかを確かめる（迷惑メールのフォルダも）
    - 稼働動画がその場で再生される
    - 旧URL（例：`/transmission/`）がトップページに移り、存在しないURLでは「ページが見つかりません」が出る
    - タグマネージャーのプレビューか、GA4 のリアルタイムで計測が届いている
@@ -160,21 +160,18 @@ npx serve .
 
 **`.htaccess` でしていること**：`http://` から `https://` への転送、WordPress 時代のURL（`/野田の消煙機/` `/transmission/` `/elementor-768/` `/投稿1/`〜`/投稿3/` `/category/お知らせ/` `/feed/` など）からトップページへの転送（301）、旧サイトマップから `sitemap.xml` への転送、公開しないフォルダを見せない設定、存在しないURLで `404.html` を表示、セキュリティとキャッシュのヘッダー。
 
-Cloudflare Pages・Netlify などに移す場合は `.htaccess` の代わりに `_headers` が使われ、DNS の切り替えが必要になります。
+Cloudflare Pages・Netlify などに移す場合は `.htaccess` の代わりに `_headers` が使われ、DNS の切り替えが必要になります。PHP が動かないので、フォームの送信先も別に用意する必要があります。
 
-## フォームの送信先（設定が必要です）
+## フォームの送信先
 
-`index.html`（資料請求）と `contact/index.html`（お問い合わせ）の `<form data-endpoint="">` に送信先のURLを入れると、その宛先に送信します。2つとも同じURLでかまいません。空のあいだは「プレビュー」として完了画面だけを表示し、実際には送信しません。
+資料請求（`index.html`）とお問い合わせ（`contact/index.html`）のフォームは、同じサーバーの [`form/send.php`](form/send.php) に送られます。WordPress のフォームと同じく、コアサーバーから直接メールを送るので、Google などの外部サービスの設定は要りません（PHP が動くサーバーなら動きます）。送るメールは次の2通です。
 
-おすすめは **Google Apps Script**（無料）です。[`tools/form/google-apps-script.gs`](tools/form/google-apps-script.gs) を Google スプレッドシートに貼り付けてウェブアプリとして公開すると、次の3つを行います。設置手順はファイルの先頭に書いてあります。
+1. 担当者への通知メール（件名は「【野田の消煙機LP】資料請求がありました［福岡県］○○ 様」の形で、本文にも消煙機のLPのどのフォームから来たかを書きます。返信するとお客様に届きます）
+2. お客様への自動返信メール（資料請求は Box のダウンロードリンク、お問い合わせは受付確認と「資料はお送りしていません」の案内）
 
-1. 送信内容をスプレッドシートに1行ずつ記録（シート「資料請求」「お問い合わせ」）
-2. お客様に自動返信メールを送信（資料請求はダウンロードのご案内、お問い合わせは受付確認）
-3. 担当者に通知メールを送信（件名は「【野田の消煙機LP】資料請求がありました［福岡県］○○ 様」の形で、本文にも消煙機のLPのどのフォームから来たかを書きます。都道府県は地域ごとの振り分けに使えます）
+設定はファイル先頭にまとめてあり、すべて設定済みです。通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件、お客様からの返信先（`REPLY_TO`）は info@noda-duct.com、資料のURL（`DOWNLOAD_URL`）は Box の共有リンクです。送信元（`FROM_EMAIL`）は `no-reply@shoenki.duct-noda.com` にしています。差し替え後のテストで迷惑メールに入る場合は、今の WordPress のフォームが使っている送信元アドレスに合わせてください。
 
-通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件を設定済みです。お客様が自動返信メールに返信すると、先頭の info@noda-duct.com に届きます。ファイル先頭の `DOWNLOAD_URL`（資料PDFのURL）には、資料請求の自動返信で送る Box の共有リンクを設定済みです。
-
-送れるメールは宛先の数で数えて、Gmail（無料アカウント）は1日100件、Google Workspace は1日1,500件までです。1回の送信で、自動返信1件と通知4件の計5件を使います。Formspree などのフォームサービスを使う場合も、そのURLを `data-endpoint` に入れるだけで送れます。
+いたずら対策として、ほかのサイトからの送信は受け付けず、同じ接続元からの送信は10分間に5件までにしています。`data-endpoint` を空にすると「プレビュー」として完了画面だけを表示し、実際には送信しません（チェック用のプレビューはこの状態です）。
 
 ## 公開前に確認していただきたいこと
 
@@ -215,7 +212,7 @@ assets/
 404.html              見つからないページ（WordPress 時代の古いURLなど）で出すページ
 .htaccess             コアサーバー用の設定（https への転送、旧URLの転送、ヘッダー）
 robots.txt / sitemap.xml / _headers
-tools/form/           フォームの受け口（Google Apps Script）
+form/send.php         フォームの送信先（通知メールと自動返信をこのサーバーから送る PHP）
 docs/preview/         スクリーンショット（docs/preview/v2/ は前回のデザイン案）
 v2/                   前回お見せしたデザイン案（参考用・検索エンジンには載せない設定）
 wordpress/            現行サイト（WordPress + Elementor）に「仕組み」だけを載せる部品
