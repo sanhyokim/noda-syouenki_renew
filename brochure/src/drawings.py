@@ -292,7 +292,7 @@ def structure_svg():
     # electrical parts
     o.append(f'<rect x="120" y="60" width="120" height="70" fill="#fff" stroke="{NAVY}" stroke-width="1.2"/>'
              f'<rect x="130" y="68" width="100" height="24" fill="{NAVY}"/><rect x="130" y="98" width="100" height="24" fill="{NAVY}"/>'
-             + txt(222, 86, "12.0 kV", 13, "#7fe0a0", 700, "end", N) + txt(222, 116, "0.20 mA", 13, "#7fe0a0", 700, "end", N))
+             + txt(222, 86, "12.0 kV", 13, "#7fe0a0", 700, "end", N) + txt(222, 116, "6〜10 A", 13, "#7fe0a0", 700, "end", N))
     o.append(f'<rect x="400" y="62" width="70" height="68" fill="#fff" stroke="{NAVY}" stroke-width="1.2"/>'
              f'<rect x="424" y="72" width="22" height="34" rx="2" fill="none" stroke="{NAVY}" stroke-width="1.2"/>'
              f'<rect x="424" y="72" width="22" height="15" rx="2" fill="{NAVY}"/>')
