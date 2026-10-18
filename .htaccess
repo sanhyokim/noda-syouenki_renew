@@ -15,7 +15,7 @@ RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^ https://shoenki.duct-noda.com%{REQUEST_URI} [R=301,L]
 
 # 公開しないファイル・フォルダ（間違えてアップロードしても見えないように）
-RewriteRule ^(\.git|v2|wordpress|docs)(/|$) - [F,L]
+RewriteRule ^(\.git|v2|wordpress|docs|deploy)(/|$) - [F,L]
 RewriteRule ^(README\.md|_headers|\.gitignore)$ - [F,L]
 
 # WordPress 時代のURL → 新しいページ（検索の評価を引き継ぎます）
