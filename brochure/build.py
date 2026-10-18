@@ -1,6 +1,11 @@
 """Build the brochure HTML (web + print-with-bleed) and render PDFs/previews.
 
     python3 brochure/build.py            # writes brochure/dist/
+
+Two editions come from one template (Boss, 2026-10-18): "rent" keeps the
+rental plan for the company's direct sales; "buy" is purchase-only, for the
+LP and for dealers. Blocks wrapped in <!--if:rent-->…<!--/if:rent--> or
+<!--if:buy-->…<!--/if:buy--> appear only in that edition.
 """
 import re
 import shutil
@@ -17,6 +22,7 @@ import drawings  # noqa: E402
 import parts  # noqa: E402
 
 DIST = HERE / "dist"
+EDITIONS = ("buy", "rent")
 LP_URL = "https://shoenki.duct-noda.com/"
 VIDEO_URL = "https://youtu.be/lS9ckeMccJQ"
 LINE_URL = "https://line.me/R/ti/p/@254bbzux"
@@ -74,8 +80,17 @@ def images(html, kind):
     return re.sub(r"\{\{IMG\}\}/([^\"']+)", conv, html)
 
 
-def build(bleed):
-    tpl = (HERE / "src" / "brochure.html").read_text(encoding="utf-8")
+def edition(html, ed):
+    """Keep this edition's blocks (markers dropped) and remove the other's."""
+    for other in EDITIONS:
+        pat = re.compile(rf"<!--if:{other}-->(.*?)<!--/if:{other}-->", re.S)
+        html = pat.sub((lambda m: m.group(1)) if other == ed else "", html)
+    assert "<!--if:" not in html
+    return html
+
+
+def build(bleed, ed):
+    tpl = edition((HERE / "src" / "brochure.html").read_text(encoding="utf-8"), ed)
     rep = {
         "{{B}}": str(bleed),
         "{{PW}}": str(210 + 2 * bleed),
@@ -99,15 +114,17 @@ def build(bleed):
     for k, v in rep.items():
         tpl = tpl.replace(k, v)
     tpl = images(tpl, "print" if bleed else "web")
-    out = DIST / f"brochure-bleed{bleed}.html"
+    out = DIST / f"brochure-{ed}-bleed{bleed}.html"
     out.write_text(tpl, encoding="utf-8")
     return out
 
 
 if __name__ == "__main__":
     DIST.mkdir(exist_ok=True)
-    for b in (0, 3):
-        print(build(b))
+    for ed in EDITIONS:
+        for b in (0, 3):
+            print(build(b, ed))
     subprocess.run(["node", str(HERE / "render.mjs"), str(DIST)], check=True)
     from spreads import make_spreads   # needs pypdf
-    print(make_spreads())
+    for ed in EDITIONS:
+        print(make_spreads(DIST / f"brochure-{ed}-bleed0.pdf", DIST / f"brochure-{ed}-spreads.pdf"))

@@ -1,7 +1,7 @@
 """Reader's-spread PDF from the A4 web PDF: cover and back cover stay single,
 the inside pages sit side by side as they open in the booklet (vector, no re-render).
 
-    python3 brochure/spreads.py      # dist/brochure-bleed0.pdf -> dist/brochure-spreads.pdf
+    python3 brochure/spreads.py      # dist/brochure-bleed0.pdf -> dist/brochure-spreads.pdf (build.py passes each edition's files)
 """
 from pathlib import Path
 

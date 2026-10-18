@@ -1,9 +1,13 @@
 #!/bin/sh
 # Page and spread previews from the trim-size PDF (needs poppler-utils + Pillow).
+#   sh preview.sh [dpi] [edition]   -> dist/preview-<edition>/
 set -e
+ed="${2:-buy}"
 cd "$(dirname "$0")/dist"
+mkdir -p "preview-$ed"
+cd "preview-$ed"
 rm -f pv-*.png
-pdftoppm -r "${1:-90}" -png brochure-bleed0.pdf pv
+pdftoppm -r "${1:-90}" -png "../brochure-$ed-bleed0.pdf" pv
 for f in pv-0*.png; do [ -e "$f" ] && mv "$f" "pv-${f#pv-0}"; done
 python3 -I - <<'PY'
 from PIL import Image
