@@ -24,7 +24,7 @@ import parts  # noqa: E402
 DIST = HERE / "dist"
 EDITIONS = ("buy", "rent")
 LP_URL = "https://shoenki.duct-noda.com/"
-VIDEO_URL = "https://youtu.be/lS9ckeMccJQ"
+VIDEO_URL = "https://youtu.be/1FAPHGP_dmQ"
 LINE_URL = "https://line.me/R/ti/p/@254bbzux"
 
 
