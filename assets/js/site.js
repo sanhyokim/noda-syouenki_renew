@@ -131,6 +131,21 @@
     if (!sessionStorage.getItem(SRC_KEY + '_ref') && document.referrer) sessionStorage.setItem(SRC_KEY + '_ref', document.referrer);
   } catch (_) { /* storage may be unavailable */ }
 
+  /* ---------- lead event (generate_lead) for analytics and ads ---------- */
+  const LEAD_KEY = 'noda_lead';
+  const pushLead = (d) => {
+    (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', ...d });
+    if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', d);
+  };
+  // the thank-you page sends the event the 資料請求 form handed over (once, not again on reload)
+  if ($('[data-thanks-page]')) {
+    try {
+      const lead = JSON.parse(sessionStorage.getItem(LEAD_KEY) || 'null');
+      sessionStorage.removeItem(LEAD_KEY);
+      if (lead) pushLead(lead);
+    } catch (_) { /* storage may be unavailable */ }
+  }
+
   /* ---------- forms: 資料請求 (data-form="download") and お問い合わせ (data-form="contact") ---------- */
   const form = $('[data-form]');
   if (form) {
@@ -223,14 +238,9 @@
         if (ref) fd.set('referrer', ref);
       } catch (_) { /* ignore */ }
 
-      const track = () => {
-        const purpose = fd.get('purpose') || fd.get('kind') || '';
-        const pref = fd.get('pref') || '';
-        (window.dataLayer = window.dataLayer || []).push({ event: 'generate_lead', form_id: formId, purpose, pref });
-        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form_id: formId, purpose, pref });
-      };
+      const lead = { form_id: formId, purpose: fd.get('purpose') || fd.get('kind') || '', pref: fd.get('pref') || '' };
 
-      if (!endpoint) { track(); showDone(true); return; }
+      if (!endpoint) { pushLead(lead); showDone(true); return; }
 
       setBusy(true);
       try {
@@ -238,7 +248,13 @@
         let ok = res.ok;
         try { const data = await res.clone().json(); if (data && (data.ok === false || data.result === 'error')) ok = false; } catch (_) { /* not JSON */ }
         if (!ok) throw new Error('HTTP ' + res.status);
-        track();
+        if (form.dataset.thanks) {
+          // like the old site, 資料請求 ends on the thank-you page, which sends the lead event
+          try { sessionStorage.setItem(LEAD_KEY, JSON.stringify(lead)); } catch (_) { pushLead(lead); }
+          location.href = form.dataset.thanks;
+          return;
+        }
+        pushLead(lead);
         showDone(false);
       } catch (err) {
         msg.innerHTML = '送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。<br>お急ぎの方はお電話（<a href="tel:0120773408">0120-77-3408</a>）でもご相談いただけます。';
