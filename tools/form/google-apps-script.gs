@@ -20,7 +20,7 @@
  */
 
 // ===== 設定 =====
-const DOWNLOAD_URL = 'https://example.com/noda-shoenki-jl8a.pdf';   // 資料PDF（販売のみ版）のURL（Googleドライブの共有リンクでも可）
+const DOWNLOAD_URL = 'https://app.box.com/s/eawb01x5wcymzpkbrh3q88s841yr297o';   // 資料PDF（販売のみ版）のURL。Box の共有リンク（2026年10月18日にご提供）
 const NOTIFY_TO    = 'info@noda-duct.com,koroyasu@duct-noda.com,azuma@duct-noda.com,nagamizu@duct-noda.com';  // 通知を受け取るアドレス（カンマ区切り。お客様からの返信は先頭のアドレスに届きます）
 const FROM_NAME    = '野田の消煙機（株式会社野田）';
 const SITE_URL     = 'https://shoenki.duct-noda.com/';
