@@ -202,10 +202,10 @@ b, strong { font-weight: 700; }
 .lamp i.blink { background: linear-gradient(90deg, #2ecc71 50%, #e0473a 50%); }
 .volt .tbl td .num { font-size: 13pt; color: var(--blue); }
 .safety { margin-top: 6mm; }
-.safety ul { margin-top: 2.6mm; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.safety ul { margin-top: 2.6mm; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3mm; }
 .safety li { border-top: .25mm solid var(--navy); padding-top: 1.8mm; font-size: 7.8pt; line-height: 1.6; color: var(--ink-2); }
 .safety li b { display: block; font-size: 8.6pt; color: var(--navy); margin-bottom: .6mm; }
-.warranty { position: absolute; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; border: .25mm solid var(--navy); padding: 3.6mm 4.4mm; }
+.warranty { margin-top: 9mm; display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; border: .25mm solid var(--navy); padding: 3.6mm 4.4mm; }
 .warranty .yr { border-right: .25mm solid var(--hair); }
 .warranty .yr span { font-size: 7.6pt; font-weight: 700; color: var(--navy); }
 .warranty .yr b { display: block; font-family: var(--num); font-size: 30pt; line-height: 1; color: var(--navy); }
@@ -432,7 +432,7 @@ b, strong { font-weight: 700; }
         <li><b><span class="co">1</span>焼き台・フード</b>調理で出た油煙をフードで集め、排気ダクトへ送ります。</li>
         <li><b><span class="co">2</span>チャンバーボックス</b>ダクトと本体を接続する箱。本体の前後に設けます。</li>
         <li><b><span class="co">3</span>JL-8A</b>プレフィルターネットで流れを整え、セルで油煙を電気的に捕集します。</li>
-        <li><b><span class="co">4</span>排気ファン</b>排気の流れをつくる送風機。標準工事にFAN工事を含みます。</li>
+        <li><b><span class="co">4</span>排気ファン</b>排気の流れをつくる送風機。FAN工事は別途です。</li>
         <li><b><span class="co">5</span>排気口</b>油煙を取り除いた空気が、屋外へ排出されます。</li>
       </ol>
       <div class="sel">
@@ -442,7 +442,7 @@ b, strong { font-weight: 700; }
           <li><span>排気ダクト</span><b>経路・寸法</b><em>設置位置とチャンバーボックスの形</em></li>
           <li><span>設置場所</span><b>広さ・床や天井の強度</b><em>床置き・天吊り・屋外の選択</em></li>
           <li><span>電源</span><b>単相100V・アース</b><em>電源系統と漏電遮断器</em></li>
-          <li><span>業態・熱源</span><b>煙の量・営業時間</b><em>処理能力にどれだけ余裕を持たせるか</em></li>
+          <li><span>業態・熱源</span><b>煙の量・稼動時間</b><em>処理能力にどれだけ余裕を持たせるか</em></li>
         </ol>
         <p class="note" style="margin-top:1.8mm">いずれも無料の現地調査で当社が確認します。12ページのチェックシートに、わかる範囲でご記入いただくとスムーズです。</p>
       </div>
@@ -451,7 +451,7 @@ b, strong { font-weight: 700; }
         <table class="tbl">
           <tr><th>処理風量</th><td><span class="num">3,000</span> ㎥/h（1台あたり）。排気量や煙の量に応じて、台数と配置を選定します。</td></tr>
           <tr><th>ダクト風速</th><td>本体手前のダクトで <span class="num">4〜6</span> m/s。試運転時に風速計で測定して調整します。</td></tr>
-          <tr><th>接続方法</th><td>ダクトとはチャンバーボックスを介して接続します。シロッコファンの吐き出し口には直接設置しません。</td></tr>
+          <tr><th>接続方法</th><td>ダクトとチャンバーボックスを介して接続します。シロッコファンの吸込口に接続します。</td></tr>
           <tr><th>吸込・排気の向き</th><td>ダクトの取り回しに合わせて、排気方向を現場で変更できます。</td></tr>
           <tr><th>煙の多い業態</th><td>焼肉・焼き鳥など煙が高濃度で量も多い場合は、処理能力に余裕を持たせて選定します。</td></tr>
           <tr><th>使用できない場所</th><td>工場や廃棄物処理場など粉塵の多い場所、ガソリン・シンナーなど可燃物の近く。</td></tr>
@@ -467,13 +467,13 @@ b, strong { font-weight: 700; }
   <div class="trim">
     <header class="rh"><span class="rh__no">03</span><span class="rh__en">PRINCIPLE</span><span class="rh__ja">集塵の原理</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <h2 class="ttl">粒子に電気を帯びさせ、<br>極板に引き寄せて集める。</h2>
+      <h2 class="ttl">粒子に電気を帯びさせ、<br>極板に引き寄せて吸着させる。</h2>
       <p class="lead">JL-8A は電気集塵方式です。油煙の粒子にプラスの電気を帯びさせる「高電圧部」と、帯電した粒子を極板に集める「低電圧部」を分けた2段構成。この2つを1つのセルに一体化しています。</p>
       <figure class="prn">{{PRINCIPLE}}</figure>
       <ol class="steps">
         <li><h3><span class="co">1</span>整える<small>プレフィルターネット</small></h3><p>ダクトから流れ込んだ空気を一定の速さに整え、セルへ送ります。</p></li>
         <li><h3><span class="co">2</span>帯電させる<small>高電圧部 12kV</small></h3><p>高電圧部を通る油脂成分や浮遊粒子が、プラスの電荷を帯びます。</p></li>
-        <li><h3><span class="co">3</span>集める<small>低電圧部 6kV</small></h3><p>帯電した粒子はプラス極板に反発し、マイナス極板に捕集されます。たまった油は下部の油受けから排出します。</p></li>
+        <li><h3><span class="co">3</span>集める<small>低電圧部 6kV</small></h3><p>帯電した粒子はプラス極板に反発し、マイナス極板に捕集されます。たまった油は下部の油受けに排出します。</p></li>
       </ol>
       <div class="oil">
         <h3 class="h3 h3--rule">集めた油のゆくえ</h3>
@@ -492,7 +492,7 @@ b, strong { font-weight: 700; }
             <tbody>
               <tr><th>捕らえ方</th><td>電気の力で粒子を引き寄せる</td><td>布や網の目で濾し取る</td></tr>
               <tr><th>細かい粒子</th><td>目に見えないほど細かい粒子も捕集</td><td>網の目より細かい粒子は通り抜けやすい</td></tr>
-              <tr><th>風の通り</th><td>風路をふさがず、抵抗が増えにくい</td><td>目詰まりが進むと抵抗が増えやすい</td></tr>
+              <tr><th>風の通り</th><td>風路をふさがず、抵抗が少ない</td><td>目詰まりが進むと抵抗が増す</td></tr>
               <tr><th>消耗品</th><td>セルを洗浄して繰り返し使用</td><td>フィルターの定期交換が必要</td></tr>
             </tbody>
           </table>
@@ -522,7 +522,7 @@ b, strong { font-weight: 700; }
         <li><span class="co">10</span><span><b>セル受電スプリング（高電圧側）</b>高電圧側の電極から電力を受ける</span></li>
         <li><span class="co">4</span><span><b>漏電ブレーカ</b>漏電や過負荷のとき電源を遮断。基板には回路遮断ヒューズを搭載</span></li>
         <li><span class="co">11</span><span><b>高電圧給電端子</b>セルに高電圧を供給する端子</span></li>
-        <li><span class="co">5</span><span><b>セル（高電圧部＋低電圧部一体型）</b>粒子を帯電させ、極板に集めるユニット</span></li>
+        <li><span class="co">5</span><span><b>セル（2個・高電圧部＋低電圧部一体型）</b>粒子を帯電させ、極板に集めるユニット</span></li>
         <li><span class="co">12</span><span><b>低電圧給電端子</b>セルに低電圧を供給する端子</span></li>
         <li><span class="co">6</span><span><b>プレフィルターネット</b>流入した空気を一定の速さに整え、セルへ送る</span></li>
         <li><span class="co">13</span><span><b>電圧メーター</b>上段に高電圧側の電圧、下段に出力電流を表示</span></li>
@@ -542,9 +542,9 @@ b, strong { font-weight: 700; }
       <h2 class="ttl feat-ttl">毎日使う設備だから、<br>性能・手入れ・安全まで考えた設計。</h2>
       <ol class="feats">
         <li class="feat"><span class="num">01</span><div><h3>細かな油煙まで捕集</h3><p>電気の力で粒子を引き寄せるため、目に見えないほど細かい油煙まで捕集します。</p><p class="spec">油煙除去率 最大91%（自社調べ）</p></div></li>
-        <li class="feat"><span class="num">02</span><div><h3>洗って繰り返し使えるセル</h3><p>高電圧部と低電圧部が一体のセルを引き出して洗浄します。使い捨てフィルターの買い足しは不要です。</p><p class="spec">劣化した消耗部品のみ交換</p></div></li>
+        <li class="feat"><span class="num">02</span><div><h3>洗って繰り返し使えるセル</h3><p>高電圧部と低電圧部が一体のセルを引き出して、専門業者が洗浄します。使い捨てフィルターの買い足しは不要です。</p><p class="spec">劣化した消耗部品のみ交換</p></div></li>
         <li class="feat"><span class="num">03</span><div><h3>性能を数値で確かめられる</h3><p>電圧メーターを内蔵。メンテナンスのたびに出力電圧を測り、性能が保たれているかを確認します。</p><p class="spec">正常値 12kV±2kV／6kV±2kV</p></div></li>
-        <li class="feat"><span class="num">04</span><div><h3>安全装置を標準装備</h3><p>運転中に扉を開けると自動で電源が切れる安全装置、漏電ブレーカ、回路遮断ヒューズを備えています。</p><p class="spec">扉は施錠式</p></div></li>
+        <li class="feat"><span class="num">04</span><div><h3>安全装置を標準装備</h3><p>漏電ブレーカ、回路遮断ヒューズを備えています。</p></div></li>
         <li class="feat"><span class="num">05</span><div><h3>現場に合わせて設置できる</h3><p>吸込・排気の向きは現場で変更でき、屋内の床置き、天井吊り、屋外設置に対応します。</p><p class="spec">屋外は防雨カバー（別売）</p></div></li>
         <li class="feat"><span class="num">06</span><div><h3>単相100V・消費電力500W</h3><p>単相100Vで動き、消費電力は500W。電気代の目安は月2,500円程度です。</p><p class="spec">1日6〜7時間・月25日・31円/kWhで試算</p></div></li>
       </ol>
@@ -591,10 +591,8 @@ b, strong { font-weight: 700; }
       <div class="safety">
         <h3 class="h3 h3--rule">安全のための設計</h3>
         <ul>
-          <li><b>扉を開けると電源オフ</b>運転中に扉を開けると安全装置が働き、自動で電源が切れます。</li>
           <li><b>漏電ブレーカ</b>漏電や過負荷などの異常な電流を検知して遮断します。</li>
           <li><b>回路遮断ヒューズ</b>基板に搭載し、電子回路を保護します。</li>
-          <li><b>施錠できる扉</b>高電圧部に不用意に触れられないよう、鍵で管理します。</li>
         </ul>
       </div>
       <div class="warranty">
@@ -667,7 +665,7 @@ b, strong { font-weight: 700; }
           <tr><th>静圧</th><td><span class="num">98</span> Pa（10mmAq）</td></tr>
           <tr><th>出力電圧</th><td>高電圧側 12kV±2kV<br>低電圧側 6kV±2kV</td></tr>
           <tr><th>使用環境</th><td>温度 0〜50℃／湿度 80%以下</td></tr>
-          <tr><th>安全装置</th><td>扉開放時の電源遮断、漏電ブレーカ、回路遮断ヒューズ</td></tr>
+          <tr><th>安全装置</th><td>漏電ブレーカ、回路遮断ヒューズ</td></tr>
           <tr><th>保証</th><td>お買い上げ日から1年間</td></tr>
         </table>
         <div class="specfig">

@@ -302,43 +302,51 @@ def structure_svg():
     o.append(f'<path d="M586 83H600M646 90H660M684 78H716V92M582 113H700" stroke="{NAVY}" stroke-width="1" fill="none"/>')
     # run lamp on the face
     o.append(f'<circle cx="850" cy="96" r="11" fill="#2ecc71" stroke="{NAVY}" stroke-width="1.4"/>')
-    # supply terminals (11 HV, 12 LV) and cables from the board
-    for x in (330, 610):
-        o.append(f'<rect x="{x - 12}" y="{part - 16}" width="24" height="14" fill="{BLUE}"/>')
-    o.append(f'<path d="M560 132V138H342M650 132V138H622" stroke="{BLUE}" stroke-width="2" fill="none"/>')
-    # feed electrodes (8 HV, 7 LV) + receiving springs (10, 9)
+    # two cells in series, each one-piece HV + LV, each fed by its own
+    # terminal pair (11 HV, 12 LV) -> feed electrodes (8, 7) -> springs (10, 9)
     cy0, cy1 = 206, 420
-    for x in (330, 610):
-        o.append(f'<rect x="{x - 14}" y="{part + 6}" width="28" height="12" fill="#fff" stroke="{BLUE}" stroke-width="2"/>')
-        z = " ".join(f"{x + (7 if i % 2 else -7)},{part + 22 + i * 4}" for i in range(7))
-        o.append(f'<polyline points="{x},{part + 18} {z} {x},{cy0}" fill="none" stroke="{BLUE}" stroke-width="1.6"/>')
+    cells = ((230, 515), (535, 820))
+    legs = []
+    for cx0, cx1 in cells:
+        d = cx0 + 100                     # HV | LV divider
+        legs.append((d - 30, d + 30))
+    (h1, l1), (h2, l2) = legs
+    o.append(f'<path d="M556 132V140H{h1 + 12}M{h2} 132V{part - 16}M{l2} 132V{part - 16}" stroke="{BLUE}" stroke-width="2" fill="none"/>')
+    for hv, lv in legs:
+        for x in (hv, lv):
+            o.append(f'<rect x="{x - 12}" y="{part - 16}" width="24" height="14" fill="{BLUE}"/>')
+            o.append(f'<rect x="{x - 14}" y="{part + 6}" width="28" height="12" fill="#fff" stroke="{BLUE}" stroke-width="2"/>')
+            z = " ".join(f"{x + (7 if i % 2 else -7)},{part + 22 + i * 4}" for i in range(7))
+            o.append(f'<polyline points="{x},{part + 18} {z} {x},{cy0}" fill="none" stroke="{BLUE}" stroke-width="1.6"/>')
     # air path
     o.append(arrow(14, 314, 76, 314, NAVY, 2.4))
     o.append(arrow(904, 314, 966, 314, NAVY, 2.4))
     o.append(txt(14, 300, "吸込", 13, AMBER, 700))
     o.append(txt(966, 300, "排気", 13, GRAY, 700, "end"))
     o.append(mesh(130, 214, 22, 200, 7))
-    # cell (HV + LV one-piece)
-    o.append(f'<rect x="230" y="{cy0}" width="590" height="{cy1 - cy0}" fill="#fff" stroke="{NAVY}" stroke-width="2"/>')
-    o.append(f'<rect x="232" y="{cy0 + 2}" width="196" height="{cy1 - cy0 - 4}" fill="{BLUE}" opacity=".06"/>')
-    for i in range(6):
-        o.append(f'<path d="M{258 + i * 30} {cy0 + 10}V{cy1 - 10}" stroke="{BLUE}" stroke-width="1.6"/>')
-    o.append(f'<path d="M440 {cy0}V{cy1}" stroke="{NAVY}" stroke-width="1" stroke-dasharray="4 3"/>')
-    for i in range(9):
-        y = cy0 + 18 + i * 23
-        neg = i % 2 == 0
-        o.append(f'<path d="M456 {y}H806" stroke="{BLUE if neg else LINE}" stroke-width="{2.6 if neg else 1.4}"/>')
-    o.append(txt(335, cy1 + 22, "高電圧部", 12, BLUE, 700, "middle"))
-    o.append(txt(630, cy1 + 22, "低電圧部", 12, BLUE, 700, "middle"))
+    for cx0, cx1 in cells:
+        d = cx0 + 100
+        o.append(f'<rect x="{cx0}" y="{cy0}" width="{cx1 - cx0}" height="{cy1 - cy0}" fill="#fff" stroke="{NAVY}" stroke-width="2"/>')
+        o.append(f'<rect x="{cx0 + 2}" y="{cy0 + 2}" width="{d - cx0 - 4}" height="{cy1 - cy0 - 4}" fill="{BLUE}" opacity=".06"/>')
+        for i in range(4):
+            o.append(f'<path d="M{cx0 + 20 + i * 22} {cy0 + 10}V{cy1 - 10}" stroke="{BLUE}" stroke-width="1.6"/>')
+        o.append(f'<path d="M{d} {cy0}V{cy1}" stroke="{NAVY}" stroke-width="1" stroke-dasharray="4 3"/>')
+        for i in range(9):
+            y = cy0 + 18 + i * 23
+            neg = i % 2 == 0
+            o.append(f'<path d="M{d + 12} {y}H{cx1 - 12}" stroke="{BLUE if neg else LINE}" stroke-width="{2.6 if neg else 1.4}"/>')
+        o.append(txt((cx0 + d) / 2, cy1 + 22, "高電圧部", 12, BLUE, 700, "middle"))
+        o.append(txt((d + cx1) / 2, cy1 + 22, "低電圧部", 12, BLUE, 700, "middle"))
     # oil pan + drain
     o.append(f'<path d="M180 452H840L824 486H196Z" fill="#fff" stroke="{NAVY}" stroke-width="1.4"/>'
              f'<path d="M204 476H816L812 484H208Z" fill="{AMBER}" opacity=".55"/>')
     o.append(f'<path d="M800 486V530H836" fill="none" stroke="{NAVY}" stroke-width="5"/>'
              f'<rect x="814" y="522" width="10" height="16" fill="{NAVY}"/>')
     # callouts (manual numbering)
-    pts = {1: (862, 530), 2: (878, 96), 3: (540, 58), 4: (400, 58), 5: (230, 206), 6: (141, 206),
-           7: (582, 170), 8: (302, 170), 9: (582, 196), 10: (302, 196), 11: (302, 140), 12: (582, 140), 13: (120, 58)}
-    for n, (x, y) in pts.items():
+    pts = [(1, 862, 530), (2, 878, 96), (3, 540, 58), (4, 400, 58), (5, 230, 206), (5, 535, 206), (6, 141, 206),
+           (7, l2 + 28, 170), (8, h1 - 28, 170), (9, l2 + 28, 196), (10, h1 - 28, 196), (11, h1 - 28, 140),
+           (12, l2 + 28, 144), (13, 120, 58)]
+    for n, x, y in pts:
         o.append(callout(x, y, n, 11))
     return svg(1000, 560, o, "構造模式図")
 
@@ -442,9 +450,12 @@ def footprint_svg():
     for side in (-1, 1):
         bx = x - 40 if side < 0 else x + W
         o.append(f'<path d="M{bx} {y + 26}h40v{D - 52}h-40z" fill="{TINT}" stroke="{NAVY}" stroke-width="1.2"/>')
-        dx0 = 20 if side < 0 else x + W + 40
-        dx1 = x - 40 if side < 0 else 440
-        o.append(f'<path d="M{dx0} {cy - 20}H{dx1}M{dx0} {cy + 20}H{dx1}" stroke="{NAVY}" stroke-width="1.4"/>')
+        # duct widens (or narrows) to the full face of the chamber box
+        face = bx if side < 0 else bx + 40
+        neck = face + 60 * side
+        end = 20 if side < 0 else 440
+        o.append(f'<path d="M{neck} {cy - 20}L{face} {y + 26}V{y + D - 26}L{neck} {cy + 20}Z" fill="#fff" stroke="{NAVY}" stroke-width="1.4" stroke-linejoin="round"/>')
+        o.append(f'<path d="M{end} {cy - 20}H{neck}M{end} {cy + 20}H{neck}" stroke="{NAVY}" stroke-width="1.4"/>')
     o.append(arrow(30, cy, x - 52, cy, BLUE, 2))
     o.append(arrow(x + W + 52, cy, 432, cy, BLUE, 2))
     o.append(txt(30, cy - 28, "吸込", 12, BLUE, 700))
