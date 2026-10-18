@@ -91,6 +91,7 @@ def build(bleed):
         "{{INST_CEIL}}": drawings.install_svg("ceiling"),
         "{{INST_OUT}}": drawings.install_svg("outdoor"),
         "{{FOOTPRINT}}": drawings.footprint_svg(),
+        "{{LOGO}}": parts.logo_svg(),
         "{{QR_LP}}": parts.qr_svg(LP_URL),
         "{{QR_YT}}": parts.qr_svg(VIDEO_URL),
         "{{QR_LINE}}": parts.qr_svg(LINE_URL),

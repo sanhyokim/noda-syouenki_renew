@@ -21,3 +21,9 @@ def qr_svg(data, dark="#15324a"):
             f'<path fill="{dark}" d="{"".join(d)}"/></svg>')
 
 
+def logo_svg():
+    """株式会社野田's N mark, traced from Boss's 500px PNG (2026-10-18).
+    Drawn in currentColor so it can sit white on navy or navy on paper."""
+    return ('<svg class="logo" viewBox="117 109 265 279" xmlns="http://www.w3.org/2000/svg" '
+            'role="img" aria-label="株式会社野田"><path fill="currentColor" '
+            'd="M117 109H211V388H117ZM288 109H382V388H288ZM221 111L277 213V388L221 285Z"/></svg>')

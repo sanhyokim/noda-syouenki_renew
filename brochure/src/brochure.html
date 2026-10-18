@@ -101,6 +101,8 @@ b, strong { font-weight: 700; }
 .cv__foot { position: absolute; left: calc(15mm + var(--b)); right: calc(15mm + var(--b)); bottom: calc(8mm + var(--b)); display: flex; justify-content: space-between; align-items: baseline; }
 .cv__foot p { font-size: 6.8pt; color: rgba(255,255,255,.6); }
 .cv__foot strong { font-size: 11pt; letter-spacing: .2em; }
+.brand { display: inline-flex; align-items: center; gap: 2.2mm; }
+.brand .logo { width: auto; height: 5.2mm; flex: none; }
 
 /* =========================================================
    P2 INTRODUCTION
@@ -343,6 +345,7 @@ b, strong { font-weight: 700; }
 .ct__co h4 { font-size: 7.6pt; color: var(--orange-l); letter-spacing: .1em; }
 .ct__co p { margin-top: .6mm; font-size: 7.6pt; line-height: 1.65; color: rgba(255,255,255,.88); }
 .ct__co .co-name { font-size: 11pt; font-weight: 700; letter-spacing: .16em; color: #fff; margin: 0 0 1mm; }
+.ct__co .co-name.brand { display: flex; height: 5.4mm; margin-bottom: 1mm; }
 .dealer { border: .25mm solid rgba(255,255,255,.55); padding: 2mm; min-height: 22mm; }
 .dealer span { font-size: 6.8pt; color: rgba(255,255,255,.7); letter-spacing: .1em; }
 </style>
@@ -369,7 +372,7 @@ b, strong { font-weight: 700; }
         <li><span>消費電力</span><b class="num">500<small>W</small></b></li>
         <li><span>電源</span><b class="num">AC100<small>V 単相</small></b></li>
       </ul>
-      <div class="cv__foot"><p>※自社調べ。煙の量や排気の条件によって変わります。</p><strong>株式会社野田</strong></div>
+      <div class="cv__foot"><p>※自社調べ。煙の量や排気の条件によって変わります。</p><strong class="brand">{{LOGO}}株式会社野田</strong></div>
     </div>
   </div>
 </section>
@@ -811,7 +814,7 @@ b, strong { font-weight: 700; }
         </div>
       </div>
       <div class="ct__co">
-        <div><p class="co-name">株式会社野田</p><h4>本社</h4><p>〒812-0854 福岡県福岡市博多区東月隈3-5-4<br>TEL 092-504-5502　FAX 092-504-5518</p></div>
+        <div><p class="co-name brand">{{LOGO}}株式会社野田</p><h4>本社</h4><p>〒812-0854 福岡県福岡市博多区東月隈3-5-4<br>TEL 092-504-5502　FAX 092-504-5518</p></div>
         <div><h4 style="margin-top:6.4mm">広島出張所</h4><p>〒731-0113<br>広島県広島市安佐南区西原1-8-16-405</p></div>
         <div class="dealer"><span>取扱店</span></div>
       </div>
