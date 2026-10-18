@@ -630,6 +630,9 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 .ft__links a:hover { background: rgba(255, 255, 255, .08); }
 .ft__addr { margin-top: 24px; font-style: normal; font-size: 13.5px; line-height: 1.9; }
 .ft__addr a { color: #fff; }
+/* company mark (株式会社野田) */
+.mark { display: inline-block; width: .947em; height: 1em; fill: currentColor; }
+.ft__co .mark { width: 1.18em; height: 1.25em; margin-right: .45em; vertical-align: -.28em; }
 .ft__copy { margin-top: 14px; font-size: 12.5px; opacity: .9; }
 
 /* ---------- sub pages (会社概要・プライバシーポリシー・お問い合わせ) ---------- */
@@ -663,6 +666,8 @@ main { padding-top: calc(var(--hd-h) + env(safe-area-inset-top, 0px)); }
 .dtable dd li { position: relative; padding-left: 1.1em; }
 .dtable dd li::before { content: ""; position: absolute; left: 0; top: .78em; width: 6px; height: 6px; border-radius: 50%; background: var(--orange-2); }
 .dtable small { display: block; font-size: 13.5px; color: var(--ink-3); }
+.dtable .co-name { display: flex; align-items: center; gap: 14px; }
+.co-name__mark.mark { flex: none; width: 32px; height: 34px; color: #151515; }
 
 .prose { max-width: 46em; }
 .prose > * + * { margin-top: 1em; }
