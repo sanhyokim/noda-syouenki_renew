@@ -20,7 +20,7 @@
  */
 
 // ===== 設定 =====
-const DOWNLOAD_URL = 'https://example.com/noda-shoenki-jl8a.pdf';   // 資料PDFのURL（Googleドライブの共有リンクでも可）
+const DOWNLOAD_URL = 'https://example.com/noda-shoenki-jl8a.pdf';   // 資料PDF（販売のみ版）のURL（Googleドライブの共有リンクでも可）
 const NOTIFY_TO    = 'info@noda-duct.com,koroyasu@duct-noda.com,azuma@duct-noda.com,nagamizu@duct-noda.com';  // 通知を受け取るアドレス（カンマ区切り。お客様からの返信は先頭のアドレスに届きます）
 const FROM_NAME    = '野田の消煙機（株式会社野田）';
 const SITE_URL     = 'https://shoenki.duct-noda.com/';
@@ -81,7 +81,7 @@ function sendGuide_(p, email, name) {
     (shop ? shop + '\n' : '') + name + ' 様',
     '',
     'このたびは「野田の消煙機」の資料をご請求いただき、ありがとうございます。',
-    '下記のURLから資料（設置イメージ・料金プラン・メンテナンス内容）をダウンロードいただけます。',
+    '下記のURLから資料（設置イメージ・価格・メンテナンス内容）をダウンロードいただけます。',
     '',
     '▼ 資料ダウンロード',
     DOWNLOAD_URL,
@@ -108,7 +108,7 @@ function sendAck_(p, email, name) {
     '次の内容で受け付けました。担当者より、あらためてご連絡いたします。',
     '',
     '※ お問い合わせフォームからは、資料はお送りしていません。',
-    '　資料（設置イメージ・料金プラン・メンテナンス内容）をご希望の場合は、',
+    '　資料（設置イメージ・価格・メンテナンス内容）をご希望の場合は、',
     '　資料請求フォームからお申し込みください。',
     '　https://shoenki.duct-noda.com/#download',
     '',
