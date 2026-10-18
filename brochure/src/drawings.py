@@ -1,5 +1,5 @@
 """Technical line drawings for the catalog (system, principle, structure,
-outline views, installation patterns, street before/after, cost chart).
+outline views, installation patterns, street before/after).
 One drawing language throughout: navy hairlines, light tint fills, blue for
 anything electrical, amber for oil smoke."""
 import random
@@ -484,48 +484,3 @@ def footprint_svg():
     o.append(txt(440, wy + WS + 22, "上から見た図　単位：mm", 11, GRAY, 500, "end"))
     return svg(450, wy + WS + 30, o, "設置スペースの目安")
 
-
-# ---------------------------------------------------------------- cost chart
-BUY0, BUYM = 1_298_000, 27_500
-RENT0, RENTM = 220_000, 48_950
-BUY_C, RENT_C = "#1a6aa8", "#d9770b"
-
-
-def crossover_month():
-    m = 0
-    while BUY0 + BUYM * m > RENT0 + RENTM * m:
-        m += 1
-    return m
-
-
-def cost_chart_svg():
-    W, H = 720, 320
-    L, R, T, B = 64, 700, 18, 282
-    mx, ymax = 84, 4_500_000
-    X = lambda m: L + (R - L) * m / mx
-    Y = lambda v: B - (B - T) * v / ymax
-    o = []
-    for v in range(0, 4_500_001, 1_000_000):
-        o.append(f'<path d="M{L} {Y(v):.1f}H{R}" stroke="#dde3e8" stroke-width="1"/>')
-        o.append(txt(L - 8, Y(v) + 4, f"{v // 10000:,}万" if v else "0", 12, GRAY, 500, "end", N))
-    for yr in range(0, 8):
-        o.append(txt(X(yr * 12), B + 20, f"{yr}年", 12, GRAY, 500, "middle", N))
-    o.append(f'<path d="M{L} {B}H{R}" stroke="{NAVY}" stroke-width="1.2"/>')
-    buy = " ".join(f"{X(m):.1f},{Y(BUY0 + BUYM * m):.1f}" for m in range(0, mx + 1))
-    rent = " ".join(f"{X(m):.1f},{Y(RENT0 + RENTM * m):.1f}" for m in range(0, mx + 1))
-    o.append(f'<polyline points="{buy}" fill="none" stroke="{BUY_C}" stroke-width="2.4"/>')
-    o.append(f'<polyline points="{rent}" fill="none" stroke="{RENT_C}" stroke-width="2.4" stroke-dasharray="8 4"/>')
-    c = crossover_month()
-    cx, cy = X(c), Y(RENT0 + RENTM * c)
-    o.append(f'<path d="M{cx:.1f} {cy:.1f}V{B}" stroke="{NAVY}" stroke-width="1" stroke-dasharray="3 3"/>')
-    o.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="5" fill="#fff" stroke="{NAVY}" stroke-width="2"/>')
-    yrs, mos = divmod(c, 12)
-    o.append(txt(cx - 10, cy - 14, f"約{yrs}年{mos}ヶ月で逆転", 13, NAVY, 700, "end"))
-    o.append(txt(X(mx) - 4, Y(BUY0 + BUYM * mx) + 22, "購入", 13, INK, 700, "end"))
-    o.append(txt(X(mx) - 4, Y(RENT0 + RENTM * mx) - 10, "レンタル", 13, INK, 700, "end"))
-    return svg(W, H, o, "累計費用の比較")
-
-
-def cost_at(years):
-    m = years * 12
-    return BUY0 + BUYM * m, RENT0 + RENTM * m

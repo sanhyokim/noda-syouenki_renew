@@ -21,8 +21,8 @@ brochure/preview.sh                   # 見開きの確認画像（poppler-utils
 | ファイル | 内容 |
 |---|---|
 | `src/brochure.html` | 12ページ分のHTML/CSS（mm単位で組版） |
-| `src/drawings.py` | 技術図面のSVG（システム構成図、原理図、構造の模式図、外形図、設置図、設置スペース図、導入前後の図、累計費用のグラフ） |
+| `src/drawings.py` | 技術図面のSVG（システム構成図、原理図、構造の模式図、外形図、設置図、設置スペース図、導入前後の図） |
 | `src/parts.py` | QRコード |
 | `build.py` | HTMLを組み立て、画像をJPEGに変換して `render.mjs` でPDF化 |
 
-写真はリポジトリの `assets/img/` と `v2/assets/img/` のものを使っています（旧型機の写真。新型の写真が届いたら差し替え）。料金の累計比較は `drawings.py` の `BUY0` などの定数から計算しています。
+写真はリポジトリの `assets/img/` と `v2/assets/img/` のものを使っています（旧型機の写真。新型の写真が届いたら差し替え）。

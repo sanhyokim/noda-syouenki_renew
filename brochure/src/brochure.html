@@ -252,35 +252,29 @@ b, strong { font-weight: 700; }
 .subs .one { grid-template-columns: 1fr; }
 
 /* =========================================================
-   P10 COST
+   P10 PRICE
    ========================================================= */
 .plans { margin-top: 5mm; width: 100%; border-collapse: collapse; font-size: 8.4pt; line-height: 1.55; }
-.plans th, .plans td { padding: 2.2mm 3mm; border-bottom: .25mm solid var(--hair); vertical-align: top; text-align: left; }
+.plans th, .plans td { padding: 3.2mm 3mm; border-bottom: .25mm solid var(--hair); vertical-align: top; text-align: left; }
 .plans thead th { border-top: .5mm solid var(--navy); vertical-align: bottom; }
 .plans thead th:first-child { border-top-color: transparent; }
 .plans thead th span { display: block; font-size: 7.4pt; color: var(--gray); letter-spacing: .08em; }
 .plans thead th b { font-size: 11.4pt; color: var(--navy); }
 .plans thead th.rent b { color: var(--orange); }
 .plans tbody th { width: 26mm; color: var(--navy); font-weight: 700; }
-.plans .big { font-family: var(--num); font-size: 19pt; font-weight: 700; color: var(--navy); line-height: 1.1; }
+.plans .big { font-family: var(--num); font-size: 22pt; font-weight: 700; color: var(--navy); line-height: 1.1; }
 .plans .rent .big, .plans td.rent .big { color: var(--orange); }
 .plans .big small { font-family: var(--font); font-size: 8.4pt; margin-left: .5mm; }
 .plans .tax { display: block; font-size: 7.6pt; color: var(--gray); }
-.costwrap { position: absolute; left: 0; right: 0; bottom: 0; }
-.costwrap figure { margin-top: 2mm; }
-.costleg { display: flex; gap: 4mm; margin-top: 1mm; font-size: 7.6pt; color: var(--ink-2); }
-.costleg i { display: inline-block; width: 7mm; height: 0; border-top: .7mm solid var(--blue); vertical-align: middle; margin-right: 1.2mm; }
-.costleg i.d { border-top: .7mm dashed var(--orange); }
-.costrow { margin-top: 4mm; display: grid; grid-template-columns: 1fr 50mm; gap: 6mm; align-items: start; }
-.ctbl th, .ctbl td { padding: 1.5mm 2mm; }
-.ctbl thead th { text-align: right; }
-.ctbl thead th:first-child { text-align: left; }
-.ctbl td { text-align: right; font-family: var(--num); font-size: 10pt; font-weight: 500; }
-.ctbl td.low { font-weight: 700; color: var(--navy); }
+.both { margin-top: 9mm; }
+.work--3 { margin-top: 3mm; grid-template-columns: repeat(3, 1fr); }
+.work--3 div { padding: 4.4mm 4.4mm 5mm; }
+.costinfo { margin-top: 9mm; display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
 .elec { border-top: .5mm solid var(--navy); padding-top: 2.4mm; }
 .elec span { display: block; font-size: 7.6pt; font-weight: 700; color: var(--gray); }
 .elec b { display: block; font-family: var(--num); font-size: 22pt; color: var(--navy); line-height: 1.1; }
 .elec b small { font-family: var(--font); font-size: 8.4pt; }
+.elec b.txt { font-family: var(--font); font-size: 12pt; line-height: 1.5; margin-top: 1.4mm; }
 .elec p { margin-top: 1.2mm; }
 
 /* =========================================================
@@ -408,7 +402,7 @@ b, strong { font-weight: 700; }
           <li><span class="num">03</span>集塵の原理<em>PRINCIPLE</em><i>4</i></li>
           <li><span class="num">08</span>仕様・外形図<em>SPECIFICATIONS</em><i>9</i></li>
           <li><span class="num">04</span>構造と各部の名称<em>STRUCTURE</em><i>5</i></li>
-          <li><span class="num">09</span>料金プランと費用の比較<em>COST</em><i>10</i></li>
+          <li><span class="num">09</span>料金プラン<em>PRICE</em><i>10</i></li>
           <li><span class="num">05</span>6つの特長<em>FEATURES</em><i>6</i></li>
           <li><span class="num">10</span>納入事例・導入の流れ<em>CASES</em><i>11</i></li>
           <li><span class="num">06</span>保守と安全<em>MAINTENANCE</em><i>7</i></li>
@@ -686,12 +680,12 @@ b, strong { font-weight: 700; }
   </div>
 </section>
 
-<!-- =================== P10 COST =================== -->
+<!-- =================== P10 PRICE =================== -->
 <section class="page page--l">
   <div class="trim">
-    <header class="rh"><span class="rh__no">09</span><span class="rh__en">COST</span><span class="rh__ja">料金プランと費用の比較</span><span class="rh__model">JL-8A</span></header>
+    <header class="rh"><span class="rh__no">09</span><span class="rh__en">PRICE</span><span class="rh__ja">料金プラン</span><span class="rh__model">JL-8A</span></header>
     <div class="body">
-      <h2 class="ttl">購入か、レンタルか。<br>使う期間で比べて選べます。</h2>
+      <h2 class="ttl">購入か、レンタルか。<br>お店に合わせて選べます。</h2>
       <table class="plans">
         <thead><tr><th></th>
           <th><span>購入</span><b>イニシャルコスト重視プラン</b></th>
@@ -708,20 +702,22 @@ b, strong { font-weight: 700; }
         </tbody>
       </table>
       <p class="note" style="margin-top:1.6mm">※標準工事費の内訳：FAN工事・ダクト工事・チャンバーBOX工事等（1階床置きの場合）。設置場所や店舗の状況により、現地調査のうえお見積りします。</p>
-      <div class="costwrap">
-        <h3 class="h3 h3--rule">導入からの累計費用（税込）</h3>
-        <figure>{{COST}}
-          <div class="costleg"><span><i></i>購入</span><span><i class="d"></i>レンタル</span></div>
-        </figure>
-        <div class="costrow">
-          <div>
-            <table class="tbl ctbl">{{COSTROWS}}</table>
-            <p class="note" style="margin-top:1.6mm">太字は少ない方。標準工事の場合の試算で、電気代（両プラン共通）は含みません。レンタルの契約期間・条件は別途ご案内します。</p>
-          </div>
-          <div class="elec">
-            <span>電気代の目安</span><b>月2,500<small>円程度</small></b>
-            <p class="note">消費電力500W × 1日6〜7時間 × 月25日、電力単価31円/kWhで試算。ご契約内容や稼働時間により変わります。</p>
-          </div>
+      <div class="both">
+        <h3 class="h3 h3--rule">どちらのプランにも含まれるもの</h3>
+        <div class="work work--3">
+          <div><span>MAINTENANCE</span><b>毎月の定期メンテナンス</b><p>専門スタッフが毎月伺い、セルの洗浄から出力電圧の測定まで行います（7ページ）。</p></div>
+          <div><span>SURVEY</span><b>無料の現地調査</b><p>設置場所・ダクトの経路・電源を確認し、工事内容を含めてお見積りします。</p></div>
+          <div><span>AREA</span><b>全国対応</b><p>九州・中国地方以外は、提携業者が施工とメンテナンスを行います。</p></div>
+        </div>
+      </div>
+      <div class="costinfo">
+        <div class="elec">
+          <span>電気代の目安（両プラン共通・別途）</span><b>月2,500<small>円程度</small></b>
+          <p class="note">消費電力500W × 1日6〜7時間 × 月25日、電力単価31円/kWhで試算。ご契約内容や稼働時間により変わります。</p>
+        </div>
+        <div class="elec">
+          <span>レンタルのご契約</span><b class="txt">期間・条件は別途ご案内</b>
+          <p class="note">契約期間や満了後の扱いは、お見積りの際にご案内します。</p>
         </div>
       </div>
     </div>
