@@ -4,6 +4,7 @@
 ErrorDocument 404 /404.html
 AddType image/webp .webp
 AddType image/svg+xml .svg
+AddCharset UTF-8 .txt
 
 <IfModule mod_rewrite.c>
 RewriteEngine On

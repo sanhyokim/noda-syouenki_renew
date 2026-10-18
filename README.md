@@ -111,6 +111,7 @@ npx serve .
 - WordPress から差し替えるときは、`.htaccess` で WordPress 時代のURL（`/野田の消煙機/` など）をトップページへ301転送し、検索の評価を引き継ぎます。存在しないURLには `404.html`（検索エンジンには載せない設定）を出します。
 - 構造化データ（JSON-LD）：会社情報（Organization）、製品（Product）、よくある質問（FAQPage、13問）。下層ページにはパンくず（BreadcrumbList）。
 - 見出しは h1 を1つにして、各セクションを h2・h3 で整理しました。画像にはすべて代替テキストがあります。
+- AI検索（ChatGPT・Perplexity・Google の AI による概要など）向け：`robots.txt` で AI のクローラーも拒否していません。製品・会社・対応エリアの要点を AI 向けの案内ファイル `llms.txt` にまとめました（読むかどうかは各 AI 次第で、Google は使わないと公表しています）。
 - 計測タグは現行LPと同じもの（Google タグマネージャー GTM-W7PSRQTX と、Site Kit が入れていた Google タグ GT-MJJR4XTD）を入れています。資料請求とお問い合わせの完了時に `generate_lead` イベントを送ります。資料請求の完了ページは今と同じ `/transmission/` なので、このページの表示で広告の成果を数えている場合も、そのまま数えられます。
 
 ## 掲載情報について（取扱説明書を優先）
@@ -135,7 +136,7 @@ npx serve .
 **事前準備（今のサイトはそのまま）**
 
 1. **フォームは設定なしで使えます**（下の「フォームの送信先」）。送信元は今の WordPress のフォームと同じ info@duct-noda.com にしてあります。
-2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` `transmission/` `form/` です。`v2/` `wordpress/` `docs/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
+2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` `llms.txt` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` `transmission/` `form/` です。`v2/` `wordpress/` `docs/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
 3. **広告の成果の数え方はそのままで大丈夫です**：資料請求の送信後は、今と同じサンキューページ（`/transmission/`）に移ります。広告や Google アナリティクスで、このページの表示を成果として数えている場合も、設定を変えずに数えられます。
 4. **試しに置いて確かめる（おすすめ）**：公開フォルダの中に `_new` フォルダを作って 2. のファイルを入れ、`https://shoenki.duct-noda.com/_new/` で表示と、フォームのメール（自動返信と通知）が届くかを確かめます。表示されれば `.htaccess` もこのサーバーで動いています（動かない場合もエラーになるのはそのフォルダだけで、今のサイトには影響しません）。確認できたらフォルダごと削除します。
 
@@ -214,6 +215,7 @@ assets/
 transmission/         資料請求のサンキューページ（今のサイトと同じURL。検索エンジンには載せない設定）
 .htaccess             コアサーバー用の設定（https への転送、旧URLの転送、ヘッダー）
 robots.txt / sitemap.xml / _headers
+llms.txt              AI検索向けのサイト案内（製品・会社・対応エリアの要点）
 form/send.php         フォームの送信先（通知メールと自動返信をこのサーバーから送る PHP）
 docs/preview/         スクリーンショット（docs/preview/v2/ は前回のデザイン案）
 v2/                   前回お見せしたデザイン案（参考用・検索エンジンには載せない設定）
