@@ -137,7 +137,7 @@ npx serve .
 
 1. **フォームは設定なしで使えます**（下の「フォームの送信先」）。送信元は今の WordPress のフォームと同じ info@duct-noda.com にしてあります。
 2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` `llms.txt` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` `transmission/` `form/` です。`v2/` `wordpress/` `docs/` `deploy/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
-   - **フォルダを作らずに置く方法**：これらを1つにまとめた `shoenki-lp.zip`（リポジトリの一番上で `zip -r shoenki-lp.zip index.html 404.html .htaccess robots.txt sitemap.xml llms.txt assets company contact privacypolicy transmission form`）と `deploy/unzip.php` の2つを置きたいフォルダにアップロードし、ブラウザで `unzip.php` を開いて「展開する」を押します。展開が終わると、zip と `unzip.php` は自動で消えます。
+   - **フォルダを作らずに置く方法**：これらを1つにまとめた `shoenki-lp.zip`（リポジトリの一番上で `zip -r shoenki-lp.zip index.html 404.html .htaccess robots.txt sitemap.xml llms.txt assets company contact privacypolicy transmission form`）と `deploy/unzip.php` の2つを置きたいフォルダにアップロードし、ブラウザで `unzip.php` を開いて「展開する」を押します。展開が終わると、zip と `unzip.php` は自動で消えます。WordPress がある public_html で開いたときは、先に WordPress のファイルを public_html の外の `wp_old_shoenki` に移してから展開します（消さずに移すだけ。途中で失敗したら元に戻します）。元の WordPress に戻したいときは `deploy/modosu.php` を public_html に置いて開き、「元に戻す」を押します。
 3. **広告の成果の数え方はそのままで大丈夫です**：資料請求の送信後は、今と同じサンキューページ（`/transmission/`）に移ります。広告や Google アナリティクスで、このページの表示を成果として数えている場合も、設定を変えずに数えられます。
 4. **試しに置いて確かめる（おすすめ）**：公開フォルダの中に `_new` フォルダを作って 2. のファイルを入れ、`https://shoenki.duct-noda.com/_new/` で表示と、フォームのメール（自動返信と通知）が届くかを確かめます。表示されれば `.htaccess` もこのサーバーで動いています（動かない場合もエラーになるのはそのフォルダだけで、今のサイトには影響しません）。確認できたらフォルダごと削除します。
 
@@ -219,6 +219,7 @@ robots.txt / sitemap.xml / _headers
 llms.txt              AI検索向けのサイト案内（製品・会社・対応エリアの要点）
 form/send.php         フォームの送信先（通知メールと自動返信をこのサーバーから送る PHP）
 deploy/unzip.php      アップロード用の道具（サーバーの上で shoenki-lp.zip を展開する。サイトには含めない）
+deploy/modosu.php     差し替えを元の WordPress に戻す道具（困ったときだけ使う。サイトには含めない）
 docs/preview/         スクリーンショット（docs/preview/v2/ は前回のデザイン案）
 v2/                   前回お見せしたデザイン案（参考用・検索エンジンには載せない設定）
 wordpress/            現行サイト（WordPress + Elementor）に「仕組み」だけを載せる部品
