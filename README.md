@@ -108,6 +108,7 @@ npx serve .
 - タイトルは現行LPと同じ「【油煙91%カット】野田の消煙機│飲食店の排煙トラブルをゼロへ」です。
 - 説明文（meta description）は、現行の「独自フィルターで」を取扱説明書どおり「電気集塵方式で」に直しました。
 - canonical、OGP（1200×630 の共有用画像 `assets/img/ogp.jpg` を新しく作成）、`robots.txt`、`sitemap.xml` を用意しました。
+- WordPress から差し替えるときは、`.htaccess` で WordPress 時代のURL（`/野田の消煙機/` など）をトップページへ301転送し、検索の評価を引き継ぎます。存在しないURLには `404.html`（検索エンジンには載せない設定）を出します。
 - 構造化データ（JSON-LD）：会社情報（Organization）、製品（Product）、よくある質問（FAQPage、13問）。下層ページにはパンくず（BreadcrumbList）。
 - 見出しは h1 を1つにして、各セクションを h2・h3 で整理しました。画像にはすべて代替テキストがあります。
 - 計測タグは現行LPと同じもの（Google タグマネージャー GTM-W7PSRQTX と、Site Kit が入れていた Google タグ GT-MJJR4XTD）を入れています。資料請求の完了時に `generate_lead` イベントを送ります。
@@ -127,13 +128,39 @@ npx serve .
 
 よくある質問に「屋外にも設置できますか？」「保証はありますか？」（取扱説明書より）を加えました。全国対応の質問とあわせて13問です。
 
-## 公開の手順
+## 公開の手順（コアサーバーの WordPress と差し替える）
 
-1. **置き場所を決める**：Cloudflare Pages・Netlify などの静的サイト用ホスティング（無料枠あり）か、今のサーバーにファイルをそのまま置きます。リポジトリ直下（`index.html` / `company/` / `privacypolicy/` / `contact/` / `assets/` / `robots.txt` / `sitemap.xml` / `_headers`）を公開してください。`v2/` `wordpress/` `docs/` `tools/` は公開しなくてかまいません。
-2. **フォームの送信先を設定する**（下記）。
-3. **独自ドメイン（shoenki.duct-noda.com）を新しい置き場所に向ける**：DNS の切り替えは現行サイトが見られなくなる作業なので、切り替えのタイミングはご判断ください。URL は同じなので、検索順位はそのまま引き継がれます。
+今のLP（shoenki.duct-noda.com）は、コアサーバー（LiteSpeed）の WordPress で動いています。同じサーバー・同じURLのまま、公開フォルダの中身を WordPress から新しいファイルに入れ替えます。DNS（ドメインの向き先）は変えず、SSL（https）もそのまま使えるので、検索順位もそのまま引き継がれる見込みです。作業にはコアサーバーのコントロールパネル（またはFTP）に入れる方が必要です。
 
-`_headers` は Cloudflare Pages / Netlify 用のキャッシュ設定です（他のサーバーでは無視されます）。
+**事前準備（今のサイトはそのまま）**
+
+1. **フォームの送信先を設定する**（下の「フォームの送信先」）。発行されたURLを `index.html` と `contact/index.html` の `data-endpoint` に入れます。
+2. **アップロードするファイルをそろえる**：`index.html` `404.html` `.htaccess` `robots.txt` `sitemap.xml` と、フォルダ `assets/` `company/` `contact/` `privacypolicy/` です。`v2/` `wordpress/` `docs/` `tools/` `README.md` `_headers` は上げません。`.htaccess` は名前が「.」で始まるので、パソコンでは隠しファイルになっていることがあります。
+3. **広告の成果の数え方を確認する**：今の資料請求は、送信後にサンキューページ（`/transmission/`）へ移ります。新しいLPは同じページで完了画面を出し、`generate_lead` イベントを送ります。Google 広告などで「サンキューページの表示＝成果」と設定している場合は、タグマネージャー（GTM-W7PSRQTX）の条件をこのイベントに変えてください。変えないと、差し替え後に成果が数えられなくなります。
+4. **試しに置いて確かめる（おすすめ）**：公開フォルダの中に `_new` フォルダを作って 2. のファイルを入れ、`https://shoenki.duct-noda.com/_new/` で表示とフォームの送信を確かめます。表示されれば `.htaccess` もこのサーバーで動いています（動かない場合もエラーになるのはそのフォルダだけで、今のサイトには影響しません）。確認できたらフォルダごと削除します。
+
+**差し替え（今のサイトが新しいLPに変わります。日時はご判断ください）**
+
+5. **バックアップを取る**：公開フォルダの中身をすべてパソコンにダウンロードし、WordPress のデータベースも書き出して（コントロールパネルの phpMyAdmin、またはバックアップ用プラグイン）保存します。
+6. **WordPress のファイルを公開フォルダの外へ移す**：ファイルマネージャーか FTP で、公開フォルダの中身を、公開フォルダの外に作ったフォルダ（例：`wp_backup_20261020`）へ移動します。削除ではなく移動にしておくと、すぐに戻せます。
+7. **新しいファイルをアップロードする**：2. のファイルを公開フォルダに入れます。`.htaccess` は WordPress のものと置き換わります。
+8. **すぐに確認する**
+   - トップ・会社概要・プライバシーポリシー・お問い合わせが表示される。`http://` で開くと `https://` に変わる
+   - 資料請求とお問い合わせを1件ずつ送り、自動返信・通知メール・スプレッドシートを確かめる
+   - 稼働動画がその場で再生される
+   - 旧URL（例：`/transmission/`）がトップページに移り、存在しないURLでは「ページが見つかりません」が出る
+   - タグマネージャーのプレビューか、GA4 のリアルタイムで計測が届いている
+
+   表示がおかしい場合は、新しいファイルを消して 6. で移したファイルを戻せば元どおりです。「リダイレクトが多すぎます」と出る場合は、`.htaccess` の https への転送（`RewriteCond %{HTTPS}` からの3行）を消してください。
+
+**差し替えのあと**
+
+9. **Search Console**：「サイトマップ」に `sitemap.xml` を送信し、トップページを「URL検査 → インデックス登録をリクエスト」します。旧サイトマップ（`sitemap.rss` など）は新しい `sitemap.xml` に転送されます。
+10. **WordPress を片付ける**：1〜2か月問題がなければ、移しておいた WordPress のファイルとデータベースを削除します。使わない WordPress を置いたままにすると、更新されずに攻撃の入口になりやすいためです。バックアップはパソコンに残しておきます。
+
+**`.htaccess` でしていること**：`http://` から `https://` への転送、WordPress 時代のURL（`/野田の消煙機/` `/transmission/` `/elementor-768/` `/投稿1/`〜`/投稿3/` `/category/お知らせ/` `/feed/` など）からトップページへの転送（301）、旧サイトマップから `sitemap.xml` への転送、公開しないフォルダを見せない設定、存在しないURLで `404.html` を表示、セキュリティとキャッシュのヘッダー。
+
+Cloudflare Pages・Netlify などに移す場合は `.htaccess` の代わりに `_headers` が使われ、DNS の切り替えが必要になります。
 
 ## フォームの送信先（設定が必要です）
 
@@ -145,7 +172,7 @@ npx serve .
 2. お客様に自動返信メールを送信（資料請求はダウンロードのご案内、お問い合わせは受付確認）
 3. 担当者に通知メールを送信（件名は「【野田の消煙機LP】資料請求がありました［福岡県］○○ 様」の形で、本文にも消煙機のLPのどのフォームから来たかを書きます。都道府県は地域ごとの振り分けに使えます）
 
-通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件を設定済みです。お客様が自動返信メールに返信すると、先頭の info@noda-duct.com に届きます。ファイル先頭の `DOWNLOAD_URL`（資料PDFのURL）だけ書き換えてください。
+通知先（`NOTIFY_TO`）は info@noda-duct.com・koroyasu@duct-noda.com・azuma@duct-noda.com・nagamizu@duct-noda.com の4件を設定済みです。お客様が自動返信メールに返信すると、先頭の info@noda-duct.com に届きます。ファイル先頭の `DOWNLOAD_URL`（資料PDFのURL）には、資料請求の自動返信で送る Box の共有リンクを設定済みです。
 
 送れるメールは宛先の数で数えて、Gmail（無料アカウント）は1日100件、Google Workspace は1日1,500件までです。1回の送信で、自動返信1件と通知4件の計5件を使います。Formspree などのフォームサービスを使う場合も、そのURLを `data-endpoint` に入れるだけで送れます。
 
@@ -185,6 +212,8 @@ assets/
   js/site.js          ヘッダー / 導入店舗の帯 / 動画 / 集塵シミュレーション / フォーム（資料請求・お問い合わせ）
   img/                写真・イラスト・ロゴ・favicon・OGP（WebP）
   img/ticker/         導入店舗の帯の写真
+404.html              見つからないページ（WordPress 時代の古いURLなど）で出すページ
+.htaccess             コアサーバー用の設定（https への転送、旧URLの転送、ヘッダー）
 robots.txt / sitemap.xml / _headers
 tools/form/           フォームの受け口（Google Apps Script）
 docs/preview/         スクリーンショット（docs/preview/v2/ は前回のデザイン案）
