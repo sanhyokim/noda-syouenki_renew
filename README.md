@@ -109,7 +109,7 @@ npx serve .
 - 説明文（meta description）は、現行の「独自フィルターで」を取扱説明書どおり「電気集塵方式で」に直しました。
 - canonical、OGP（1200×630 の共有用画像 `assets/img/ogp.jpg` を新しく作成）、`robots.txt`、`sitemap.xml` を用意しました。
 - WordPress から差し替えるときは、`.htaccess` で WordPress 時代のURL（`/野田の消煙機/` など）をトップページへ301転送し、検索の評価を引き継ぎます。存在しないURLには `404.html`（検索エンジンには載せない設定）を出します。
-- 構造化データ（JSON-LD）：会社情報（Organization）、製品（Product）、よくある質問（FAQPage、13問）。下層ページにはパンくず（BreadcrumbList）。
+- 構造化データ（JSON-LD）：会社情報（Organization）、サイト（WebSite）、よくある質問（FAQPage、13問）。製品（Product）は、Google が価格（offers）か口コミ（review / aggregateRating）を必須にしていて、LPには公開の価格も口コミもないため入れていません（2026年10月19日、Search Console の「商品スニペット」の警告を受けて削除）。下層ページにはパンくず（BreadcrumbList）。
 - 見出しは h1 を1つにして、各セクションを h2・h3 で整理しました。画像にはすべて代替テキストがあります。
 - AI検索（ChatGPT・Perplexity・Google の AI による概要など）向け：`robots.txt` で AI のクローラーも拒否していません。製品・会社・対応エリアの要点を AI 向けの案内ファイル `llms.txt` にまとめました（読むかどうかは各 AI 次第で、Google は使わないと公表しています）。
 - 計測タグは現行LPと同じもの（Google タグマネージャー GTM-W7PSRQTX と、Site Kit が入れていた Google タグ GT-MJJR4XTD）を入れています。資料請求とお問い合わせの完了時に `generate_lead` イベントを送ります。資料請求の完了ページは今と同じ `/transmission/` なので、このページの表示で広告の成果を数えている場合も、そのまま数えられます。
