@@ -1,0 +1,41 @@
+# コアサーバー（LiteSpeed）用の設定です。公開フォルダのいちばん上に置き、WordPress の .htaccess と置き換えます。
+# 使っているのは WordPress の .htaccess と同じ種類の設定（書き換え・ヘッダー・エラーページ）だけです。
+
+ErrorDocument 404 /404.html
+AddType image/webp .webp
+AddType image/svg+xml .svg
+AddCharset UTF-8 .txt
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# http:// で開かれたら https:// へ（今は WordPress がしている転送です）
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://shoenki.duct-noda.com%{REQUEST_URI} [R=301,L]
+
+# 公開しないファイル・フォルダ（間違えてアップロードしても見えないように）
+RewriteRule ^(\.git|v2|wordpress|docs|deploy)(/|$) - [F,L]
+RewriteRule ^(README\.md|_headers|\.gitignore)$ - [F,L]
+
+# WordPress 時代のURL → 新しいページ（検索の評価を引き継ぎます）
+RewriteRule ^(野田の消煙機|%E9%87%8E%E7%94%B0%E3%81%AE%E6%B6%88%E7%85%99%E6%A9%9F)/?$ https://shoenki.duct-noda.com/ [NC,R=301,L]
+RewriteRule ^(投稿|%E6%8A%95%E7%A8%BF)[0-9]+/?$ https://shoenki.duct-noda.com/ [NC,R=301,L]
+RewriteRule ^(elementor-768|category/.*|feed|comments/feed)/?$ https://shoenki.duct-noda.com/ [R=301,L]
+RewriteRule ^(sitemap\.rss|(post|page|category)-sitemap\.xml)$ https://shoenki.duct-noda.com/sitemap.xml [R=301,L]
+RewriteCond %{QUERY_STRING} (^|&)(p|page_id|cat|feed)= [NC]
+RewriteRule ^$ https://shoenki.duct-noda.com/? [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+# ページ・CSS・JS は開くたびに更新を確かめ（直したらすぐ反映）、画像は1週間ブラウザに保存
+<FilesMatch "\.(html|xml|txt|css|js)$">
+Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>
+<FilesMatch "\.(webp|png|jpg|svg|ico)$">
+Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
+</IfModule>
